@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- TODO -->
+    <base href="../">
+
+    <title>AI In Ephemeral</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="https://www.flaticon.com/svg/static/icons/svg/2591/2591910.svg">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+
+    <style>
+        p.redText{
+            color: #ff305d;
+        }
+        ul#share li{display: inline;}
+        div.small_text_inline{
+            font-size: 80%;
+            display: inline;
+        }
+        h2.center{
+            text-align: center;
+        }
+
+
+    </style>
+
+    <script>
+        function add_likes(){
+            var a = localStorage.getItem("num_likes");
+            if (a == null){
+                a = 1;
+                localStorage.setItem("num_likes",a.toString())
+            }else{
+                a = parseInt(a)+1
+                localStorage.setItem("num_likes",a.toString())
+            }
+            document.getElementById("nums_likes_disp").innerHTML =a.toString()+" likes" ;
+        }
+
+        function show_num_likes(){
+            var a =localStorage.getItem("num_likes");
+            if (a==null){
+                a = 0;
+            }
+            document.getElementById("nums_likes_disp").innerHTML = a.toString()+" likes";
+        }
+    </script>
+</head>
+<body onload="show_num_likes()">
+
+<div class="container d-md-flex align-items-stretch">
+    <!-- Page Content  -->
+    <div id="content" class="p-4 p-md-5 pt-5">
+        <!-- Share Box -->
+        <!-- <div class="share-box" aria-hidden="true" align="right">
+            <ul id="share" class="share">
+                <li><a href="https://twitter.com/intent/tweet?url=https://yunshu67.github.io/yunshu.me/blog-yunshu/index.html&text=Tao's%20blogs" target="_blank" rel="noopener" class="share-btn-twitter"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="https://www.facebook.com/sharer.php?u=https://yunshu67.github.io/yunshu.me/blog-yunshu/index.html&amp;t=Tao's%20blogs" target="_blank" rel="noopener" class="share-btn-facebook"><i class="fab fa-facebook"></i></a></li>
+                <li><a href="mailto:?subject=Tao's%20blogs&amp;body=https://yunshu67.github.io/yunshu.me/blog-yunshu/index.html" target="_blank" rel="noopener" class="share-btn-email"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="https://www.linkedin.com/shareArticle?url=https://yunshu67.github.io/yunshu.me/blog-yunshu/index.html&amp;title=Tao's%20blogs" target="_blank" rel="noopener" class="share-btn-linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+                <li><a href="whatsapp://send?text=Tao's%20blogs%20https://yunshu67.github.io/yunshu.me/blog-yunshu/index.html" target="_blank" rel="noopener" class="share-btn-whatsapp"><i class="fab fa-whatsapp"></i></a></li>
+                <li><a href="https://service.weibo.com/share/share.php?url=https://yunshu67.github.io/yunshu.me/blog-yunshu/index.html&amp;title=Tao's%20blogs" target="_blank" rel="noopener" class="share-btn-weibo"><i class="fab fa-weibo"></i></a></li>
+                <li>
+
+                    <a id="wx" class="dropup share-btn-weixin" href="javascript:">
+                        <i class="fab fa-weixin" data-toggle="dropdown"></i>
+                        <div class="dropdown-menu">
+                            <div class="small_text_inline">用手机打开微信扫一扫分享</div>
+                            <img src="images/blog-homepage.png" width=150>
+                        </div>
+                    </a>
+                    </a>
+                </li>
+
+
+            </ul></div>
+
+-->
+        <!-- 文章标题 -->
+        <h1> I need back end knowledge</h1>
+        <p style="font-size: x-small">Dec 27th, 2020 09:22 PM</p>
+
+
+        <!-- 文章正文 -->
+        <p> It's the 3rd day that I learn HTML and CSS, I made a feature where clients can like this page by clicking the like button. I store the number of likes (variables) using <code>localStorage</code>, as the name suggests, it can't store data on the server side, so it's not working and for every new coming client, the <code>num_likes</code> is initialized to 0.</p>
+        <p>I need back end language knowledge!!!</p>
+
+
+
+
+    </div>
+
+
+
+    <nav id="sidebar">
+        <div class="p-4 pt-5">
+            <h5>Overview</h5>
+            <ul class="list-unstyled components mb-5">
+                <li>
+                    <a href="#"   >Home</a>
+                </li>
+                <li>
+                    <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Articles</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu1">
+                    </ul>
+                </li>
+                <li>
+                    <a id="notes" href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Notes</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu2">
+
+                        <li><a href="#geo_notes" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Geo</a>
+                            <ul class="collapse list-unstyled" id="geo_notes">
+
+                            </ul>
+                        </li>
+
+                        <li><a href="#alg_notes" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Algorithms</a>
+                            <ul class="collapse list-unstyled" id="alg_notes">
+                                <li><a href="notes/algorithms/preSum.html" target="_blank"><span class="fa fa-chevron-right mr-2"></span>0.preSum 前缀和</a></li>
+                                <li><a href="notes/algorithms/slidingWindow.html" target="_blank"><span class="fa fa-chevron-right mr-2"></span>1.sliding window 滑动窗口</a></li>
+                                <li><a href="notes/algorithms/dynamicProgramming.html" target="_blank"><span class="fa fa-chevron-right mr-2"></span>2.dynamic programming 动态规划</a> </li>
+                            </ul>
+
+                        </li>
+
+                        <li><a href="#chs_notes" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Cheatsheets</a>
+                            <ul class="collapse list-unstyled" id="chs_notes">
+                                <li><a href="https://cheatography.com/xys/cheat-sheets/python/" target="_blank"><span class="fa fa-chevron-right mr-2"></span>Python</a></li>
+                                <li><a href="https://cheatography.com/xys/cheat-sheets/java/" target="_blank"><span class="fa fa-chevron-right mr-2"></span>Java</a></li>
+                                <li><a href="https://cheatography.com/xys/cheat-sheets/html/" target="_blank"><span class="fa fa-chevron-right mr-2"></span>HTML</a></li>
+
+
+                            </ul>
+                        </li>
+
+
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Essays</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu3">
+                        <li><a href=essays/12-27-2020.html><span class="fa fa-chevron-right mr-2"></span>Dec 27th, 2020</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="mb-5">
+                <h5>Recent Posts</h5>
+                <div class="tagcloud">
+                    <a href="essays/12-27-2020.html" class="tag-cloud-link">Dec 27th</a>
+                    <a href="notes/algorithms/slidingWindow.html" class="tag-cloud-link">滑动窗口</a>
+                    <a href="notes/algorithms/dynamicProgramming.html" class="tag-cloud-link">动态规划</a>
+                    <a href="notes/algorithms/preSum.html" class="tag-cloud-link">前缀和</a>
+
+
+                </div>
+            </div>
+            <div class="mb-5">
+                <h5>给我留言吧</h5>
+                <form action="#" class="subscribe-form">
+                    <div class="form-group d-flex">
+                        <div class="icon"><span class="icon-paper-plane"></span></div>
+                        <input type="text" class="form-control" placeholder="同学，说点什么吧">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+</div>
+
+
+
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
