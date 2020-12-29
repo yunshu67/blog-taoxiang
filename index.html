@@ -145,7 +145,7 @@
     </div>
 
 <!--     Second Photo Grid-->
-    <div class="w3-row-padding" id="s-all-2">
+    <div class="w3-row-padding" >
         <div class="w3-third w3-container w3-margin-bottom" id="s3">
             <a href="https://cheatography.com/xys/cheat-sheets/python/"><img src="https://www.w3schools.com/w3images/p1.jpg" style="width:100%" class="w3-hover-opacity"></a>
             <div class="w3-container w3-white">
@@ -208,8 +208,7 @@
 <script>
     // var to store which one is checked in filter
     var checked="fi0";
-    var showList1 = document.getElementById('s-all');
-    var removed=[];
+    const node_ids = ['s0','s1','s2','s3'];
 
     // Script to open and close sidebar
     function w3_open() {
@@ -226,34 +225,31 @@
     function filter_focus(id){
         document.getElementById(checked).classList.remove('w3-black');
         document.getElementById(checked).classList.add('w3-white')
-
         document.getElementById(id).classList.remove('w3-white');
         document.getElementById(id).classList.add('w3-black');
         checked=id;
     }
     function filter_life(){
-        filter_all();
-        removeElement('s0');
-        removeElement('s1')
-        removeElement('s3')
+        setVisible('s2');
+        setHidden('s0');
+        setHidden('s1')
+        setHidden('s3')
+
     }
 
     function filter_all(){
-        for (let i = 0; i < removed.length; i++) {
-            showList1.appendChild(removed[i]);
+        for (let i = 0; i < node_ids.length; i++) {
+            setVisible(node_ids[i]);
         }
     }
 
-    function removeElement(id) {
-        var elem = document.getElementById(id);
-        var ret= elem.parentNode.removeChild(elem);
-        removed.push(ret);
-        return ret;
+    function setHidden(id) {
+        document.getElementById(id).style.display="none";
     }
+    function setVisible(id){document.getElementById(id).style.display="block";}
     function filter_2020(){
-        filter_all();
-        removeElement('s2');
-        removeElement('s3')
+        setVisible('s0');setVisible('s1');
+        setHidden('s2');setHidden('s3')
     }
 </script>
 <script src="js/jquery.min.js"></script>
