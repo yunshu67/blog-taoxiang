@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <base target="_blank">
+  	<title>AI In Ephemeral</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="icon" href="https://www.flaticon.com/svg/static/icons/svg/2591/2591910.svg">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+
+      <style>
+
+
+          div#header{
+              font-family: monaco,Consolas,Lucida Console,monospace;
+          }
+          body{
+
+          }
+          .redText{
+              color: #ff305d;
+          }
+          ul li{display: inline;}
+          div.small_text_inline{
+              font-size: 80%;
+              display: inline;
+          }
+
+          .inline{
+              display: inline;
+          }
+          .center{
+              text-align: center;
+          }
+
+
+          button.like {
+              background-image: url(images/like.svg);
+              background-size: contain;
+              border: none;
+              border-radius: 50%;
+              width: 50px;
+              height: 50px;
+              font-size: 2rem;
+          }
+          ul#my-share li a {
+              font-size: 25px;
+              color: #333333;
+          }
+
+          div.side{
+              margin-top: 200px;
+              width: 40px;
+              border-style: none;
+              height: 320px;
+              border-color: white;
+          }
+
+
+
+
+      </style>
+
+      <script>
+          function add_likes(){
+              var a = localStorage.getItem("num_likes");
+              if (a == null){
+                  a = 1;
+                  localStorage.setItem("num_likes",a.toString())
+              }else{
+                  a = parseInt(a)+1
+                  localStorage.setItem("num_likes",a.toString())
+              }
+              document.getElementById("nums_likes_disp").innerHTML =a.toString()+" likes" ;
+          }
+
+          function show_num_likes(){
+              var a =localStorage.getItem("num_likes");
+              if (a==null){
+                  a = 0;
+              }
+              document.getElementById("nums_likes_disp").innerHTML = a.toString()+" likes";
+          }
+      </script>
+  </head>
+  <body onload="show_num_likes()">
+
+  <!-- Sidebar/menu -->
+  <nav class="w3-sidebar " id="mySidebar" ><br>
+      <div class="side">
+          <ul id="my-share" style="padding-left: 0;margin-left: 5px">
+              <li style="padding-left: 3px"><a href="https://www.facebook.com/sharer.php?u=https://yunshu67.github.io/blog-taoxiang/&amp;t=Tao's%20blogs" ><i class="fab fa-facebook-f" ></i></a></li>
+              <li><a href="https://twitter.com/intent/tweet?url=https://yunshu67.github.io/blog-taoxiang/&text=Tao's%20blogs" ><i class="fab fa-twitter"></i></a></li>
+              <li><a href="https://www.linkedin.com/shareArticle?url=https://yunshu67.github.io/blog-taoxiang/&amp;title=Tao's%20blogs" ><i class="fab fa-linkedin-in"></i></a></li>
+              <li><a href="https://service.weibo.com/share/share.php?url=https://yunshu67.github.io/blog-taoxiang/&amp;title=Tao's%20blogs" ><i class="fab fa-weibo"></i></a></li>
+              <li>
+                  <a id="wx2" class="dropright share-btn-weixin" href="javascript:">
+                      <i class="fab fa-weixin" data-toggle="dropdown"></i>
+                      <div class="dropdown-menu" style="width: 150px; margin-right: auto;margin-left: auto">
+                          <div class="small_text_inline">用手机打开微信扫一扫分享</div>
+                          <img src="images/blog-homepage.png" width="148">
+                      </div>
+                  </a>
+
+              </li>
+              <li>
+                      <a href="javascript:" target="_self" ><i class="fas fa-thumbs-up"></i></a>
+              </li>
+
+              <li>
+                  <a href="#" target="_self" >
+                      <img src="https://www.flaticon.com/svg/static/icons/svg/17/17156.svg" alt="back to top" width="25px">
+                  </a>
+              </li>
+
+          </ul>
+      </div>
+  </nav>
+
+  <div class="container d-md-flex">
+      <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5 pt-5">
+          <h1 class="center">MY BLOG</h1>
+          <p class="inline;" style="text-align: center">Welcome To The Blog Of <span style="background-color: black;color: white;padding-left: 3px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px">Tao Xiang</span></p>
+
+
+          <!--1. Intro-->
+          <div  class="w3-card-4 w3-margin w3-white" style="border-color: #F1F1F1;border-spacing: 2px;border-style: none;font-family: monaco,Consolas,Lucida Console,monospace">
+              <img src="images/life.jpg" alt="Life Is Fantastic" width="100%">
+              <div id="header" class="w3-container">
+                  <h3  style="font-weight: 700;text-align: center;padding-top: 8px">LIFE IS FANTASTIC</h3>
+                  <p style="text-align: center"><span  class="w3-opacity">Nha Trang, Vietnam,  March 4th , 2019</span></p>
+              </div>
+
+              <div class="w3-container">
+                  <div style="text-align: center;" >
+                      <p>Very quietly I take my leave</p>
+                      <p>As quietly as I came here;</p>
+                      <p>Gently I flick my sleeves</p>
+                      <p> Not even a wisp of cloud will I bring away</p>
+                  </div>
+              </div>
+          </div>
+
+        <!-- 2. Content Filter       -->
+          <div style="background-color: #F7F7F7">
+              <div class="w3-section w3-bottombar w3-padding-16" >
+                  <h2 style="text-align: center">FIRST IMPRESSION</h2>
+                  <button class="w3-button w3-black">ALL</button>
+                  <button class="w3-button w3-white"><i class="fas fa-gem w3-margin-right"></i>Best 2020</button>
+                  <button class="w3-button w3-white w3-hide-small"><i class="fas fa-skiing w3-margin-right"></i>Life</button>
+                  <button class="w3-button w3-white w3-hide-small"><i class="fa fa-map-pin w3-margin-right"></i>Art</button>
+
+                  <!-- first row of items             -->
+              </div>
+
+              <!-- first row of photos-->
+              <div class="w3-row-padding">
+                  <div class="w3-third w3-container w3-margin-bottom">
+                      <img src="images/mountains.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
+                      <div class="w3-container w3-white">
+                          <p><b>A</b></p>
+                          <p>To be cont.</p>
+                      </div>
+                  </div>
+                  <div class="w3-third w3-container w3-margin-bottom">
+                      <img src="images/mountains.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
+                      <div class="w3-container w3-white">
+                          <p><b>B</b></p>
+                          <p>To be cont.</p>
+                      </div>
+                  </div>
+                  <div class="w3-third w3-container">
+                      <img src="images/mountains.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
+                      <div class="w3-container w3-white">
+                          <p><b>C</b></p>
+                          <p>To be cont.</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <a href="newPage.html">new page</a>
+      </div>
+
+
+
+      <nav id="sidebar">
+				<div class="p-4 pt-5" >
+					<h5>Overview</h5>
+	        <ul class="list-unstyled components mb-5">
+                <li>
+                    <a href="#"   >Home</a>
+                </li>
+	          <li>
+	            <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Articles</a>
+	            <ul class="collapse list-unstyled" id="pageSubmenu1">
+	            </ul>
+	          </li>
+	          <li>
+	            <a id="notes" href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Notes</a>
+	            <ul class="collapse list-unstyled" id="pageSubmenu2">
+
+                <li><a href="#geo_notes" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Geo</a>
+                    <ul class="collapse list-unstyled" id="geo_notes">
+
+                    </ul>
+                </li>
+
+                 <li><a href="#alg_notes" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Algorithms</a>
+                     <ul class="collapse list-unstyled" id="alg_notes">
+                         <li><a href="notes/algorithms/preSum.html" target="_blank"><span class="fa fa-chevron-right mr-2"></span>0.preSum 前缀和</a></li>
+                         <li><a href="notes/algorithms/slidingWindow.html" target="_blank"><span class="fa fa-chevron-right mr-2"></span>1.sliding window 滑动窗口</a></li>
+                         <li><a href="notes/algorithms/dynamicProgramming.html" target="_blank"><span class="fa fa-chevron-right mr-2"></span>2.dynamic programming 动态规划</a> </li>
+                     </ul>
+
+                 </li>
+
+                    <li><a href="#chs_notes" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Cheatsheets</a>
+                        <ul class="collapse list-unstyled" id="chs_notes">
+                            <li><a href="https://cheatography.com/xys/cheat-sheets/python/" target="_blank"><span class="fa fa-chevron-right mr-2"></span>Python</a></li>
+                            <li><a href="https://cheatography.com/xys/cheat-sheets/java/" target="_blank"><span class="fa fa-chevron-right mr-2"></span>Java</a></li>
+                            <li><a href="https://cheatography.com/xys/cheat-sheets/html/" target="_blank"><span class="fa fa-chevron-right mr-2"></span>HTML</a></li>
+
+
+                        </ul>
+                    </li>
+
+
+
+	            </ul>
+	          </li>
+	          <li>
+	            <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Essays</a>
+	            <ul class="collapse list-unstyled" id="pageSubmenu3">
+                    <li><a href=essays/12-27-2020.html target="_self"><span class="fa fa-chevron-right mr-2"></span>Dec 27th, 2020</a></li>
+	            </ul>
+	          </li>
+                <li>
+                    <a href="about.html" target="_self" >About Me</a>
+                </li>
+	        </ul>
+					<div class="mb-5">
+						<h5>Recent Posts</h5>
+            <div class="tagcloud">
+                <a href="essays/12-27-2020.html" class="tag-cloud-link">Dec 27th</a>
+              <a href="notes/algorithms/slidingWindow.html" class="tag-cloud-link">滑动窗口</a>
+              <a href="notes/algorithms/dynamicProgramming.html" class="tag-cloud-link">动态规划</a>
+              <a href="notes/algorithms/preSum.html" class="tag-cloud-link">前缀和</a>
+
+
+            </div>
+					</div>
+					<div class="mb-5">
+	        	<h5>给我留言吧</h5>
+						<form action="#" class="subscribe-form">
+	            <div class="form-group d-flex">
+	            	<div class="icon"><span class="icon-paper-plane"></span></div>
+	              <input type="text" class="form-control" placeholder="同学，说点什么吧">
+	            </div>
+	          </form>
+					</div>
+                 </div>
+    	</nav>
+
+		</div>
+
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
