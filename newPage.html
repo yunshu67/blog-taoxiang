@@ -7,34 +7,89 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" href="https://www.flaticon.com/svg/static/icons/svg/2591/2591910.svg">
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
 <style>
     body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 </style>
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+<nav id="side" class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
     <div class="w3-container">
         <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
             <i class="fa fa-remove"></i>
         </a>
-        <img src="/w3images/avatar_g2.jpg" style="width:45%;" class="w3-round"><br><br>
-        <h4><b>PORTFOLIO</b></h4>
-        <p class="w3-text-grey">Template by W3.CSS</p>
+        <img src="images/avatar.jpeg" style="width:45%;" class="w3-round"><br><br>
+        <h4><b>Tao Xiang</b></h4>
+        <p class="w3-text-grey">Technical University Munich</p>
     </div>
-    <div class="w3-bar-block">
-        <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PORTFOLIO</a>
-        <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT</a>
-        <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
-    </div>
-    <div class="w3-panel w3-large">
-        <i class="fa fa-facebook-official w3-hover-opacity"></i>
-        <i class="fa fa-instagram w3-hover-opacity"></i>
-        <i class="fa fa-snapchat w3-hover-opacity"></i>
-        <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-        <i class="fa fa-twitter w3-hover-opacity"></i>
-        <i class="fa fa-linkedin w3-hover-opacity"></i>
-    </div>
+        <nav id="sidebar">
+            <div style="padding-left: 5px" >
+                <ul class="list-unstyled components mb-5" style="padding-top: 0;margin-top: 0">
+                    <li>
+                        <a href="#" class="w3-bar-item  w3-button  w3-text-teal" style="text-align: left" ><i class="fas fa-home"></i>&nbsp; Home</a>
+                    </li>
+                    <li>
+                        <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle w3-bar-item  w3-button" style="text-align: left"><i class="fas fa-book-open"></i>&nbsp; Articles</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu1">
+                        </ul>
+                    </li>
+                    <li>
+                        <a id="notes" href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle w3-bar-item  w3-button" style="text-align: left"><i class="fas fa-sticky-note"></i>&nbsp;&nbsp; Notes</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu2">
+
+                            <li><a href="#geo_notes" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle w3-bar-item  w3-button">Geo</a>
+                                <ul class="collapse list-unstyled" id="geo_notes">
+
+                                </ul>
+                            </li>
+
+                            <li><a href="#alg_notes" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle w3-bar-item  w3-button">Algorithms</a>
+                                <ul class="collapse list-unstyled" id="alg_notes">
+                                    <li><a href="notes/algorithms/preSum.html" class="w3-bar-item  w3-button" style="text-align: left" target="_blank"><span class="fa fa-chevron-right mr-2"></span>0.preSum 前缀和</a></li>
+                                    <li><a href="notes/algorithms/slidingWindow.html" class="w3-bar-item  w3-button" style="text-align: left" target="_blank"><span class="fa fa-chevron-right mr-2"></span>1.sliding window 滑动窗口</a></li>
+                                    <li><a href="notes/algorithms/dynamicProgramming.html" class="w3-bar-item  w3-button" style="text-align: left" target="_blank"><span class="fa fa-chevron-right mr-2"></span>2.dynamic programming 动态规划</a> </li>
+                                </ul>
+
+                            </li>
+
+                            <li><a href="#chs_notes" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle w3-bar-item  w3-button">Cheatsheets</a>
+                                <ul class="collapse list-unstyled" id="chs_notes">
+                                    <li><a href="https://cheatography.com/xys/cheat-sheets/python/" class="w3-bar-item  w3-button" style="text-align: left" target="_blank"><span class="fa fa-chevron-right mr-2"></span>Python</a></li>
+                                    <li><a href="https://cheatography.com/xys/cheat-sheets/java/" class="w3-bar-item  w3-button" style="text-align: left" target="_blank"><span class="fa fa-chevron-right mr-2"></span>Java</a></li>
+                                    <li><a href="https://cheatography.com/xys/cheat-sheets/html/" class="w3-bar-item  w3-button"style="text-align: left"  target="_blank"><span class="fa fa-chevron-right mr-2"></span>HTML</a></li>
+
+
+                                </ul>
+                            </li>
+
+
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle w3-bar-item  w3-button" style="text-align: left"><i class="fas fa-book"></i>&nbsp;  Essays</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu3">
+                            <li><a href=essays/12-27-2020.html target="_self" class="w3-bar-item  w3-button"style="text-align: left" ><span class="fa fa-chevron-right mr-2"></span>Dec 27th, 2020</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="about.html" class="w3-bar-item  w3-button" style="text-align: left" target="_self" ><i class="fas fa-address-card"></i>&nbsp; About Me</a>
+                    </li>
+                </ul>
+
+
+                <div class="w3-panel w3-large">
+                    <a href="#"><i class="fa fa-weixin w3-hover-opacity" ></i></a>
+                </div>
+
+            </div>
+        </nav>
+
 </nav>
 
 <!-- Overlay effect when opening sidebar on small screens -->
@@ -304,6 +359,10 @@
         document.getElementById("myOverlay").style.display = "none";
     }
 </script>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
 
 </body>
 </html>

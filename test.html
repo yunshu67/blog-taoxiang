@@ -1,10 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <base target="_blank">
+    <title>AI In Ephemeral</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="https://www.flaticon.com/svg/static/icons/svg/2591/2591910.svg">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+
+    <style>
+
+
+        div#header{
+            font-family: monaco,Consolas,Lucida Console,monospace;
+        }
+        body{
+
+        }
+        .redText{
+            color: #ff305d;
+        }
+        ul li{display: inline;}
+        div.small_text_inline{
+            font-size: 80%;
+            display: inline;
+        }
+
+        .inline{
+            display: inline;
+        }
+        .center{
+            text-align: center;
+        }
+
+
+        button.like {
+            background-image: url(images/like.svg);
+            background-size: contain;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 2rem;
+        }
+        ul#my-share li a {
+            font-size: 25px;
+            color: #333333;
+        }
+
+        div.side{
+            margin-top: 200px;
+            width: 40px;
+            border-style: none;
+            height: 320px;
+            border-color: white;
+        }
+
+
+
+
+    </style>
+
+    <script>
+        function add_likes(){
+            var a = localStorage.getItem("num_likes");
+            if (a == null){
+                a = 1;
+                localStorage.setItem("num_likes",a.toString())
+            }else{
+                a = parseInt(a)+1
+                localStorage.setItem("num_likes",a.toString())
+            }
+            document.getElementById("nums_likes_disp").innerHTML =a.toString()+" likes" ;
+        }
+
+        function show_num_likes(){
+            var a =localStorage.getItem("num_likes");
+            if (a==null){
+                a = 0;
+            }
+            document.getElementById("nums_likes_disp").innerHTML = a.toString()+" likes";
+        }
+    </script>
 </head>
 <body>
+<nav id="sidebar">
+    <div style="padding-left: 5px" >
+        <ul class="list-unstyled components mb-5" style="padding-top: 0;margin-top: 0">
+            <li>
+                <a href="#"   >Home</a>
+            </li>
+            <li>
+                <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Articles</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu1">
+                </ul>
+            </li>
+            <li>
+                <a id="notes" href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Notes</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu2">
 
+                    <li><a href="#geo_notes" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Geo</a>
+                        <ul class="collapse list-unstyled" id="geo_notes">
+
+                        </ul>
+                    </li>
+
+                    <li><a href="#alg_notes" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Algorithms</a>
+                        <ul class="collapse list-unstyled" id="alg_notes">
+                            <li><a href="notes/algorithms/preSum.html" target="_blank"><span class="fa fa-chevron-right mr-2"></span>0.preSum 前缀和</a></li>
+                            <li><a href="notes/algorithms/slidingWindow.html" target="_blank"><span class="fa fa-chevron-right mr-2"></span>1.sliding window 滑动窗口</a></li>
+                            <li><a href="notes/algorithms/dynamicProgramming.html" target="_blank"><span class="fa fa-chevron-right mr-2"></span>2.dynamic programming 动态规划</a> </li>
+                        </ul>
+
+                    </li>
+
+                    <li><a href="#chs_notes" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Cheatsheets</a>
+                        <ul class="collapse list-unstyled" id="chs_notes">
+                            <li><a href="https://cheatography.com/xys/cheat-sheets/python/" target="_blank"><span class="fa fa-chevron-right mr-2"></span>Python</a></li>
+                            <li><a href="https://cheatography.com/xys/cheat-sheets/java/" target="_blank"><span class="fa fa-chevron-right mr-2"></span>Java</a></li>
+                            <li><a href="https://cheatography.com/xys/cheat-sheets/html/" target="_blank"><span class="fa fa-chevron-right mr-2"></span>HTML</a></li>
+
+
+                        </ul>
+                    </li>
+
+
+
+                </ul>
+            </li>
+            <li>
+                <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Essays</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu3">
+                    <li><a href=essays/12-27-2020.html target="_self"><span class="fa fa-chevron-right mr-2"></span>Dec 27th, 2020</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="about.html" target="_self" >About Me</a>
+            </li>
+        </ul>
+        <div class="mb-5">
+            <h5>Recent Posts</h5>
+            <div class="tagcloud">
+                <a href="essays/12-27-2020.html" class="tag-cloud-link">Dec 27th</a>
+                <a href="notes/algorithms/slidingWindow.html" class="tag-cloud-link">滑动窗口</a>
+                <a href="notes/algorithms/dynamicProgramming.html" class="tag-cloud-link">动态规划</a>
+                <a href="notes/algorithms/preSum.html" class="tag-cloud-link">前缀和</a>
+
+
+            </div>
+        </div>
+        <div class="mb-5">
+            <h5>给我留言吧</h5>
+            <form action="#" class="subscribe-form">
+                <div class="form-group d-flex">
+                    <div class="icon"><span class="icon-paper-plane"></span></div>
+                    <input type="text" class="form-control" placeholder="同学，说点什么吧">
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
