@@ -14,6 +14,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
 <style>
     body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+    .cursive{font-family:'Monotype Corsiva','Apple Chancery','ITC Zapf Chancery','URW Chancery L',cursive;}
+    p.poem { font-family: Papyrus, fantasy; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; }
 </style>
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
@@ -91,63 +93,67 @@
         <div class="w3-container">
             <div class="w3-section w3-bottombar w3-padding-16">
                 <h2><b>FIRST IMPRESSION</b></h2>
-                <button class="w3-button w3-black">ALL</button>
-                <button class="w3-button w3-white"><i class="fas fa-gem w3-margin-right"></i>Best 2020</button>
-                <button class="w3-button w3-white w3-hide-small"><i class="fas fa-skiing w3-margin-right"></i>Life</button>
-                <button class="w3-button w3-white w3-hide-small"><i class="fa fa-map-pin w3-margin-right"></i>Art</button>
+                <button id="fi0" class="w3-button w3-black" onclick="filter_focus(this.id);filter_all()" >ALL</button>
+                <button id="fi1" class="w3-button w3-white" onclick="filter_focus(this.id);filter_2020()"><i class="fas fa-gem w3-margin-right" ></i>Best 2020</button>
+                <button id="fi2" class="w3-button w3-white w3-hide-small" onclick="filter_focus(this.id);filter_life()"><i class="fas fa-skiing w3-margin-right"></i>Life</button>
+<!--                <button id="fi3" class="w3-button w3-white w3-hide-small" onclick="filter_focus(this.id)"><i class="fa fa-map-pin w3-margin-right"></i>Art</button>-->
             </div>
         </div>
     </header>
 
     <!-- First Photo Grid-->
-    <div class="w3-row-padding">
-        <div class="w3-third w3-container w3-margin-bottom">
+    <div id="s-all" class="w3-row-padding">
+        <div id="s0" class="w3-third w3-container w3-margin-bottom">
             <img src="https://www.w3schools.com/w3images/mountains.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
             <div class="w3-container w3-white">
-                <p><b>Lorem Ipsum</b></p>
+                <p><b>AI In Ephemeral Blog</b></p>
                 <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
             </div>
         </div>
-        <div class="w3-third w3-container w3-margin-bottom">
+        <div id="s1" class="w3-third w3-container w3-margin-bottom">
             <img src="https://www.w3schools.com/w3images/lights.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
             <div class="w3-container w3-white">
-                <p><b>Lorem Ipsum</b></p>
+                <p><b>Leetcode</b></p>
                 <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
             </div>
         </div>
-        <div class="w3-third w3-container">
-            <img src="https://www.w3schools.com/w3images/nature.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
+        <div id="s2" class="w3-third w3-container">
+            <img src="images/life.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
             <div class="w3-container w3-white">
-                <p><b>Lorem Ipsum</b></p>
-                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+                <p class="cursive" style="text-align: center"><b>Love In Nha Trang</b></p>
+                <p class="poem">We are still kids, but we're so in love</p>
+                <p class="poem">Fighting against all odds</p>
+                    <p class="poem">I know we'll be alright this time</p>
+                    <p class="poem" style="margin-bottom: 5px">Darling, just hold my hand</p>
+                    <p></p>
             </div>
         </div>
     </div>
 
     <!-- Second Photo Grid-->
-    <div class="w3-row-padding">
-        <div class="w3-third w3-container w3-margin-bottom">
-            <img src="https://www.w3schools.com/w3images/p1.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
-            <div class="w3-container w3-white">
-                <p><b>Lorem Ipsum</b></p>
-                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-            </div>
-        </div>
-        <div class="w3-third w3-container w3-margin-bottom">
-            <img src="https://www.w3schools.com/w3images/p2.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
-            <div class="w3-container w3-white">
-                <p><b>Lorem Ipsum</b></p>
-                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-            </div>
-        </div>
-        <div class="w3-third w3-container">
-            <img src="https://www.w3schools.com/w3images/p3.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
-            <div class="w3-container w3-white">
-                <p><b>Lorem Ipsum</b></p>
-                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-            </div>
-        </div>
-    </div>
+<!--    <div class="w3-row-padding">-->
+<!--        <div class="w3-third w3-container w3-margin-bottom">-->
+<!--            <img src="https://www.w3schools.com/w3images/p1.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">-->
+<!--            <div class="w3-container w3-white">-->
+<!--                <p><b>Lorem Ipsum</b></p>-->
+<!--                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="w3-third w3-container w3-margin-bottom">-->
+<!--            <img src="https://www.w3schools.com/w3images/p2.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">-->
+<!--            <div class="w3-container w3-white">-->
+<!--                <p><b>Lorem Ipsum</b></p>-->
+<!--                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="w3-third w3-container">-->
+<!--            <img src="https://www.w3schools.com/w3images/p3.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">-->
+<!--            <div class="w3-container w3-white">-->
+<!--                <p><b>Lorem Ipsum</b></p>-->
+<!--                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
     <!-- Pagination -->
     <div class="w3-center w3-padding-32">
@@ -172,6 +178,11 @@
 </div>
 
 <script>
+    // var to store which one is checked in filter
+    var checked="fi0";
+    var showList1 = document.getElementById('s-all');
+    var removed=[];
+
     // Script to open and close sidebar
     function w3_open() {
         document.getElementById("mySidebar").style.display = "block";
@@ -181,6 +192,36 @@
     function w3_close() {
         document.getElementById("mySidebar").style.display = "none";
         document.getElementById("myOverlay").style.display = "none";
+    }
+    function filter_focus(id){
+        document.getElementById(checked).classList.remove('w3-black');
+        document.getElementById(checked).classList.add('w3-white')
+
+        document.getElementById(id).classList.remove('w3-white');
+        document.getElementById(id).classList.add('w3-black');
+        checked=id;
+    }
+    function filter_life(){
+        filter_all();
+        removeElement('s0');
+        removeElement('s1')
+    }
+
+    function filter_all(){
+        for (let i = 0; i < removed.length; i++) {
+            showList1.appendChild(removed[i]);
+        }
+    }
+
+    function removeElement(id) {
+        var elem = document.getElementById(id);
+        var ret= elem.parentNode.removeChild(elem);
+        removed.push(ret);
+        return ret;
+    }
+    function filter_2020(){
+        filter_all();
+        removeElement('s2');
     }
 </script>
 <script src="js/jquery.min.js"></script>
