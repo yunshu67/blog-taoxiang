@@ -15,6 +15,26 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
 
       <style>
+          html, body, div, span, applet, object, iframe,
+          h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+          a, abbr, acronym, address, big, cite, code,
+          del, dfn, em, img, ins, kbd, q, s, samp,
+          small, strike, strong, sub, sup, tt, var,
+          b, u, i, center,
+          dl, dt, dd, ol, ul, li,
+          fieldset, form, label, legend,
+          table, caption, tbody, tfoot, thead, tr, th, td,
+          article, aside, canvas, details, embed,
+          figure, figcaption, footer, header, hgroup,
+          menu, nav, output, ruby, section, summary,
+          time, mark, audio, video {
+              margin: 0;
+              padding: 0;
+              border: 0;
+              font-size: 100%;
+              font: inherit;
+              vertical-align: baseline;
+          }
 
 
           div#header{
@@ -49,17 +69,22 @@
               height: 50px;
               font-size: 2rem;
           }
-          ul#my-share li a {
-              font-size: 25px;
-              color: #333333;
-          }
 
-          div.side{
-              margin-top: 200px;
+
+          .side{
               width: 40px;
               border-style: none;
-              height: 320px;
               border-color: white;
+              position: fixed;
+              top: 30%;
+              right: 1%;
+          }
+          .side ul li {
+              margin-right: 5px;
+          }
+          .side ul li a {
+              font-size: 35px;
+              color: #333333;
           }
 
 
@@ -92,10 +117,9 @@
   <body onload="show_num_likes()">
 
   <!-- Sidebar/menu -->
-  <nav class="w3-sidebar " id="mySidebar" ><br>
       <div class="side">
-          <ul id="my-share" style="padding-left: 0;margin-left: 5px">
-              <li style="padding-left: 3px"><a href="https://www.facebook.com/sharer.php?u=https://yunshu67.github.io/blog-taoxiang/&amp;t=Tao's%20blogs" ><i class="fab fa-facebook-f" ></i></a></li>
+          <ul>
+              <li><a href="https://www.facebook.com/sharer.php?u=https://yunshu67.github.io/blog-taoxiang/&amp;t=Tao's%20blogs" ><i class="fab fa-facebook-f" ></i></a></li>
               <li><a href="https://twitter.com/intent/tweet?url=https://yunshu67.github.io/blog-taoxiang/&text=Tao's%20blogs" ><i class="fab fa-twitter"></i></a></li>
               <li><a href="https://www.linkedin.com/shareArticle?url=https://yunshu67.github.io/blog-taoxiang/&amp;title=Tao's%20blogs" ><i class="fab fa-linkedin-in"></i></a></li>
               <li><a href="https://service.weibo.com/share/share.php?url=https://yunshu67.github.io/blog-taoxiang/&amp;title=Tao's%20blogs" ><i class="fab fa-weibo"></i></a></li>
@@ -121,7 +145,6 @@
 
           </ul>
       </div>
-  </nav>
 
   <div class="container d-md-flex">
       <!-- Page Content  -->

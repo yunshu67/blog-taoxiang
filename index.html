@@ -4,7 +4,7 @@
 <title>AI In Ephemeral</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="css/w3_updated.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="icon" href="https://www.flaticon.com/svg/static/icons/svg/2591/2591910.svg">
@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
 <style>
+
     body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     .cursive{font-family:'Monotype Corsiva','Apple Chancery','ITC Zapf Chancery','URW Chancery L',cursive;}
     .text_grey{color: #797979}
@@ -20,8 +21,29 @@
     .title{font-weight: 900;font-family:Arial, sans-serif, monospace;font-size: large;margin-top: 10px;}
     .title:hover{text-decoration: underline}
     .title{color: black}
+    .side{
+        border-style: none;
+        border-color: white;
+        position: relative;
+        top: -43px;
+        left: 30px;
+    }
+    .side ul{
+        list-style: none;
+    }
+    .side ul li {
+        margin-right: 5px;
+        float: left;
+    }
+    .side ul li a {
+        font-size: 20px;
+        color: #333333;
+
+    }
 </style>
 <body class="w3-light-grey w3-content" style="max-width:1600px">
+
+
 
 <!-- Sidebar/menu -->
 <nav  class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
@@ -82,6 +104,34 @@
                 </ul>
             </div>
         </nav>
+    <!-- Sidebar/share -->
+    <div class="side">
+        <ul>
+            <li><a href="https://www.linkedin.com/in/yunshu86/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+            <li>
+                <a  class="dropright share-btn-weixin" href="javascript:">
+                    <i class="fab fa-weixin" data-toggle="dropdown"></i>
+                    <div class="dropdown-menu" style="width: 150px;text-align: center">
+                        <div class="small_text_inline">扫一扫加我好友</div>
+                        <img src="images/wechat.jpg" width=100%>
+                    </div>
+                </a>
+
+            </li>
+            <li>
+                <a  class="dropright share-btn-weixin" href="javascript:">
+                    <i class="fab fa-whatsapp" data-toggle="dropdown"></i>
+                    <div class="dropdown-menu" style="width: 250px;text-align: center">
+                        <img src="images/whatsapp.png" width=100%>
+                    </div>
+                </a>
+
+            </li>
+            <li>
+                <a href="javascript:" target="_self" ><i class="fas fa-thumbs-up"></i></a>
+            </li>
+        </ul>
+    </div>
 </nav>
 
 <!-- Overlay effect when opening sidebar on small screens -->
