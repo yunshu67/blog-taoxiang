@@ -1,0 +1,2034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS notes</title>
+    <style>
+        body{
+            font-family: "微软雅黑";
+            width: 100%;
+        }
+
+        code{display: inline-block;
+            background-color: #F8F8F8;
+            width: 95%;
+            box-sizing: border-box;
+            margin: 0 1%;
+            padding: 1em 1em;
+
+            white-space: pre-line;
+            font-size: 10px;
+            color: #c7254e;
+            border-radius: 4px;
+            text-overflow: ellipsis;
+
+        }
+
+        h3{
+            padding: 0;
+            margin: 0;
+        }
+        p{
+            white-space: pre-line;
+            font-size: 10px;
+        }
+        .title{
+            text-align: center;
+            height: 50px;
+        }
+        .content{
+            text-align: center;
+        }
+        .card{
+            width: 450px;
+            border: 1px solid  black;
+            margin-left: 10px;
+            display: inline-block;
+            vertical-align: top;
+
+        }
+        .card .card_title{
+            text-align: center;
+            font-weight: 900;
+            font-size: 20px;
+            border-bottom: 1px solid black;
+            line-height: 50px;
+        }
+
+        .card .card_content{
+            padding-left: 5px;
+            text-align: left;
+        }
+        .card .card_content div{
+            white-space: pre-line;
+            font-size: 10px;
+        }
+        .card:nth-of-type(2){
+            display: none;
+        }
+
+
+
+
+    </style>
+</head>
+
+
+
+
+
+
+
+
+<body>
+<div class="title"><h1>CSS Notes By Tao</h1></div>
+<div class="content">
+    <div class="card">
+        <div class="card_title">1. 文字属性缩写</div>
+        <div class="card_content">
+            <p>缩写格式:
+                font: style weight size family;
+                例如:
+                font:italic bold 10px "楷体";
+
+                注意点:
+                1.在这种缩写格式中有的属性值可以省略
+                sytle可以省略
+                weight可以省略
+                2.在这种缩写格式中style和weight的位置可以交换
+                3.在这种缩写格式中有的属性值是不可以省略的
+                size不能省略
+                family不能省略
+                4.size和family的位置是不能顺便乱放的
+                size一定要写在family的前面, 而且size和family必须写在所有属性的最后</p>
+        </div>
+    </div>
+
+<!--        template: -->
+        <div class="card">
+            <div class="card_title"></div>
+            <div class="card_content">
+                <p>
+
+                </p>
+
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card_title">2. 文本属性</div>
+            <div class="card_content">
+                <p>1.文本装饰的属性
+                    格式:text-decoration: underline;
+                    取值:
+                    underline 下划线
+                    line-through 删除线
+                    overline 上划线
+                    none 什么都没有, 最常见的用途就是用于去掉超链接的下划线
+                    快捷键:
+                    td  text-decoration: none;
+                    tdu text-decoration: underline;
+                    tdl text-decoration: line-through;
+                    tdo text-decoration: overline;
+
+                    2.文本水平对齐的属性
+                    格式: text-align: right;
+                    取值:
+                    left 左
+                    right 右
+                    center 中
+                    快捷键
+                    ta text-align: left;
+                    tar text-align: right;
+                    tac text-align: center;
+
+                    3.文本缩进的属性
+                    格式: text-indent: 2em;
+                    取值:
+                    2em, 其中em是单位, 一个em代表缩进一个文字的宽度
+                    快捷键
+                    ti text-indent:;
+                    ti2e text-indent: 2em;
+
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card_title">3. 颜色属性</div>
+            <div class="card_content">
+                <p>1.在CSS中如何通过color属性来修改文字颜色
+                    格式: color: 值;
+                    取值:
+                    1.1英文单词
+                    一般情况下常见的颜色都有对应的英文单词, 但是英文单词能够表达的颜色是有限制的, 也就是说不是所有的颜色都能够通过英文单词来表达
+
+                    1.2rgb
+                    rgb其实就是三原色, 其中r(red 红色) g(green 绿色) b(blue 蓝色)
+                    格式: rgb(0,0,0)
+                    那么这个格式中的
+                    第一个数字就是用来设置三原色的光源元件红色显示的亮度
+                    第二个数字就是用来设置三原色的光源元件绿色显示的亮度
+                    第三个数字就是用来设置三原色的光源元件蓝色显示的亮度
+                    这其中的每一个数字它的取值是0-255之前, 0代表不发光, 255代表发光, 值越大就越亮
+
+                    红色: rgb(255,0,0);
+                    绿色: rgb(0,255,0);
+                    蓝色: rgb(0,0,255);
+                    黑色: rgb(0,0,0);
+                    白色: rgb(255,255,255);
+
+                    在前端开发中其实并不常用黑色
+                    只要让红色/绿色/蓝色的值都一样就是灰色
+                    而且如果这三个值越小那么就越偏黑色, 越大就越偏白色
+                    例如: color: rgb(200,200,200);
+
+                    1.3rgba
+                    rgba中的rgb和前面讲解的一样, 只不过多了一个a
+                    那么这个a呢代表透明度, 取值是0-1, 取值越小就越透明
+                    例如: color: rgba(255,0,0,0.2);
+
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card_title">4. 标签选择器</div>
+            <div class="card_content">
+                <p>1.什么是标签选择器?
+                    作用: 根据指定的标签名称, 在当前界面中找到所有该名称的标签, 然后设置属性
+
+                    格式:
+                    标签名称{
+                    属性:值;
+                    }
+
+                    注意点:
+                    1.标签选择器选中的是当前界面中所有的标签, 而不能单独选中某一个标签
+                    2.标签选择器无论标签藏得多深都能选中
+                    3.只要是HTML中的标签就可以作为标签选择器(h/a/img/ul/ol/dl/input....)
+
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card_title">5. id选择器</div>
+            <div class="card_content">
+                <p>1.什么是id选择器?
+                    作用: 根据指定的id名称找到对应的标签, 然后设置属性
+
+                    格式:
+                    #id名称{
+                    属性:值;
+                    }
+
+                    注意点:
+                    1.每个HTML标签都有一个属性叫做id, 也就是说每个标签都可以设置id
+                    2.在同一个界面中id的名称是不可以重复的
+                    3.在编写id选择器时一定要在id名称前面加上#
+                    4.id的名称是有一定的规范的
+                    4.1id的名称只能由字母/数字/下划线
+                    a-z 0-9 _
+                    4.2id名称不能以数字开头
+                    4.3id名称不能是HTML标签的名称
+                    不能是a h1 img input ...
+                    5.在企业开发中一般情况下如果仅仅是为了设置样式, 我们不会使用id ,因为在前端开发中id是留给js使用的
+
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card_title">6. 类选择器</div>
+            <div class="card_content">
+                <p>1.什么是类选择器?
+                    作用: 根据指定的类名称找到对应的标签, 然后设置属性
+
+                    格式:
+                    .类名{
+                    属性:值;
+                    }
+
+                    注意点:
+                    1.每个HTML标签都有一个属性叫做class, 也就是说每个标签都可以设置类名
+                    2.在同一个界面中class的名称是可以重复的
+                    3.在编写class选择器时一定要在class名称前面加上.
+                    4.类名的命名规范和id名称的命名规范一样
+                    5.类名就是专门用来给CSS设置样式的
+                    6.在HTML中每个标签可以同时绑定多个类名
+                    格式:
+                    《标签名称 class="类名1 类名2 ..."》
+                        错误的写法:
+                《p class="para1" class="para2"》
+
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card_title">7. id选择器和class选择器</div>
+            <div class="card_content">
+                <p>1.id和class的区别?
+                    1.1
+                    id相当于人的身份证不可以重复
+                    class相当于人的名称可以重复
+                    1.2
+                    一个HTML标签只能绑定一个id名称
+                    一个HTML标签可以绑定多个class名称
+
+                    2.id选择器和class选择器区别?
+                    id选择器是以#开头
+                    class选择器是以.开头
+
+                    3.在企业开发中到底用id选择器还是用class选择器?
+                    id一般情况下是给js使用的, 所以除非特殊情况, 否则不要使用id去设置样式
+
+                    4.在企业开发中一个开发人员对类的使用可以看出这个开发人员的技术水平
+                    一般情况下在企业开发中要注重冗余代码的抽取, 可以将一些公共的代码抽取到一个类选择器中, 然后让标签和这个类选择器绑定即可
+
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card_title">8. 后代选择器</div>
+            <div class="card_content">
+                <p>1.什么是后代选择器?
+                    作用: 找到指定标签的所有特定的后代标签, 设置属性
+
+                    格式:
+                    标签名称1 标签名称2{
+                    属性:值;
+                    }
+                    先找到所有名称叫做"标签名称1"的标签, 然后再在这个标签下面去查找所有名称叫做"标签名称2"的标签, 然后在设置属性
+                    div p{}
+
+                    注意点:
+                    1.后代选择器必须用空格隔开
+                    2.后代不仅仅是儿子, 也包括孙子/重孙子, 只要最终是放到指定标签中的都是后代
+                    3.后代选择器不仅仅可以使用标签名称, 还可以使用其它选择器
+                    4.后代选择器可以通过空格一直延续下去
+                    <code>
+
+                            /*
+                            div p{
+                                color: red;
+                            }
+                            */
+                            /*
+                            #identity p{
+                                color: red;
+                            }
+                            */
+                            /*
+                            .para p{
+                                color: blue;
+                            }
+                            */
+                            /*
+                            #identity #iii{
+                                color: skyblue;
+                            }
+                            */
+                            /*
+                            #identity .ccc{
+                                color: purple;
+                            }
+                            */
+                            div ul li p{
+                                color: red;
+                            }
+                </code>
+
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card_title">9. 子元素选择器</div>
+            <div class="card_content">
+                <p>1.什么是子元素选择器?
+                    作用: 找到指定标签中所有特定的直接子元素, 然后设置属性
+
+                    格式:
+                    标签名称1>标签名称2{
+                    属性:值;
+                    }
+                    先找到所有名称叫做"标签名称1"的标签, 然后在这个标签中查找所有直接子元素名称叫做"标签名称2"的元素
+
+                    注意点:
+                    1.子元素选择器只会查找儿子, 不会查找其他被嵌套的标签
+                    2.子元素选择器之间需要用>符号连接, 并且不能有空格
+                    3.子元素选择器不仅仅可以使用标签名称, 还可以使用其它选择器
+                    4.子元素选择器可以通过>符号一直延续下去
+                    <code>
+                        /*
+                        div>p{
+                        color: red;
+                        }
+                        */
+                        /*
+                        #identity>p{
+                        color: blue;
+                        }
+                        */
+                        div>ul>li>p{
+                        color: purple;
+                        }
+                    </code>
+                </p>
+            </div>
+        </div>
+
+    <div class="card">
+        <div class="card_title">10. 后代选择器和子元素选择器</div>
+        <div class="card_content">
+            <p>1.后代选择器和子元素选择器之间的区别?
+                1.1
+                后代选择器使用空格作为连接符号
+                子元素选择器使用>作为连接符号
+                1.2
+                后代选择器会选中指定标签中, 所有的特定后代标签, 也就是会选中儿子/孙子..., 只要是被放到指定标签中的特定标签都会被选中
+                子元素选择器只会选中指定标签中, 所有的特定的直接标签, 也就是只会选中特定的儿子标签
+
+                2.后代选择器和子元素选择器之间的共同点
+                2.1
+                后代选择器和子元素选择器都可以使用标签名称/id名称/class名称来作为选择器
+                2.2
+                后代选择器和子元素选择器都可以通过各自的连接符号一直延续下去
+                选择器1>选择器2>选择器3>选择器4{}
+
+                3.在企业开发中如何选择
+                如果想选中指定标签中的所有特定的标签, 那么就使用后代选择器
+                如果只想选中指定标签中的所有特定儿子标签, 那么就使用子元素选择器
+
+
+            </p>
+
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card_title">11. 交集选择器</div>
+        <div class="card_content">
+            <p>1.什么是交集选择器?
+                作用: 给所有选择器选中的标签中, 相交的那部分标签设置属性
+
+                格式:
+                选择器1选择器2{
+                属性: 值;
+                }
+
+                注意点:
+                1.选择器和选择器之间没有任何的连接符号
+                2.选择器可以使用标签名称/id名称/class名称
+                3.交集选择器仅仅作为了解, 企业开发中用的并不多
+                <code>        /*
+                    p.para1{
+                    color: red;
+                    }
+                    */
+                    .para1#identity{
+                    color: blue;
+                    }
+
+                </code>
+
+            </p>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">12. 并集选择器</div>
+        <div class="card_content">
+            <p>1.什么是并集选择器?
+                作用: 给所有选择器选中的标签设置属性
+
+                格式:
+                选择器1,选择器2{
+                属性:值;
+                }
+
+                注意点:
+                1.并集选择器必须使用,来连接
+                2.选择器可以使用标签名称/id名称/class名称
+                <code> /*
+                    .ht{
+                    color: red;
+                    }
+                    .para{
+                    color: red;
+                    }
+                    */
+                    .ht,.para{
+                    color: red;
+                    }
+
+                </code>
+            </p>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">13. 兄弟选择器</div>
+        <div class="card_content">
+            <p>1.相邻兄弟选择器 CSS2
+                作用: 给指定选择器后面紧跟的那个选择器选中的标签设置属性
+
+                格式:
+                选择器1+选择器2{
+                属性:值;
+                }
+
+                注意点:
+                1.相邻兄弟选择器必须通过+连接
+                2.相邻兄弟选择器只能选中紧跟其后的那个标签, 不能选中被隔开的标签
+
+                2.通用兄弟选择器 CSS3
+                作用: 给指定选择器后面的所有选择器选中的所有标签设置属性
+
+                格式:
+                选择器1~选择器2{
+                属性:值;
+                }
+
+                注意点:
+                1.通用兄弟选择器必须用~连接
+                2.通用兄弟选择器选中的是指定选择器后面某个选择器选中的所有标签, 无论有没有
+                <code>        /*
+                    h1+p{
+                    color: red;
+                    }
+                    */
+                    h1~p{
+                    color: green;
+                    }
+
+                </code>
+            </p>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">14. 序选择器</div>
+        <div class="card_content">
+            <p>CSS3中新增的选择器最具代表性的就是序选择器
+                1.同级别的第几个
+                :first-child 选中同级别中的第一个标签
+                :last-child 选中同级别中的最后一个标签
+                :nth-child(n) 选中同级别中的第n个标签
+                :nth-last-child(n) 选中同级别中的倒数第n个标签
+                :only-child 选中父元素中唯一的标签
+                注意点: 不区分类型
+
+                2.同类型的第几个
+                :first-of-type 选中同级别中同类型的第一个标签
+                :last-of-type  选中同级别中同类型的最后一个标签
+                :nth-of-type(n) 选中同级别中同类型的第n个标签
+                :nth-last-of-type(n)  选中同级别中同类型的倒数第n个标签
+                :only-of-type 选中父元素中唯一类型的某个标签
+
+                :nth-child(odd) 选中同级别中的所有奇数
+                :nth-child(even) 选中同级别中的所有偶数
+                :nth-child(xn+y)
+                x和y是用户自定义的, 而n是一个计数器, 从0开始递增
+                <code>        p:nth-last-child(2){
+                    color: red;
+                    }
+                    */
+                    /*
+                    p:nth-last-of-type(2){
+                    color: red;
+                    }
+                    */
+                    /*
+                    p:only-child{
+                    color: purple;
+                    }
+                    */
+                    /*
+                    p:only-of-type {
+                    color: red;
+                    }
+                    */
+                    .para:only-of-type {
+                    color: red;
+                    }
+
+                </code>
+            </p>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">15. 属性选择器上</div>
+        <div class="card_content">
+            <p>1.什么是属性选择器?
+                作用: 根据指定的属性名称找到对应的标签, 然后设置属性
+
+                格式:
+                [attribute]
+                作用:根据指定的属性名称找到对应的标签, 然后设置属性
+
+                [attribute=value]
+                作用: 找到有指定属性, 并且属性的取值等于value的标签, 然后设置属性
+                最常见的应用场景, 就是用于区分input属性
+                input[type=password]{}
+
+                1.属性的取值是以什么开头的
+                [attribute|=value] CSS2
+                [attribute^=value] CSS3
+                两者之间的区别:
+                CSS2中的只能找到value开头,并且value是被-和其它内容隔开的
+                CSS3中的只要是以value开头的都可以找到, 无论有没有被-隔开
+
+                2.属性的取值是以什么结尾的
+                [attribute$=value] CSS3
+
+                3.属性的取值是否包含某个特定的值得
+                [attribute~=value] CSS2
+                [attribute*=value] CSS3
+                两者之间的区别:
+                CSS2中的只能找到独立的单词, 也就是包含value,并且value是被空格隔开的
+                CSS3中的只要包含value就可以找到
+
+            </p>
+            <code>        /*
+                p[id]{
+                color: red;
+                }
+                */
+                p[class=cc]{
+                color: blue;
+                }
+
+                /*
+                img[alt^=abc]{
+                color: red;
+                }
+                */
+                /*
+                img[alt|=abc]{
+                color: red;
+                }
+                img[alt$=abc]{
+                color: blue;
+                }
+                */
+
+            </code>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">16. 通配符选择器</div>
+        <div class="card_content">
+            <p>1.什么是通配符选择器?
+                作用: 给当前界面上所有的标签设置属性
+
+                格式:
+                *{
+                属性:值;
+                }
+
+                注意点:
+                由于通配符选择器是设置界面上所有的标签的属性, 所以在设置之前会遍历所有的标签, 如果当前界面上的标签比较多, 那么性能就会比较差, 所以在企业开发中一般不会使用通配符选择器
+
+            </p>
+            <code>        /*
+                .cc{
+                color: red;
+                }
+                */
+                *{
+                color: red;
+                }
+
+            </code>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">17. CSS三大特性之继承性</div>
+        <div class="card_content">
+            <p>1.什么是继承性?
+                作用: 给父元素设置一些属性, 子元素也可以使用, 这个我们就称之为继承性
+
+                注意点:
+                1.并不是所有的属性都可以继承, 只有以color/font-/text-/line-开头的属性才可以继承
+                2.在CSS的继承中不仅仅是儿子可以继承, 只要是后代都可以继承
+                3.继承性中的特殊性
+                3.1a标签的文字颜色和下划线是不能继承的
+                3.2h标签的文字大小是不能继承的
+
+                应用场景:
+                一般用于设置网页上的一些共性信息, 例如网页的文字颜色, 字体,文字大小等内容
+                body{}
+
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">18. CSS三大特性之层叠性</div>
+        <div class="card_content">
+            <p>1.什么是层叠性?
+                作用: 层叠性就是CSS处理冲突的一种能力
+
+                注意点:
+                层叠性只有在多个选择器选中"同一个标签", 然后又设置了"相同的属性", 才会发生层叠性
+
+                CSS全称 Cascading StyleSheet
+
+            </p>
+            <code>        p{
+                color: red;
+                }
+                .para{
+                color: blue;
+                }
+
+            </code>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card_title">19. CSS三大特性之优先级</div>
+        <div class="card_content">
+            <p>1.什么是优先级?
+                作用:当多个选择器选中同一个标签, 并且给同一个标签设置相同的属性时, 如何层叠就由优先级来确定
+
+                2.优先级判断的三种方式
+                2.1间接选中就是指继承
+                如果是间接选中, 那么就是谁离目标标签比较近就听谁的
+                2.2相同选择器(直接选中)
+                如果都是直接选中, 并且都是同类型的选择器, 那么就是谁写在后面就听谁的
+                2.3不同选择器(直接选中)
+                如果都是直接选中, 并且不是相同类型的选择器, 那么就会按照选择器的优先级来层叠
+                id>类>标签>通配符>继承>浏览器默认
+
+                3.什么是!important
+                作用: 用于提升某个直接选中标签的选择器中的某个属性的优先级的, 可以将被指定的属性的优先级提升为最高
+
+                注意点:
+                3.1 !important只能用于直接选中, 不能用于间接选中
+                3.2 通配符选择器选中的标签也是直接选中的
+                3.3 !important只能提升被指定的属性的优先级, 其它的属性的优先级不会被提升
+                3.4 !important必须写在属性值得分号前面
+                3.5 !important前面的感叹号不能省略
+
+                4.什么是优先级的权重?
+                作用: 当多个选择器混合在一起使用时, 我们可以通过计算权重来判断谁的优先级最高
+
+                5.权重的计算规则
+                5.1首先先计算选择器中有多少个id, id多的选择器优先级最高
+                5.2如果id的个数一样, 那么再看类名的个数, 类名个数多的优先级最高
+                5.3如果类名的个数一样, 那么再看标签名称的个数, 标签名称个数多的优先级最高
+                5.4如果id个数一样, 类名个数也一样, 标签名称个数也一样, 那么就不会继续往下计算了, 那么此时谁写在后面听谁的
+                也就是说优先级如果一样, 那么谁写在后面听谁的
+
+            </p>
+            <code>        *{
+                color: blue !important;
+                font-size:10px;
+                }
+
+                #identity1 ul li p{
+                color: red;
+                }
+                #identity1 ul p{
+                color: green;
+                }
+
+            </code>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">20. div和span标签</div>
+        <div class="card_content">
+            <p>1.什么是div?
+                作用: 一般用于配合css完成网页的基本布局
+
+                2.什么是span?
+                作用: 一般用于配合css修改网页中的一些局部信息
+
+                3.div和span有什么区别?
+                1.div会单独的占领一行,而span不会单独占领一行
+                2.div是一个容器级的标签, 而span是一个文本级的标签
+
+                4.容器级的标签和文本级的标签的区别?
+                容器级的标签中可以嵌套其它所有的标签
+                文本级的标签中只能嵌套文字/图片/超链接
+
+                容器级的标签
+                div h ul ol dl li dt dd ...
+
+                文本级的标签
+                span p buis strong em ins del ...
+
+                注意点:
+                哪些标签是文本级的哪些标签是容器级的, 我们不用刻意去记忆, 在企业开发中一般情况下要嵌套都是嵌套在div中, 或者按照组标签来嵌套
+
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">21. CSS元素的显示模式</div>
+        <div class="card_content">
+            <p>在HTML中HTML将所有的标签分为两类, 分别是容器级和文本级
+                在CSS中CSS也将所有的标签分为两类, 分别是块级元素(block)和行内元素(inline)
+
+                1.什么是块级元素, 什么是行内元素?
+                块级元素会独占一行
+                行内元素不会独占一行
+
+                容器级的标签
+                div h ul ol dl li dt dd ...
+                文本级的标签
+                span p buis stong em ins del ...
+
+                块级元素
+                p div h ul ol dl li dt dd
+                行内元素
+                span buis strong em ins del
+
+                2.块级元素和行内元素的区别?
+                2.1块级元素
+                独占一行
+                如果没有设置宽度, 那么默认和父元素一样宽
+                如果设置了宽高, 那么就按照设置的来显示
+
+                2.2行内元素
+                不会独占一行
+                如果没有设置宽度, 那么默认和内容一样宽
+                行内元素是不可以设置宽度和高度的
+
+                2.3行内块级元素(inline-block)
+                为了能够让元素既能够不独占一行, 又可以设置宽度和高度, 那么就出现了行内块级元素
+
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">22. CSS元素显示模式转换</div>
+        <div class="card_content">
+            <p>1.如何转换CSS元素的显示模式?
+                设置元素的display属性
+
+                2.display取值
+                block 块级
+                inline 行内
+                inline-block 行内块级
+
+                3.快捷键
+                di display: inline;
+                db display: block;
+                dib display: inline-block;
+
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">23. 背景颜色</div>
+        <div class="card_content">
+            <p>1.如何设置标签的背景颜色?
+                在CSS中有一个background-color:属性, 就是专门用来设置标签的背景颜色的
+
+                取值:
+                具体单词
+                rgb
+                rgba
+                十六进制
+
+                快捷键:
+                bc background-color: #fff;
+
+            </p>
+            <code>        .box1{
+                background-color: red;
+                }
+
+            </code>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">24. 背景图片</div>
+        <div class="card_content">
+            <div>1.如何设置背景图片?
+                在CSS中有一个叫做background-image: url();的属性, 就是专门用于设置背景图片的
+
+                快捷键:
+                bi background-image: url();
+
+                注意点:
+                1.图片的地址必须放在url()中, 图片的地址可以是本地的地址, 也可以是网络的地址
+                2.如果图片的大小没有标签的大小大, 那么会自动在水平和垂直方向平铺来填充
+                3.如果网页上出现了图片, 那么浏览器会再次发送请求获取图片
+            <hr>2.如何控制背景图片的平铺方式?
+                在CSS中有一个background-repeat属性, 就是专门用于控制背景图片的平铺方式的
+
+                取值:
+                repeat 默认, 在水平和垂直都需要平铺
+                no-repeat 在水平和垂直都不需要平铺
+                repeat-x 只在水平方向平铺
+                repeat-y 只在垂直方向平铺
+
+                快捷键
+                bgr background-repeat:
+
+                应用场景:
+                可以通过背景图片的平铺来降低图片的大小, 提升网页的访问速度
+            <hr>3.如何控制背景图片的位置?
+                在CSS中有一个叫做background-position:属性, 就是专门用于控制背景图片的位置
+
+                3.1 格式:
+                background-position: 水平方向 垂直方向;
+
+                3.2 取值
+                1) 具体的方位名词
+                水平方向: left center right
+                垂直方向: top center bottom
+
+                2) 具体的像素
+                例如: background-position: 100px 200px;
+                记住一定要写单位, 也就是一定要写px
+                记住具体的像素是可以接收负数的
+
+                快捷键:
+                bp background-position: 0 0;
+
+                注意点:
+                同一个标签可以同时设置背景颜色和背景图片, 如果颜色和图片同时存在, 那么图片会覆盖颜色
+            <hr>1.背景属性缩写的格式
+            background: 背景颜色 背景图片 平铺方式 关联方式 定位方式;
+
+            快捷键:
+            bg+ background: #fff url() 0 0 no-repeat;
+
+            2.注意点：
+            background属性中， 任何一个属性都可以被省略
+
+            3.什么是背景关联方式？
+            默认情况下背景图片会随着滚动条的滚动而滚动， 如果不想让背景图片随着滚动条的滚动而滚动， 那么我们就可以修改背景图片和滚动条的关联方式
+
+            4.如何修改背景关联方式？
+            在CSS中有一个叫做background-attachment的属性， 这个属性就是专门用于修改关联方式的
+
+            格式
+            background-attachment：scroll;
+
+            取值：
+            scroll 默认值， 会随着滚动条的滚动而滚动
+            fixed 不会随着滚动条的滚动而滚动
+
+            快捷键:
+            ba background-attachment:;
+                <hr>1.背景图片和插入图片区别?
+                1.1
+                背景图片仅仅是一个装饰, 不会占用位置
+                插入图片会占用位置
+
+                1.2
+                背景图片有定位属性, 所以可以很方便的控制图片的位置
+                插入图片没有定位属性, 所有控制图片的位置不太方便
+
+                1.3
+                插入图片的语义比背景图片的语义要强, 所以在企业开发中如果你的图片想被搜索引擎收录, 那么推荐使用插入图片
+            </div>
+            <code>.box1{
+                background-image: url(images/girl.jpg);
+                /*background-image: url(http://img4.imgtn.bdimg.com/it/u=2278032206,4196312526&fm=21&gp=0.jpg);*/
+                }
+
+                .box1{
+                background-image: url(images/girl.jpg);
+                background-repeat: repeat-y;
+                }
+
+            </code>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">25. CSS精灵图</div>
+        <div class="card_content">
+            <p>1.什么是CSS精灵图
+                CSS精灵图是一种图像合成技术
+
+                2.CSS精灵图作用
+                可以减少请求的次数, 以及可以降低服务器处理压力
+
+                3.如何使用CSS精灵图
+                CSS的精灵图需要配合背景图片和背景定位来使用
+
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">26. 边框属性</div>
+        <div class="card_content">
+            <div>1.什么边框?
+                边框就是环绕在标签宽度和高度周围的线条
+
+                2.边框属性的格式
+                2.1连写(同时设置四条边的边框)
+                border: 边框的宽度 边框的样式 边框的颜色;
+
+                快捷键:
+                bd+ border: 1px solid #000;
+
+                注意点:
+                1.连写格式中颜色属性可以省略, 省略之后默认就是黑色
+                2.连写格式中样式不能省略, 省略之后就看不到边框了
+                3.连写格式中宽度可以省略, 省略之后还是可以看到边框
+
+                2.2连写(分别设置四条边的边框)
+                border-top: 边框的宽度 边框的样式 边框的颜色;
+                border-right: 边框的宽度 边框的样式 边框的颜色;
+                border-bottom: 边框的宽度 边框的样式 边框的颜色;
+                border-left: 边框的宽度 边框的样式 边框的颜色;
+
+                快捷键:
+                bt+ border-top: 1px solid #000;
+                br+
+                bb+
+                bl+
+                <code>        .box{
+                    width: 100px;
+                    height: 100px;
+                    background-color: red;
+                    /*border: 5px solid blue;*/
+                    /*border: 5px solid;*/
+                    /*border: 5px blue;*/
+                    /*border: solid blue;*/
+
+                    border-top:5px solid blue;
+                    border-right:10px dashed green;
+                    border-bottom:15px dotted purple;
+                    border-left:20px double pink;
+                    }</code>
+                <hr>2.3连写(分别设置四条边的边框)
+                border-width: 上 右 下 左;
+                border-style: 上 右 下 左;
+                border-color: 上 右 下 左;
+
+                注意点:
+                1.这三个属性的取值是按照顺时针来赋值, 也就是按照上右下左来赋值, 而不是按照日常生活中的上下左右
+                2.这三个属性的取值省略时的规律
+                2.1上 右 下 左 > 上 右 下 > 左边的取值和右边的一样
+                2.2上 右 下 左 > 上 右 > 左边的取值和右边的一样 下边的取值和上边一样
+                2.3上 右 下 左 > 上 > 右下左边取值和上边一样
+
+
+                3.非连写(方向+要素)
+                border-left-width: 20px;
+                border-left-style: double;
+                border-left-color: pink;
+
+            </div>
+            <code>    border-style: solid dashed dotted double;
+                border-color: blue green purple pink;
+                border-color: blue green purple;
+                border-color: blue green;
+                border-color: blue;
+
+                border-top-width: 5px;
+                border-top-style: solid;
+                border-top-color: blue;
+
+            </code>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">27. 内边距属性</div>
+        <div class="card_content">
+            <p>1.什么是内边距?
+                边框和内容之间的距离就是内边距
+
+                2.格式
+                2.1非连写
+                padding-top: ;
+                padding-right: ;
+                padding-bottom: ;
+                padding-left: ;
+
+                2.2连写
+                padding: 上 右 下 左;
+
+                2.这三个属性的取值省略时的规律
+                2.1上 右 下 左 > 上 右 下 > 左边的取值和右边的一样
+                2.2上 右 下 左 > 上 右 > 左边的取值和右边的一样 下边的取值和上边一样
+                2.3上 右 下 左 > 上 > 右下左边取值和上边一样
+
+                注意点:
+                1.给标签设置内边距之后, 标签占有的宽度和高度会发生变化
+                2.给标签设置内边距之后, 内边距也会有背景颜色
+                <code> .box1{
+                    padding-top: 20px;
+                    }</code>
+
+            </p>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">28. 外边距属性</div>
+        <div class="card_content">
+            <div>1.什么是外边距?
+                标签和标签之间的距离就是外边距
+
+                2.格式
+                2.1非连写
+                margin-top: ;
+                margin-right: ;
+                margin-bottom: ;
+                margin-left: ;
+
+                2.2连写
+                margin: 上 右 下 左;
+
+                2.这三个属性的取值省略时的规律
+                2.1上 右 下 左 > 上 右 下 > 左边的取值和右边的一样
+                2.2上 右 下 左 > 上 右 > 左边的取值和右边的一样 下边的取值和上边一样
+                2.3上 右 下 左 > 上 > 右下左边取值和上边一样
+
+                注意点:
+                外边距的那一部分是没有背景颜色的
+<code>margin-bottom:80px;
+    margin-left:160px;
+
+    margin:20px 40px 80px 160px;
+    margin:20px 40px 80px;</code>
+                <hr>
+在默认布局的垂直方向上, 默认情况下外边距是不会叠加的, 会出现合并现象, 谁的外边距比较大就听谁的
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">29. CSS盒子模型</div>
+        <div class="card_content">
+            <div>1.什么是CSS盒子模型?
+                CSS盒子模型仅仅是一个形象的比喻, HTML中所有的标签都是盒子
+
+                结论
+                1.在HTML中所有的标签都可以设置
+                宽度/高度  == 指定可以存放内容的区域
+                内边距  == 填充物
+                边框  == 手机盒子自己
+                外边距  == 盒子和盒子之间的间隙
+            <hr>1.内容的宽度和高度
+            就是通过width/height属性设置的宽度和高度
+
+            2.元素的宽度和高度
+            宽度 = 左边框 + 左内边距 + width + 右内边距 + 右边框
+            高度 同理可证
+
+            3.元素空间的宽度和高度
+            宽度 = 左外边距 + 左边框 + 左内边距 + width + 右内边距 + 右边框 + 右外边距
+            高度 同理可证
+            <hr>1.CSS3中新增了一个box-sizing属性, 这个属性可以保证我们给盒子新增padding和border之后, 盒子元素的宽度和高度不变
+            2.box-sizing属性是如何保证增加padding和border之后, 盒子元素的宽度和高度不变
+            和我们前面学习的原理一样, 增加padding和border之后要想保证盒子元素的宽高不变, 那么就必须减去一部分内容的宽度和高度
+            3.box-sizing取值
+            3.1content-box
+            元素的宽高 = 边框 + 内边距 + 内容宽高
+            3.2border-box
+            元素的宽高 = width/height的宽高
+            <hr>1.text-align:center;和margin:0 auto;区别
+            text-align: center;作用
+            设置盒子中存储的文字/图片水平居中
+
+            margin:0 auto;作用
+            让盒子自己水平居中
+            <hr>1.为什么要清空默认边距(外边距和内边距)
+            在企业开发中为了更好的控制盒子的宽高和计算盒子的宽高等等, 所以在企业开发中, 编写代码之前第一件事情就是清空默认的边距
+
+            2.如何清空默认的边距
+            格式
+            *{
+            margin: 0;
+            padding: 0;
+            }
+
+            3.注意点
+            通配符选择器会找到(遍历)当前界面中所有的标签, 所以性能不好
+            <code>html{color:#000;background:#FFF}
+                body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,
+                pre,code,form,fieldset,legend,input,textarea,
+                p,blockquote,th,td{margin:0;padding:0}
+                table{border-collapse:collapse;border-spacing:0}
+                fieldset,img{border:0}
+                address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal}
+                ol,ul{list-style:none}
+                caption,th{text-align:left}
+                h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}
+                q:before,q:after{content:''}abbr,acronym{border:0;font-variant:normal}
+                sup{vertical-align:text-top}
+                sub{vertical-align:text-bottom}
+                input,textarea,select{font-family:inherit;
+                font-size:inherit;font-weight:inherit;*font-size:100%}
+                legend{color:#000}#yui3-css-stamp.cssreset{display:none}
+                a{text-decoration: none; color: #999}
+
+            </code>
+        </div>
+        </div>
+
+    </div>
+    <div class="card">
+        <div class="card_title">30. 行高和字号</div>
+        <div class="card_content">
+            <div>1.什么是行高?
+                在CSS中所有的行都有自己的行高
+
+                注意点:
+                行高和盒子高不是同一个概念
+                行高指的是每行内容的高度
+                盒子高指的是元素的高度
+
+                规律:
+                1.文字在行高中默认是垂直居中的
+
+                2.在企业开发中我们经常将盒子的高度和行高设置为一样, 那么这样就可以保证一行文字在盒子的高度中是垂直居中的
+                简而言之就是: 要想一行文字在盒子中垂直居中, 那么只需要设置这行文字的"行高等于盒子的高"即可
+
+                3.在企业开发中如果一个盒子中有多行文字, 那么我们就不能使用设置行高等于盒子高来实现让文字垂直居中, 只能通过设置padding来让文字居中
+            <hr>1.在企业开发中, 如果一个盒子中存储的是文字, 那么一般情况下我们会以盒子左边的内边距为基准, 不会以右边的内边距为基准, 因为这个右边的内边距有误差
+
+            2.右边内边距的误差从何而来? 因为右边如果放不下一个文字, 那么文字就会换行显示, 所以文字和内边距之间的距离就有了误差
+
+            3.顶部的内边距并不是边框到文字顶部的距离, 而是边框到行高顶部的距离
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">31. 网页的布局方式</div>
+        <div class="card_content">
+            <p>1.什么是网页的布局方式?
+                网页的布局方式其实就是指浏览器是如何对网页中的元素进行排版的
+
+                1.标准流(文档流/普通流)排版方式
+                1.1其实浏览器默认的排版方式就是标准流的排版方式
+                1.2在CSS中将元素分为三类, 分别是块级元素/行内元素/行内块级元素
+                1.3 在标准流中有两种排版方式, 一种是垂直排版, 一种是水平排版
+                垂直排版, 如果元素是块级元素, 那么就会垂直排版
+                水平排版, 如果元素是行内元素/行内块级元素, 那么就会水平排版
+
+                2.浮动流排版方式
+                2.1浮动流是一种"半脱离标准流"的排版方式
+                2.2浮动流只有一种排版方式, 就是水平排版. 它只能设置某个元素左对齐或者右对齐
+
+                注意点:
+                1.浮动流中没有居中对齐, 也就是没有center这个取值
+                2.在浮动流中是不可以使用margin: 0 auto;
+
+                特点:
+                1.在浮动流中是不区分块级元素/行内元素/行内块级元素的
+                无论是级元素/行内元素/行内块级元素都可以水平排版
+                2.在浮动流中无论是块级元素/行内元素/行内块级元素都可以设置宽高
+                3.综上所述, 浮动流中的元素和标准流中的行内块级元素很像
+
+                3.定位流排版方式
+
+            </p>
+            <code>
+
+            </code>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">32. float</div>
+        <div class="card_content">
+            <div>1.什么是浮动元素的脱标?
+                脱标: 脱离标准流
+                当某一个元素浮动之后, 那么这个元素看上去就像被从标准流中删除了一样, 这个就是浮动元素的脱标
+
+                2.浮动元素脱标之后会有什么影响?
+                如果前面一个元素浮动了, 而后面一个元素没有浮动 , 那么这个时候前面一个元就会盖住后面一个元素
+
+            <hr>1.浮动元素排序规则
+            1.1相同方向上的浮动元素, 先浮动的元素会显示在前面, 后浮动的元素会显示在后面
+            1.2不同方向上的浮动元素, 左浮动会找左浮动, 右浮动会找右浮动
+            1.3浮动元素浮动之后的位置, 由浮动元素浮动之前在标准流中的位置来确定
+            <hr>1.什么是浮动元素贴靠现象?
+            1.如果父元素的宽度能够显示所有浮动元素, 那么浮动的元素会并排显示
+            2.如果父元素的宽度不能显示所有浮动元素, 那么会从最后一个元开始往前贴靠
+            3.如果贴靠了前面所有浮动元素之后都不能显示, 最终会贴靠到父元素的左边或者右
+            <hr>1.什么是浮动元素字围现象?
+            浮动元素不会挡住没有浮动元素中的文字, 没有浮动的文字会自动给浮动的元素让位
+            <hr>1.在标准流中内容的高度可以撑起父元素的高度
+            2.在浮动流中浮动的元素是不可以撑起父元素的高度的
+        </div>            </div>
+
+    </div>
+    <div class="card">
+        <div class="card_title">33. 清除浮动</div>
+        <div class="card_content">
+            <div>1.清除浮动的第一种方式
+                给前面一个父元素设置高度
+
+                注意点:
+                在企业开发中, 我们能不写高度就不写高度, 所以这种方式用得很少
+
+            <hr>1.清除浮动的第二种方式
+            给后面的盒子添加clear属性
+
+            clear属性取值:
+            none: 默认取值, 按照浮动元素的排序规则来排序(左浮动找左浮动, 右浮动找右浮动)
+            left: 不要找前面的左浮动元素
+            right: 不要找前面的右浮动元素
+            both: 不要找前面的左浮动元素和右浮动元素
+
+            注意点:
+            当我们给某个元素添加clear属性之后, 那么这个属性的margin属性就会失效
+            <hr>1.清除浮动的第三种方式
+            隔墙法
+
+            2.外墙法
+            2.1在两个盒子中间添加一个额外的块级元素
+            2.2给这个额外添加的块级元素设置clear: both;属性
+
+            注意点:
+            外墙法它可以让第二个盒子使用margin-top属性
+            外墙法不可以让第一个盒子使用margin-bottom属性
+
+            3.内墙法
+            3.1在第一个盒子中所有子元素最后添加一个额外的块级元素
+            3.2给这个额外添加的块级元素设置clear: both;属性
+
+            注意点:
+            内墙法它可以让第二个盒子使用margin-top属性
+            内墙法它可以让第一个盒子使用margin-bottom属性
+
+            4.外墙法和内墙法区别?
+            外墙法不能撑起第一个盒子的高度, 而内墙法可以撑起第一个盒子的高度
+
+            5.在企业开发中不常用隔墙法来清除浮动
+        </div>
+        </div>
+
+    </div>
+    <div class="card">
+        <div class="card_title">34. 伪元素选择器</div>
+        <div class="card_content">
+            <p>1.什么是伪元素选择器?
+                伪元素选择器作用就是给指定标签的内容前面添加一个子元素或者给指定标签的内容后面添加一个子元素
+
+                2.格式:
+                标签名称::before{
+                属性名称:值;
+                }
+                给指定标签的内容前面添加一个子元素
+
+                标签名称::after{
+                属性名称:值;
+                }
+                给指定标签的内容后面添加一个子元素
+
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">35. overflow: hidden</div>
+        <div class="card_content">
+            <p>1.overflow: hidden;作用
+                1.1可以将超出标签范围的内容裁剪掉
+                1.2清除浮动
+                1.3可以通过overflow: hidden;让里面的盒子设置margin-top之后, 外面的盒子不被顶下来
+                -->
+
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">36. 定位流</div>
+        <div class="card_content">
+            <div>1.定位流分类
+                1.1相对定位
+                1.2绝对定位
+                1.3固定定位
+                1.4静态定位
+                <h3>相对定位</h3>2.什么是相对定位?
+                相对定位就是相对于自己以前在标准流中的位置来移动 (通过top, right,  bottom, left属性移动)
+
+                3.相对定位注意点
+                3.1相对定位是不脱离标准流的, 会继续在标准流中占用一份空间
+                3.2在相对定位中同一个方向上的定位属性只能使用一个
+                3.3由于相对定位是不脱离标准流的, 所以在相对定位中是区分块级元素/行内元素/行内块级元素
+                3.4由于相对定位是不脱离标准流的, 并且相对定位的元素会占用标准流中的位置, 所以当给相对定位的元素设置margin/padding等属性的时会影响到标准流的布局
+                （margin/padding只加到定位前标准流中的位置上，而不是加到定位后的位置上）
+
+                4.相对定位应用场景
+                4.1用于对元素进行微调
+                4.2配合后面学习的绝对定位来使用
+                <hr><h3>绝对定位</h3>1.什么是绝对定位?
+                绝对定位就是相对于body或有定位流的父元素来定位
+
+                2.绝对定位注意点
+                2.1绝对定位的元素是脱离标准流的
+                2.2绝对定位的元素是不区分块级元素/行内元素/行内块级元素
+                <hr>绝对定位参考点规律
+                1.默认情况下所有的绝对定位的元素, 无论有没有祖先元素, 都会以body作为参考点
+
+                2.如果一个绝对定位的元素有祖先元素, 并且祖先元素也是定位流, 那么这个绝对定位的元素就会以定位流的那个祖先元素作为参考点
+                2.1只要是这个绝对定位元素的祖先元素都可以
+                2.2指的定位流是指绝对定位/相对定位/固定定位
+                2.3定位流中只有静态定位不行
+
+                3.如果一个绝对定位的元素有祖先元素, 并且祖先元素也是定位流, 而且祖先元素中有多个元素都是定位流, 那么这个绝对定位的元素会以离它最近的那个定位流的祖先元素为参考点
+                <hr>注意点
+                1.如果一个绝对定位的元素是以body作为参考点, 那么其实是以网页首屏的宽度和高度作为参考点, 而不是以整个网页的宽度和高度作为参考点
+
+                2.一个绝对定位的元素会忽略祖先元素的padding
+                <hr>相对定位弊端:
+                相对定位不会脱离标准流, 会继续在标准流中占用一份空间, 所以不利于布局界面
+                position: relative;
+                left: -42px;
+                top: -18px;
+
+                绝对定位弊端:
+                默认情况下绝对定位的元素会以body作为参考点, 所以会随着浏览器的宽度高度的变化而变化
+                position: absolute;
+                left: 526px;
+                top: 90px;
+
+                子绝父相
+                子元素用绝对定位, 父元素用相对定位
+                <hr>1.如何让绝对定位的元素水平居中
+                只需要设置绝对定位元素的left:50%;
+                然后再设置绝对定位元素的 margin-left: -元素宽度的一半px;
+                <hr><h3>固定定位</h3>1.什么是固定定位?
+                固定定位和前面学习的背景关联方式很像, 背景定位可以让背景图片不随着滚动条的滚动而滚动, 而固定定位可以让某个盒子不随着滚动条的滚动而滚动
+
+                注意点:
+                1.固定定位的元素是脱离标准流的, 不会占用标准流中的空间
+                2.固定定位和绝对定位一样不区分行内/块级/行内块级
+                3.IE6不支持固定定位
+                <hr><h3>z-index属性</h3>1.什么是z-index属性?
+                默认情况下所有的元素都有一个默认的z-index属性, 取值是0.
+                z-index属性的作用是专门用于控制定位流元素的覆盖关系的
+
+                1.默认情况下定位流的元素会盖住标准流的元素
+                2.默认情况下定位流的元素后面编写的会盖住前面编写的
+                3.如果定位流的元素设置了z-index属性, 那么谁的z-index属性比较大, 谁就会显示在上面
+
+                注意点:
+                1.从父现象
+                1.1如果两个元素的父元素都没有设置z-index属性, 那么谁的z-index属性比较大谁就显示在上面
+                1.2如果两个元素的父元素设置了z-index属性, 那么子元素的z-index属性就会失效, 也就是说谁的父元素的z-index属性比较大谁就会显示在上面
+
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">37. a标签的伪类选择器</div>
+        <div class="card_content">
+            <div>1.通过我们的观察发现a标签存在一定的状态
+                1.1默认状态, 从未被访问过
+                1.2被访问过的状态
+                1.3鼠标长按状态
+                1.4鼠标悬停在a标签上状态
+
+                2.什么是a标签的伪类选择器?
+                a标签的伪类选择器是专门用来修改a标签不同状态的样式的
+
+                3.格式
+                :link 修改从未被访问过状态下的样式
+                :visited 修改被访问过的状态下的样式
+                :hover 修改鼠标悬停在a标签上状态下的样式
+                :active 修改鼠标长按状态下的样式
+
+                4.注意点
+                4.1a标签的伪类选择器可以单独出现也可以一起出现
+                4.2a标签的伪类选择器如果一起出现, 那么有严格的顺序要求
+                编写的顺序必须要个的遵守爱恨原则 love hate
+                4.3如果默认状态的样式和被访问过状态的样式一样, 那么可以缩写
+
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">38. 过渡模块</div>
+        <div class="card_content">
+            <div><h3>过渡三要素</h3>
+                1.1必须要有属性发生变化
+                1.2必须告诉系统哪个属性需要执行过渡效果
+                1.3必须告诉系统过渡效果持续时长
+
+                2.注意点
+                当多个属性需要同时执行过渡效果时用逗号隔开即可
+                transition-property: width, background-color;
+                transition-duration: 5s, 5s;
+                <code>       div{
+                    width: 100px;
+                    height: 50px;
+                    background-color: red;
+
+                    /*告诉系统哪个属性需要执行过渡效果*/
+                    transition-property: width, background-color;
+                    /*告诉系统过渡效果持续的时长*/
+                    transition-duration: 5s, 5s;
+
+                    /*transition-property: background-color;*/
+                    /*transition-duration: 5s;*/
+                    }
+                    /*:hover这个伪类选择器除了可以用在a标签上, 还可以用在其它的任何标签上*/
+                    div:hover{
+                    width: 300px;
+                    background-color: blue;
+                    }</code>
+                <hr><h3>过渡模块-其它属性</h3><code>div {
+                    width: 100px;
+                    height: 50px;
+                    background-color: red;
+                    transition-property: width;
+                    transition-duration: 5s;
+                    /*告诉系统延迟多少秒之后才开始过渡动画*/
+                    /*transition-delay: 2s;*/
+                    }
+                    ul li:nth-child(1){
+                    /*告诉系统过渡动画的运动的速度*/
+                    transition-timing-function: linear;
+                    }
+                    ul li:nth-child(2){
+                    transition-timing-function: ease;
+                    }
+                    ul li:nth-child(3){
+                    transition-timing-function: ease-in;
+                    }
+                    ul li:nth-child(4){
+                    transition-timing-function: ease-out;
+                    }
+                    ul li:nth-child(5){
+                    transition-timing-function: ease-in-out;
+                    }</code>
+                <hr><h3>连写</h3>1.过渡连写格式
+                transition: 过渡属性 过渡时长 运动速度 延迟时间;
+
+                2.过渡连写注意点
+                2.1和分开写一样, 如果想给多个属性添加过渡效果也是用逗号隔开即可
+                2.2连写的时可以省略后面的两个参数, 因为只要编写了前面的两个参数就已经满足了过渡的三要素
+                2.3如果多个属性运动的速度/延迟的时间/持续时间都一样, 那么可以简写为
+                transition:all 0s;
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">39. 2D转换模块</div>
+        <div class="card_content">
+            <div><code>   ul li:nth-child(2){
+                /*其中deg是单位, 代表多少度*/
+                transform: rotate(45deg);
+                }
+                ul li:nth-child(3){
+                /*
+                第一个参数:水平方向
+                第二个参数:垂直方向
+                */
+                transform: translate(100px, 0px);
+                }
+                ul li:nth-child(4){
+                /*
+                第一个参数:水平方向
+                第二个参数:垂直方向
+                注意点:
+                如果取值是1, 代表不变
+                如果取值大于1, 代表需要放大
+                如果取值小于1, 代表需要缩小
+                如果水平和垂直缩放都一样, 那么可以简写为一个参数
+                */
+                /*transform: scale(0.5, 0.5);*/
+                transform: scale(1.5);
+                }
+                ul li:nth-child(5){
+                /*
+                注意点:
+                1.如果需要进行多个转换, 那么用空格隔开
+                2.2D的转换模块会修改元素的坐标系, 所以旋转之后再平移就不是水平平移的
+                */
+                transform: rotate(45deg) translate(100px, 0px) scale(1.5, 1.5);
+                /*transform: translate(100px, 0px);*/
+                }</code>
+                <hr><h3>形变中心点</h3>默认情况下所有的元素都是以自己的中心点作为参考来旋转的, 我们可以通过形变中心点属性来修改它的参考点
+                <code>    /*transform-origin: 200px 0px;*/
+                    /*transform-origin: 50% 50%;*/
+                    /*transform-origin: 0% 0%;*/
+                    /*transform-origin: center center;*/
+                    transform-origin: left top;</code>第一个参数:水平方向
+                第二个参数:垂直方向
+
+                注意点
+                取值有三种形式
+                具体像素
+                百分比
+                特殊关键字
+                <hr><h3>旋转轴向</h3>默认情况下所有元素都是围绕Z轴进行旋转
+                总结:
+                想围绕哪个轴旋转, 那么只需要在rotate后面加上哪个轴即可
+                <code>transform: rotateY(45deg);</code>1.什么是透视
+                近大远小
+                2.注意点
+                一定要注意, 透视属性必须添加到需要呈现近大远小效果的元素的父元素上面
+                <code>perspective: 500px;</code>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card_title">40. 盒子阴影和文字阴影</div>
+        <div class="card_content">
+            <p>1.如何给盒子添加阴影
+                box-shadow: 水平偏移 垂直偏移 模糊度 阴影扩展 阴影颜色 内外阴影;
+
+                2.注意点
+                2.1盒子的阴影分为内外阴影, 默认情况下就是外阴影
+                2.2快速添加阴影只需要编写三个参数即可
+                box-shadow: 水平偏移 垂直偏移 模糊度;
+                默认情况下阴影的颜色和盒子内容的颜色一致
+
+                3.如何给文字添加阴影
+                text-shadow: 水平偏移 垂直偏移 模糊度 阴影颜色 ;
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">41. 动画模块</div>
+        <div class="card_content">
+            <div>1.过渡和动画之间的异同
+                1.1不同点
+                过渡必须人为的触发才会执行动画
+                动画不需要人为的触发就可以执行动画
+
+                1.2相同点
+                过渡和动画都是用来给元素添加动画的
+                过渡和动画都是系统新增的一些属性
+                过渡和动画都需要满足三要素才会有动画效果
+                <code> div{
+                    width: 100px;
+                    height: 50px;
+                    background-color: red;
+
+                    /*1.告诉系统需要执行哪个动画*/
+                    animation-name: lnj;
+                    /*3.告诉系统动画持续的时长*/
+                    animation-duration: 3s;
+                    }
+                    /*2.告诉系统我们需要自己创建一个名称叫做lnj的动画*/
+                    @keyframes lnj {
+                    from{
+                    margin-left: 0;
+                    }
+                    to{
+                    margin-left: 500px;
+                    }
+                    }</code>
+                <hr><h3>其他属性</h3><code>div {
+                    width: 100px;
+                    height: 50px;
+                    background-color: red;
+                    animation-name: sport;
+                    animation-duration: 2s;
+                    /*告诉系统多少秒之后开始执行动画*/
+                    /*animation-delay: 2s;*/
+                    /*告诉系统动画执行的速度*/
+                    animation-timing-function: linear;
+                    /*告诉系统动画需要执行几次*/
+                    animation-iteration-count: 3;
+                    /*告诉系统是否需要执行往返动画
+                    取值:
+                    normal, 默认的取值, 执行完一次之后回到起点继续执行下一次
+                    alternate, 往返动画, 执行完一次之后往回执行下一次
+                    */
+                    animation-direction: alternate;
+                    }
+                    @keyframes sport {
+                    from{
+                    margin-left: 0;
+                    }
+                    to{
+                    margin-left: 500px;
+                    }
+                    }
+                    div:hover{
+                    /*
+                    告诉系统当前动画是否需要暂停
+                    取值:
+                    running: 执行动画
+                    paused: 暂停动画
+                    */
+                    animation-play-state: paused;
+                    }</code><br>通过我们的观察, 动画是有一定的状态的
+                1.等待状态
+                2.执行状态
+                3.结束状态
+
+                animation-fill-mode作用:
+                指定动画等待状态和结束状态的样式
+                取值:
+                none: 不做任何改变
+                forwards: 让元素结束状态保持动画最后一帧的样式
+                backwards: 让元素等待状态的时候显示动画第一帧的样式
+                both: 让元素等待状态显示动画第一帧的样式, 让元素结束状态保持动画最后一帧的样式
+                <code>.box2{
+                    width: 200px;
+                    height: 200px;
+                    background-color: blue;
+                    margin: 100px auto;
+                    animation-name: myRotate;
+                    animation-duration: 5s;
+                    animation-delay: 2s;
+                    /*animation-fill-mode: backwards;*/
+                    /*animation-fill-mode: forwards;*/
+                    animation-fill-mode: both;}</code>
+                <hr>1.动画模块连写格式
+                animation:动画名称 动画时长 动画运动速度 延迟时间 执行次数 往返动画;
+
+                2.动画模块连写格式的简写
+                animation:动画名称 动画时长;
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">42. 3d转换</div>
+        <div class="card_content">
+            <div>1.什么是2D和3D
+                2D就是一个平面, 只有宽度和高度, 没有厚度
+                3D就是一个立体, 有宽度和高度, 还有厚度
+                默认情况下所有的元素都是呈2D展现的
+                2.如何让某个元素呈3D展现
+                和透视一样, 想看到某个元素的3d效果, 只需要给他的父元素添加一个transform-style属性, 然后设置为preserve-3d即可
+                */
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">43. 背景尺寸属性</div>
+        <div class="card_content">
+            <div>1.什么是背景尺寸属性
+                背景尺寸属性是CSS3中新增的一个属性, 专门用于设置背景图片大小
+                <code>ul li:nth-child(1){
+                    background: url("images/dog.jpg") no-repeat;
+                    }
+                    ul li:nth-child(2){
+                    background: url("images/dog.jpg") no-repeat;
+                    /*
+                    第一个参数:宽度
+                    第二个参数:高度
+                    */
+                    background-size:200px 100px;
+                    }
+                    ul li:nth-child(3){
+                    background: url("images/dog.jpg") no-repeat;
+                    /*
+                    第一个参数:宽度
+                    第二个参数:高度
+                    */
+                    background-size:100% 80%;
+                    }
+                    ul li:nth-child(4){
+                    background: url("images/dog.jpg") no-repeat;
+                    /*
+                    第一个参数:宽度
+                    第二个参数:高度
+                    */
+                    background-size:auto 100px;
+                    }
+                    ul li:nth-child(5){
+                    background: url("images/dog.jpg") no-repeat;
+                    /*
+                    第一个参数:宽度
+                    第二个参数:高度
+                    */
+                    background-size:100px auto;
+                    }
+                    ul li:nth-child(6){
+                    background: url("images/dog.jpg") no-repeat;
+                    /*
+                    cover含义:
+                    1.告诉系统图片需要等比拉伸
+                    2.告诉系统图片需要拉伸到宽度和高度都填满元素
+                    */
+                    background-size:cover;
+                    }
+                    ul li:nth-child(7){
+                    background: url("images/dog.jpg") no-repeat;
+                    /*
+                    c含义:
+                    1.告诉系统图片需要等比拉伸
+                    2.告诉系统图片需要拉伸到宽度或高度都填满元素
+                    */
+                    background-size:contain;
+                    }</code>
+                <hr><h3>背景图片定位区域属性</h3><code>  ul li:nth-child(2){
+                    /*
+                    告诉系统背景图片从什么区域开始显示,
+                    默认情况下就是从padding区域开始显示
+                    */
+                    background-origin: padding-box;
+                    }
+                    ul li:nth-child(3){
+                    background-origin:border-box;
+                    }
+                    ul li:nth-child(4){
+                    background-origin:content-box;
+                    }
+                </code>
+                <hr><h3>背景绘制区域属性</h3><code>ul li:nth-child(2){
+                    /*
+                    背景绘制区域属性是专门用于指定从哪个区域开始绘制背景的, 默认情况下会从border区域开始绘制背景
+                    */
+                    background-clip: padding-box;
+                    }
+                    ul li:nth-child(3){
+                    background-clip: border-box;
+                    }
+                    ul li:nth-child(4){
+                    background-clip: content-box;
+                    }</code>
+                <hr><h3>多重背景图片</h3><code>     div{
+                    width: 500px;
+                    height: 500px;
+                    border: 1px solid #000;
+                    margin: 0 auto;
+                    /*
+                    多张背景图片之间用逗号隔开即可
+                    注意点:
+                    先添加的背景图片会盖住后添加的背景图片
+                    建议在编写多重背景时拆开编写
+                    */
+                    /*background: url("images/animal1.png") no-repeat left top,url("images/animal2.png") no-repeat right top,url("images/animal3.png") no-repeat left bottom,url("images/animal4.png") no-repeat right bottom,url("images/animal5.png") no-repeat center center;*/
+                    background-image: url("images/animal1.png"),url("images/animal2.png"),url("images/animal3.png");
+                    background-repeat: no-repeat, no-repeat, no-repeat;
+                    background-position: left top, right top, left bot</code>
+
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title"></div>
+        <div class="card_content">
+            <p>
+
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title"></div>
+        <div class="card_content">
+            <p>
+
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title"></div>
+        <div class="card_content">
+            <p>
+
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title"></div>
+        <div class="card_content">
+            <p>
+
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title"></div>
+        <div class="card_content">
+            <p>
+
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title"></div>
+        <div class="card_content">
+            <p>
+
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title"></div>
+        <div class="card_content">
+            <p>
+
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title"></div>
+        <div class="card_content">
+            <p>
+
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title"></div>
+        <div class="card_content">
+            <p>
+
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title"></div>
+        <div class="card_content">
+            <p>
+
+            </p>
+            <code>
+
+            </code>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title"></div>
+        <div class="card_content">
+            <p>
+
+            </p>
+            <code>
+
+            </code>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title"></div>
+        <div class="card_content">
+            <p>
+
+            </p>
+            <code>
+
+            </code>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title"></div>
+        <div class="card_content">
+            <p>
+
+            </p>
+            <code>
+
+            </code>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title"></div>
+        <div class="card_content">
+            <p>
+
+            </p>
+            <code>
+
+            </code>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title"></div>
+        <div class="card_content">
+            <p>
+
+            </p>
+            <code>
+
+            </code>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title"></div>
+        <div class="card_content">
+            <p>
+
+            </p>
+            <code>
+
+            </code>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title"></div>
+        <div class="card_content">
+            <p>
+
+            </p>
+            <code>
+
+            </code>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title"></div>
+        <div class="card_content">
+            <p>
+
+            </p>
+            <code>
+
+            </code>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title"></div>
+        <div class="card_content">
+            <p>
+
+            </p>
+            <code>
+
+            </code>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title"></div>
+        <div class="card_content">
+            <p>
+
+            </p>
+            <code>
+
+            </code>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title"></div>
+        <div class="card_content">
+            <p>
+
+            </p>
+            <code>
+
+            </code>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</body>
+</html>
