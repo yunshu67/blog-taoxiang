@@ -283,7 +283,7 @@
 <script>
     // var to store which one is checked in filter
     var checked="fi0";
-    const node_ids = ['s0','s1','s2','s3'];
+    const node_ids = ['s0','s1','s2','s3','s4','s5'];
 
     // Script to open and close sidebar
     function w3_open() {
@@ -309,6 +309,8 @@
         setHidden('s0');
         setHidden('s1')
         setHidden('s3')
+        setHidden('s4');
+        setHidden('s5');
 
     }
 
@@ -324,7 +326,7 @@
     function setVisible(id){document.getElementById(id).style.display="block";}
     function filter_2020(){
         setVisible('s0');setVisible('s1');
-        setHidden('s2');setHidden('s3')
+        setHidden('s2');setHidden('s3');setHidden('s4');setHidden('s5');
     }
 </script>
 <script src="js/jquery.min.js"></script>
