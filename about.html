@@ -1,63 +1,52 @@
 <!doctype html>
 <html lang="en">
-  <head>
-  	<title>AI In Ephemeral</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <link rel="icon" href="https://www.flaticon.com/svg/static/icons/svg/2591/2591910.svg">
-      <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-      <link rel="stylesheet" href="css/style.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
-      <style>
-          p.redText{
-              color: #ff305d;
-          }
-          ul#share li{display: inline;}
-          div.small_text_inline{
-              font-size: 80%;
-              display: inline;
-          }
-          h2.center{
-              text-align: center;
-          }
+<head>
+    <title>AI In Ephemeral</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/w3_updated.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="https://www.flaticon.com/svg/static/icons/svg/2591/2591910.svg">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+    <style>
 
-          button.like {
-              background-image: url(images/like.svg);
-              background-size: contain;
-              border: none;
-              border-radius: 50%;
-              width: 50px;
-              height: 50px;
-              font-size: 2rem;
-          }
-      </style>
-
-      <script>
-          function add_likes(){
-              var a = localStorage.getItem("num_likes");
-              if (a == null){
-                  a = 1;
-                  localStorage.setItem("num_likes",a.toString())
-              }else{
-                  a = parseInt(a)+1
-                  localStorage.setItem("num_likes",a.toString())
-              }
-              document.getElementById("nums_likes_disp").innerHTML =a.toString()+" likes" ;
-          }
-
-          function show_num_likes(){
-              var a =localStorage.getItem("num_likes");
-              if (a==null){
-                  a = 0;
-              }
-              document.getElementById("nums_likes_disp").innerHTML = a.toString()+" likes";
-          }
-      </script>
-  </head>
+        body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+        .cursive{font-family:'Monotype Corsiva','Apple Chancery','ITC Zapf Chancery','URW Chancery L',cursive;}
+        .text_grey{color: #797979}
+        p.poem { font-family: Papyrus, fantasy; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; }
+        .title{font-weight: 900;font-family:Arial, sans-serif, monospace;font-size: large;margin-top: 10px;}
+        .title:hover{text-decoration: underline}
+        .title{color: black}
+        .side{
+            border-style: none;
+            border-color: white;
+            position: relative;
+            top: -43px;
+            left: 30px;
+        }
+        .side ul{
+            list-style: none;
+        }
+        .side ul li {
+            margin-right: 5px;
+            float: left;
+        }
+        .side ul li a {
+            font-size: 20px;
+            color: rgba(0,0,0,0.85);
+            transition-property: font-size;
+            transition-duration: 0.25s;
+        }
+        .side ul li a:hover{
+            font-size: 28px;
+            color: black;
+        }
+    </style>
+</head>
   <body onload="show_num_likes()">
 
   <!-- Sidebar/menu -->
@@ -76,7 +65,7 @@
           <div style="padding-left: 5px" >
               <ul class="list-unstyled components mb-5" style="padding-top: 0;margin-top: 0">
                   <li>
-                      <a href="#" class="w3-bar-item  w3-button  w3-text-teal" style="text-align: left" ><i class="fas fa-home"></i>&nbsp; Home</a>
+                      <a href="index.html" class="w3-bar-item  w3-button  w3-text-teal" style="text-align: left" ><i class="fas fa-home"></i>&nbsp; Home</a>
                   </li>
                   <li>
                       <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle w3-bar-item  w3-button" style="text-align: left"><i class="fas fa-book-open"></i>&nbsp; Articles</a>
@@ -188,11 +177,7 @@
               </div>
           </a>
 
-          <!-- like button-->
-          <div  style="margin-top: 200px;text-align: center ">
-              <button class="like" type="submit" onclick="add_likes()"></button>
-              <p class="redText" id="nums_likes_disp"></p>
-          </div>
+
 
       </div>
 
