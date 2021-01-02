@@ -62,13 +62,15 @@
         </a>
         <img src="images/avatar.jpeg" style="width:45%;" class="w3-round"><br><br>
         <h4><b>Tao Xiang</b></h4>
-        <p class="w3-text-grey">Technical University Munich</p>
+        <p class="w3-text-grey">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_of_the_Technical_University_of_Munich.svg" style="float: right" width="20%">
+            Technical University Munich</p>
     </div>
     <nav id="sidebar">
         <div style="padding-left: 5px" >
             <ul class="list-unstyled components mb-5" style="padding-top: 0;margin-top: 0">
                 <li>
-                    <a href="index.html" class="w3-bar-item  w3-button" style="text-align: left" ><i class="fas fa-home"></i>&nbsp; Home</a>
+                    <a href="#" class="w3-bar-item  w3-button  w3-text-teal" style="text-align: left" ><i class="fas fa-home"></i>&nbsp; Home</a>
                 </li>
                 <li>
                     <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle w3-bar-item  w3-button" style="text-align: left"><i class="fas fa-book-open"></i>&nbsp; Articles</a>
@@ -81,6 +83,7 @@
 
                         <li><a href="#geo_notes" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle w3-bar-item  w3-button">Geo</a>
                             <ul class="collapse list-unstyled" id="geo_notes">
+                                <li><a href="https://github.com/yunshu67/markdowns/blob/master/Geo/Geo%20notes.md" class="w3-bar-item  w3-button" style="text-align: left" target="_blank"><span class="fa fa-chevron-right mr-2"></span>0. Geo Notes</a></li>
 
                             </ul>
                         </li>
@@ -103,9 +106,9 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle w3-bar-item  w3-button w3-text-teal" style="text-align: left"><i class="fas fa-book"></i>&nbsp;  Essays</a>
+                    <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle w3-bar-item  w3-button" style="text-align: left"><i class="fas fa-book"></i>&nbsp;  Essays</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu3">
-                        <li><a href="javascript:" target="_self" class="w3-bar-item  w3-button"style="text-align: left" ><span class="fa fa-chevron-right mr-2"></span>Dec 27th, 2020</a></li>
+                        <li><a href=essays/12-27.html target="_self" class="w3-bar-item  w3-button" style="text-align: left" ><span class="fa fa-chevron-right mr-2"></span>Dec 27th, 2020</a></li>
                     </ul>
                 </li>
                 <li>
@@ -114,6 +117,34 @@
             </ul>
         </div>
     </nav>
+    <!-- Sidebar/share -->
+    <div class="side">
+        <ul>
+            <li><a href="https://www.linkedin.com/in/yunshu86/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+            <li>
+                <a  class="dropright share-btn-weixin" href="javascript:">
+                    <i class="fab fa-weixin" data-toggle="dropdown"></i>
+                    <div class="dropdown-menu" style="width: 150px;text-align: center">
+                        <div class="small_text_inline">扫一扫加我好友</div>
+                        <img src="images/wechat.jpg" width=100%>
+                    </div>
+                </a>
+
+            </li>
+            <li>
+                <a  class="dropright share-btn-weixin" href="javascript:">
+                    <i class="fab fa-whatsapp" data-toggle="dropdown"></i>
+                    <div class="dropdown-menu" style="width: 250px;text-align: center">
+                        <img src="images/whatsapp.png" width=100%>
+                    </div>
+                </a>
+
+            </li>
+            <li>
+                <a href="javascript:" target="_self" ><i class="fas fa-thumbs-up"></i></a>
+            </li>
+        </ul>
+    </div>
 </nav>
 
 <!-- Overlay effect when opening sidebar on small screens -->
