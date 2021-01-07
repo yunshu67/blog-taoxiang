@@ -46,6 +46,11 @@
         font-size: 28px;
         color: black;
     }
+
+    .hidden{
+        display: none;
+    }
+
 </style>
 </head>
 <body class="w3-light-grey w3-content" style="max-width:3500px">
@@ -159,16 +164,18 @@
         <div class="w3-container">
             <div class="w3-section w3-bottombar w3-padding-16">
                 <h2><b>MOMENTS</b></h2>
-                <button id="fi0" class="w3-button w3-black" onclick="filter_focus(this.id);filter_all()" >ALL</button>
-                <button id="fi1" class="w3-button w3-white" onclick="filter_focus(this.id);filter_2020()"><i class="fas fa-gem w3-margin-right" ></i>Best 2020</button>
-                <button id="fi2" class="w3-button w3-white w3-hide-small" onclick="filter_focus(this.id);filter_life()"><i class="fas fa-skiing w3-margin-right"></i>Life</button>
+                <button id="fi0" class="w3-button w3-black" onclick="filter_focus_top(this.id);filter_all()" >ALL</button>
+                <button id="fi1" class="w3-button w3-white" onclick="filter_focus_top(this.id);filter_2021()"><i class="fas fa-gem w3-margin-right" ></i>Best 2021</button>
+                <button id="fi2" class="w3-button w3-white w3-hide-small" onclick="filter_focus_top(this.id);filter_life()"><i class="fas fa-skiing w3-margin-right"></i>Life</button>
 <!--                <button id="fi3" class="w3-button w3-white w3-hide-small" onclick="filter_focus(this.id)"><i class="fa fa-map-pin w3-margin-right"></i>Art</button>-->
             </div>
         </div>
     </header>
 
-    <!-- First Photo Grid-->
+
     <div id="s-all" class="w3-row-padding">
+<!--        Page 1 content   -->
+        <!-- First Row-->
     <div class="w3-row-padding">
         <div id="s0" class="w3-third w3-container w3-margin-bottom">
             <a href="https://yunshu67.github.io/blog-taoxiang/notes/algorithms/dynamicProgramming.html"><img src="https://www.w3schools.com/w3images/p3.jpg" style="width:100%" class="w3-hover-opacity"></a>
@@ -206,7 +213,7 @@
         </div>
     </div>
 
-<!--     Second Photo Grid-->
+<!--     Second Row-->
     <div class="w3-row-padding" >
         <div class="w3-third w3-container w3-margin-bottom" id="s3">
             <a href="https://cheatography.com/xys/cheat-sheets/python/" target="_blank"><img src="https://www.w3schools.com/w3images/p1.jpg" style="width:100%" class="w3-hover-opacity"></a>
@@ -231,6 +238,26 @@
         </div>
 
     </div>
+
+<!--        Page 2 content, default hidden-->
+        <div class="w3-row-padding">
+            <div id="s6" class="w3-third w3-container w3-margin-bottom hidden">
+                <a href="notes/algorithms/Union%20Find%20并查集.html"><img src="https://hbimg.huabanimg.com/5e99e744ef7e4b8639687b03cc5a03dd0fe6451f4264-GvRfAP_fw658/format/webp" style="width:100%" class="w3-hover-opacity"></a>
+                <div class="w3-container w3-white">
+                    <a class="title" href="https://yunshu67.github.io/blog-taoxiang/notes/algorithms/dynamicProgramming.html"><p class="title " >UNION FIND</p>
+                    </a>
+                    <p class="text_grey">Union find algorithm notes
+                        <br>1) Definition of UF<br>
+                        2) Two primary operations<br>
+                        3) Complexity <br>
+                        4) Represent of an element node<br>
+                        5) Algorithm <br>
+                        6) Examples <br>
+                    </p>
+                </div>
+            </div>
+
+        </div>
 
     </div>
 
@@ -262,12 +289,12 @@
     <!-- Pagination -->
     <div class="w3-center w3-padding-32">
         <div class="w3-bar">
-            <a href="#" class="w3-bar-item w3-button w3-hover-black">&laquo;</a>
-            <a href="#" class="w3-bar-item w3-black w3-button">1</a>
-<!--            <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>-->
+            <a href="javascript:" class="w3-bar-item w3-button w3-hover-black">&laquo;</a>
+            <a id="f0" href="javascript:" class="w3-bar-item w3-black w3-button" onclick="setPageHidden(page2);setPageVisible(page1);filter_focus_bottom(this.id)" >1</a>
+            <a id="f1" href="javascript:" class="w3-bar-item w3-button w3-hover-black" onclick="setPageHidden(page1);setPageVisible(page2);filter_focus_bottom(this.id)">2</a>
 <!--            <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>-->
 <!--            <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>-->
-            <a href="#" class="w3-bar-item w3-button w3-hover-black">&raquo;</a>
+            <a href="javascript:" class="w3-bar-item w3-button w3-hover-black">&raquo;</a>
         </div>
     </div>
 
@@ -283,8 +310,10 @@
 
 <script>
     // var to store which one is checked in filter
-    var checked="fi0";
-    const node_ids = ['s0','s1','s2','s3','s4','s5'];
+    var checked_top="fi0";
+    var checked_bottom = 'f0';
+    const page1 = ['s0','s1','s2','s3','s4','s5'];
+    const page2 = ['s6']
 
     // Script to open and close sidebar
     function w3_open() {
@@ -298,36 +327,60 @@
     }
 
 
-    function filter_focus(id){
-        document.getElementById(checked).classList.remove('w3-black');
-        document.getElementById(checked).classList.add('w3-white')
+    function filter_focus_top(id){
+        document.getElementById(checked_top).classList.remove('w3-black');
+        document.getElementById(checked_top).classList.add('w3-white')
         document.getElementById(id).classList.remove('w3-white');
         document.getElementById(id).classList.add('w3-black');
-        checked=id;
+        checked_top=id;
+    }
+    function filter_focus_bottom(id){
+        document.getElementById(checked_bottom).classList.remove('w3-black');
+        document.getElementById(checked_bottom).classList.add('w3-white')
+        document.getElementById(id).classList.remove('w3-white');
+        document.getElementById(id).classList.add('w3-black');
+        checked_bottom=id;
     }
     function filter_life(){
         setVisible('s2');
         setHidden('s0');
-        setHidden('s1')
-        setHidden('s3')
+        setHidden('s1');
+        setHidden('s3');
         setHidden('s4');
         setHidden('s5');
+        setHidden('s6');
+        filter_focus_bottom('f0')
 
     }
 
     function filter_all(){
-        for (let i = 0; i < node_ids.length; i++) {
-            setVisible(node_ids[i]);
-        }
+        setPageVisible(page1)
+        setPageHidden(page2)
+        filter_focus_bottom('f0')
     }
 
     function setHidden(id) {
         document.getElementById(id).style.display="none";
     }
     function setVisible(id){document.getElementById(id).style.display="block";}
-    function filter_2020(){
-        setVisible('s0');setVisible('s1');
-        setHidden('s2');setHidden('s3');setHidden('s4');setHidden('s5');
+    function filter_2021(){
+        // set content of page 1 hidden
+        setPageHidden(page1)
+
+        // set best of 2021 normal
+        setVisible('s6')
+        filter_focus_bottom('f0')
+    }
+
+    function setPageHidden(page){
+        for (let i = 0; i < page.length; i++) {
+            setHidden(page[i])
+        }
+    }
+    function setPageVisible(page){
+        for (let i = 0; i < page.length; i++) {
+            setVisible(page[i])
+        }
     }
 </script>
 <script src="js/jquery.min.js"></script>
