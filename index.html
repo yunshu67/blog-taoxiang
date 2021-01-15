@@ -258,6 +258,19 @@
                     </p>
                 </div>
             </div>
+            <div id="s7" class="w3-third w3-container w3-margin-bottom hidden">
+                <a href="articles/Machine%20Learning%20as%20a%20Black%20Box-tao%20xiang.pdf" target="_blank"><img src="images/black_box-ML.png" style="width:100%" class="w3-hover-opacity"></a>
+                <div class="w3-container w3-white">
+                    <a class="title" href="articles/Machine%20Learning%20as%20a%20Black%20Box-tao%20xiang.pdf" target="_blank"><p class="title " >MACHINE LEARNING AS A BLACK BOX SOLUTION</p>
+                    </a>
+                    <p class="text_grey">Intro to Auto-ML
+                        <br>1) Definition of Auto-ML<br>
+                        2) Data preprocessing<br>
+                        3) Combined algorithm selection and hyperparameter optimization<br>
+                        4) Algorithms to solve CASH<br>
+                    </p>
+                </div>
+            </div>
 
         </div>
 
@@ -315,7 +328,7 @@
     var checked_top="fi0";
     var checked_bottom = 'f0';
     const page1 = ['s0','s1','s2','s3','s4','s5'];
-    const page2 = ['s6']
+    const page2 = ['s6','s7']
 
     // Script to open and close sidebar
     function w3_open() {
@@ -351,6 +364,7 @@
         setHidden('s4');
         setHidden('s5');
         setHidden('s6');
+        setHidden('s7')
         filter_focus_bottom('f0')
 
     }
@@ -371,6 +385,7 @@
 
         // set best of 2021 normal
         setVisible('s6')
+        setVisible('s7')
         filter_focus_bottom('f0')
     }
 
