@@ -4,10 +4,20 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
-<video loop="loop" autoplay="autoplay" >
-    <source src="https://blz.nosdn.127.net/1/tm/heroes/landing/h53/video.mp4" type="video/mp4">
-    <source src="https://blz.nosdn.127.net/1/tm/heroes/landing/h53/video.mp4" type="video/webm">
-</video>
+<body >
+<audio id="a1" autoplay="autoplay" loop="loop" controls="controls" >
+    <source src="环游星空.mp3" type="audio/mp3">
+</audio>
+
+<script>
+    //--创建页面监听，等待微信端页面加载完毕 触发音频播放
+    document.addEventListener('WeixinJSBridgeReady', function() {
+        document.getElementById('a1').play()
+    })
+
+    document.addEventListener('touchstart', function() {
+        document.getElementById('a1').play()
+    })
+</script>
 </body>
 </html>
