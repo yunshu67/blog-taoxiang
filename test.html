@@ -3,38 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="css/myStylesheet.css">
 </head>
-<body>
+<body >
+<audio id="a1" autoplay="autoplay" loop="loop" controls="controls" >
+    <source src="环游星空.mp3" type="audio/mp3">
+</audio>
 
-<!--sidebar-->
-<div class="sidebar">
-<!--    avatar and name-->
-    <div class="intro">
-        <img src="images/avatar.jpeg"  alt="">
-        <div class="intro_content">
-            <h1>Tao Xiang's Blog</h1>
-            <p>Technical University Munich</p>
-        </div>
-    </div>
-<!--    table of contents-->
-    <div class="content">
-        <ul>
-            <li>Home</li>
-            <li>Articles</li>
-            <li>Notes
-                <ul class="notes" >
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                </ul>
-            </li>
-            <li>Essays</li>
-            <li>About Me</li>
-            <li>social media</li>
-        </ul>
-    </div>
+<script>
+    //--创建页面监听，等待微信端页面加载完毕 触发音频播放
+    document.addEventListener('WeixinJSBridgeReady', function() {
+        document.getElementById('a1').play()
+    })
 
-</div>
+    document.addEventListener('touchstart', function() {
+        document.getElementById('a1').play()
+    })
+</script>
 </body>
 </html>
