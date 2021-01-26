@@ -1,0 +1,3093 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript notes</title>
+    <style>
+        body{
+            font-family: "微软雅黑";
+            width: 100%;
+        }
+
+        code{display: inline-block;
+            background-color: #F8F8F8;
+            width: 95%;
+            box-sizing: border-box;
+            margin: 0 1%;
+            padding: 1em 1em;
+
+            white-space: pre-line;
+            font-size: 10px;
+            color: #c7254e;
+            border-radius: 4px;
+            text-overflow: ellipsis;
+
+        }
+
+        h3{
+            padding: 0;
+            margin: 0;
+        }
+        p{
+            white-space: pre-line;
+            font-size: 10px;
+        }
+        .title{
+            text-align: center;
+            height: 50px;
+        }
+        .content{
+            text-align: center;
+        }
+        .card{
+            width: 450px;
+            border: 1px solid  black;
+            margin-left: 10px;
+            display: inline-block;
+            vertical-align: top;
+
+        }
+        .card .card_title{
+            text-align: center;
+            font-weight: 900;
+            font-size: 20px;
+            border-bottom: 1px solid black;
+            line-height: 50px;
+        }
+
+        .card .card_content{
+            padding-left: 5px;
+            text-align: left;
+        }
+        .card .card_content div{
+            white-space: pre-line;
+            font-size: 10px;
+        }
+        .card:nth-of-type(2){
+            display: none;
+        }
+
+        .intro{
+            margin: 10px 0;
+        }
+
+        .intro div{
+            display: inline-block;
+            width: 100%;
+            line-height: 0.1em;
+            border-bottom: 1px solid #cccccc;
+        }
+
+        .intro span{
+            background-color: white;
+            padding: 0  10px;
+            color: #cccccc;
+        }
+
+
+
+
+    </style>
+</head>
+
+
+
+
+
+
+
+
+<body>
+<div class="title"><h1>JavaScript Notes By Tao</h1></div>
+<div class="content">
+
+    <div class="intro">
+        <div><span>ECMA script</span></div>
+    </div>
+
+    <!--        template: -->
+    <div class="card">
+        <div class="card_title"></div>
+        <div class="card_content">
+            <div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="card">
+        <div class="card_title">1. JavaScript书写格式</div>
+        <div class="card_content">
+            <div><h3>1.CSS书写格式</h3>1.行内样式: 写在标签内部
+                2.内嵌样式(内联样式) : 写在一对head标签中
+                3.外链样式: 写在一个单独的.css文件中, 再导入进来
+
+                <h3> 2.JavaScript书写格式</h3>                1.行内样式: 写在标签内部
+                2.内嵌样式(内联样式) : 写在一对head标签中
+                3.外链样式: 写在一个单独的.js文件中, 再导入进来
+
+                <h3> 3.JavaScript书写格式注意点</h3>                1.不推荐直接将JavaScript代码书写到标签内部
+                2.默认情况下浏览器会从上至下的解析网页, 所以如果将JavaScript写到一对head标签中, 并且需要通过JavaScript代码操作界面上的元素, 那么就不能直接书写JavaScript代码, 否则无效
+                2.1如果想将JavaScript写到一对head标签中, 并且需要在JavaScript代码中操作界面上的元素, 那么必须加上window.onload = function(){操作界面元素的JavaScript}
+                2.2window.onload的含义: 等到界面上所有的内容都加载完毕再执行{}中的代码
+                2.3由于默认情况下浏览器会从上至下的解析网页, 所以如果想通过JavaScript操作界面上的元素只需要等到元素被加载解析之后操作就可以了, 所以我们还可以将JavaScript代码写到body结束标签的前面
+                3.如果通过外链式导入.js文件, 并且需要在.js文件中操作界面上的元素, 那么如果是在head标签中导入的, 必须在.js文件中加上window.onload. 如果是在body结束标签前面导入的, 那么就不用添加window.onload
+                4.如果需要在一对script标签中编写JavaScript代码, 那么就不能同时通过script标签再导入其它的.js文件, 否则书写的JavaScript代码无效
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card_title">2. JavaScript常见输出方式</div>
+        <div class="card_content">
+            <div>
+                <h3> 1.通过弹窗的形式来输出
+                </h3>                alert(需要输出的内容);
+                confirm(需要输出的内容);
+                prompt(需要输出的内容);
+                注意点:
+                如果需要输出的内容不是数字, 那么就必须通过单引号或者双引号括起来
+                在JavaScript中是严格区分大小写的, alert()和ALERT()不是一回事
+                在编写JavaScript代码的时候, 一定要记住每一句代码后面都需要添加一个分号, 并且这个分号必须是英文的分号
+                我们会发现有时候不写分号程序也能够运行, 这里并不是因为不需要分号, 而是浏览器自动帮助我们添加了分号, 浏览器自动添加会消耗一定的性能, 并且有可能会添加错误
+
+                <h3> 2.通过网页内容区域的形式来输出</h3>                document.write(需要输出的内容);
+                注意点:
+                如果需要输出的内容不是数字, 那么就必须通过单引号或者双引号括起来
+
+                <h3> 3.通过开发者工具控制台的形式来输出</h3>                console.log(需要输出的内容);  // 普通输出
+                console.warn(需要输出的内容); // 警告输出
+                console.error(需要输出的内容); // 错误输出
+                注意点:
+                如果需要输出的内容不是数字, 那么就必须通过单引号或者双引号括起来
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card_title">3. JavaScript常量</div>
+        <div class="card_content">
+            <div>
+                <h3> 1.什么是常量?
+                </h3>                常量表示一些固定不变的数据
+                现实生活中人的性别其实就可以看做是常量, 生下来是男孩一辈子都是男孩, 生下来是女孩一辈子都是女孩
+
+                <h3> 2.JavaScript中常量的分类
+                </h3>                2.1整型常量
+                整型常量其实就是正数, 在JavaScript中随便写一个整数都是整型常量
+                1   /   666  /    99
+
+                2.2实型常量
+                实型常量其实就是小数, 在JavaScript中随便写一个小数都是实型常量
+                3.14   6.66
+
+                2.3字符串常量
+                字符串常量其实就是用单引号或者双引号括起来的内容, 我们就称之为字符串常量
+                'a'
+                'abc'
+                "1"
+                "知播渔教育"
+                注意点: 无论用单引号或者双引号括起来了多少个字符, 在JavaScript中都是字符串常量
+
+                2.4布尔常量
+                布尔常量其实就是真或者假, 在JavaScript中通过true和false来表达
+                在JavaScript中布尔常量只有两个取值, 真(true)或者假(false)
+
+                2.5自定义常量
+                在ES6中新增的
+                const 常量名称 = 常量取值;
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card_title">4. JavaScript变量</div>
+        <div class="card_content">
+            <div>
+                <h3> 1.什么是变量?
+                </h3>                变量表示一些可以被修改的数据
+                在现实生活中超市的储物格就是变量, 在不同的时间段里面, 储物格中存储的数据也不一样
+
+                <h3> 2.如何定义一个变量
+                </h3>                在JavaScript中可以通过定义变量的方式来生成储物格, 也就是告诉浏览器, 我们需要一块内存空间
+                var 变量名称;
+                let 变量名称;
+
+                var:
+                1.在JavaScript中如果定义了同名的变量, 那么后定义的变量会覆盖先定义的变量
+                2.可以先使用变量, 再定义变量, 并不会报错
+
+                let 则不行
+
+                <h3> 3.如何使用变量
+                </h3>                使用变量就是往申请的那块内存空间中存储数据, 和获取存储的数据
+                3.1如何存储数据
+                变量名称 = 需要存储的数据;
+                可以将等号右边需要存储的数据放到等号左边变量申请的那块存储空间中
+                3.2如何获取存储在变量中的数据
+                变量名称
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">5. JavaScript数据类型</div>
+        <div class="card_content">
+            <div>
+                <h3> 1.基本数据类型
+                </h3>                Number 数值类型
+                在JavaScript中无论是整数还是小数都是属于数值类型的
+
+                String 字符串类型
+                在JavaScript中无论是通过单引号还是通过双引号括起来的内容都是属于字符串类型的
+
+                Boolean 布尔类型
+                在JavaScript中布尔类型比较特殊, 只有两个取值true/false
+
+                Undefined 未定义类型
+                在JavaScript中未定义类型比较特殊, 只有一个取值undefined
+
+                Null 空类型
+
+                <h3> 2.引用数据类型
+                </h3>                Object 对象类型
+
+                <h3> 3.在JavaScript中为了方便我们检测某一种数据是属于哪一种数据类型的, JavaScript提供了一个名称叫做typeof的操作符
+                </h3>                格式: typeof 需要检测的数据;
+
+                利用typeof检测123这个常量是属于哪一种数据类型的, 并且将检测的结果保存到res这个变量中
+                let res = typeof 123;
+                console.log(res);
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">6. 转换为字符串类型</div>
+        <div class="card_content">
+            <div>
+                1.将Number类型转换为字符串类型
+                2.将Boolean类型转换为字符串类型
+                3.将undefined类型转换为字符串类型
+                4.将null类型转换为字符串类型
+
+                在JavaScript中如果想将以上的四种基本数据类型转换为字符串类型, 常用的方法有三种
+                1.对于Number类型和Boolean类型来说, 可以通过 变量名称.toString()的方式来转换
+                2.可以通过String(常量or变量);转换为字符串
+                3.还可以通过 变量or常量 + "" / 变量or常量 + ''转换为字符串
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">7. 转换为数值类型</div>
+        <div class="card_content">
+            <div>
+                <h3> 1.将String类型转换为数值类型
+                </h3>                - 如果字符串中都是数值, 那么就正常转换
+                - 如果字符串是一个空串""/"   ", 那么转换之后是0
+                - 如果字符串中不仅仅是数字, 那么转换之后是NaN
+
+                <h3> 2.将Boolean类型转换为数值类型
+                </h3>                - true转换之后是1
+                - false转换之后是0
+
+                <h3> 3.将undefined类型转换为数值类型
+                </h3>                - 转换之后是NaN
+
+                <h3> 4.将null类型转换为数值类型
+                </h3>                - 转换之后是0
+
+                空字符串/false/null转换之后都是0
+                字符串中不仅仅是数字/undefined转换之后是NaN
+                其它的正常转换
+
+                <h3> 在JavaScript中如果想将以上的四种基本数据类型转换为数值类型, 常用的方法有三种
+                </h3>                1.通过Number(常量or变量);方式来转换
+                2.还可以通过数学运算中的+号和-号来转换
+                3.还可以通过parseInt(需要转换的字符串)/parseFloat(需要转换的字符串)
+                <ur>
+                    <li>parseInt/parseFloat都会从左至右的提取数值, 一旦遇到非数值就会立即停止
+                        停止的时候如何还没有提取到数值, 那么就返回NaN</li>
+                    <li>parseInt/parseFloat都会将传入的数据当做字符串来处理</li>
+                </ur>
+
+
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">8. 转换为布尔类型</div>
+        <div class="card_content">
+            <div>
+                <h3> 1.将String类型转换为布尔类型
+                </h3>                只要字符串中有内容都会转换为true, 只有字符串中没有内容才会转换为false
+
+                <h3> 2.将Number类型转换为布尔类型
+                </h3>                只有数值是0才会转换为false, 其它的都会转换为true
+                如果是NaN也会转换为false
+
+                <h3> 3.将undefined类型转换为布尔类型
+                </h3>                undefined会转换为false
+
+                <h3> 4.将null类型转换为布尔类型
+                </h3>                null会转换为false
+
+
+                空字符串/0/NaN/undefined/null 会转换成false, 其它的都是true
+
+                在JavaScript中如果想将基本数据类型转换为布尔类型, 那么只需要调用Boolean(常量or变量)
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">9. JavaScript算数运算符注意点</div>
+        <div class="card_content">
+            <div>
+                <h3> 1.加法运算的注意点
+                </h3>                1.1任何非数值类型的数据在参与加法运算之前, 都会被自动的转换成数值类型之后, 再参与运算
+                1.2任何数据和NaN进行运算, 结果都是NaN
+                1.3任何数据和字符串相加, 都会被先转换成字符串之后再运算
+
+                <h3> 2.减法运算的注意点
+                </h3>                1.1任何非数值类型的数据在参与加法运算之前, 都会被自动的转换成数值类型之后, 再参与运算
+                1.2任何数据和NaN进行运算, 结果都是NaN
+                1.3任何数据和字符串相减, 都会先把字符串转换成数值类型之后再运算
+
+                <h3> 3.乘法和除法运算的注意点
+                </h3>                和减法运算的注意点一模一样
+
+                <h3> 4.取模(取余)运算注意点
+                </h3>                格式: m%n = 余数
+                4.1如果m>n的, 那么就正常取余
+                4.2如果m《n的, 那么结果就是m
+                4.3如果n是0, 那么结果就是NaN
+                4.4取余运算结果的正负性, 取决于m而不是n
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">10. JavaScript关系运算符</div>
+        <div class="card_content">
+            <div>
+                <h3> 1.什么是关系运算符?
+                </h3>                > < >= <= == != === !==
+
+                <h3> 2.关系运算符的返回值
+                </h3>                只有两个, 要么是true, 要么是false
+                如果关系成立, 就返回true
+                如果关系不成立, 就返回false
+
+                <h3> 3.关系运算符的注意点
+                </h3>                3.1对于非数值类型的数据, 会先转换成数值类型, 再进行判断
+                3.2对于关系运算符来说, 任何数据和NaN进行比较, 返回值都是false
+                3.3如果参与比较的都是字符串类型, 那么不会转换成数值类型再比较, 而是直接比较字符对应的Unicode编码
+                3.4特殊比较的结果
+
+                <h3> 4. === !==
+                </h3>                会同时判断取值和数据类型
+                == !=
+                只会判断取值
+
+                <h3> 5.关系运算符的结合性和优先级
+                </h3>                关系运算符都是左结合性(从左至右的运算)
+                关系运算符中 > < >= <= 的优先级高于 == != === !==
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">11. JavaScript逗号运算符</div>
+        <div class="card_content">
+            <div>
+                <h3> 1.逗号运算符 ,
+                </h3>                在JavaScript中逗号运算符一般用于简化代码
+
+                <h3> 2.逗号运算符优先级和结合性
+                </h3>                逗号运算符的结合性是左结合性(从左至右的运算)
+                逗号运算符的优先级是所有运算符中最低的
+
+                <h3> 3.逗号运算符也是一个运算符, 所以也有运算符结果
+                </h3>                逗号运算符的运算符结果就是最后一个表达式的结果
+                表达式1, 表达式2, 表达式3, ....;
+                <code>
+                    let a, b;
+                    // 利用逗号运算符同时给多个变量赋值
+                    a = 10, b = 5;
+
+                    let res = ((1 + 1), (2 + 2), (3 + 3));
+                    console.log(res);
+                </code>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">12. JavaScript三目运算符</div>
+        <div class="card_content">
+            <div>1.什么是三目运算符
+                三目运算符又称之为条件运算符
+
+                2.三目运算符格式
+                条件表达式 ? 结果A : 结果B;
+                在三目运算符中当条件为真的时候, 就会返回结果A
+                在三目运算符中当条件为假的时候, 就会返回结果B
+
+                3.三目运算符注意点
+                在三目运算符中?:不能单独出现, 要么一起出现, 要么一起不出现
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">13.     JavaScript-数组</div>
+        <div class="card_content">
+            <div>
+                <h3> 1.什么是数组?
+                </h3>                数组就是专门用于存储一组数据的
+                注意点: 和我们前面学习的Number/String/Boolean/Null/undefined不同(基本数据类型)
+                而我们今天学习的数组(Array)不是基本数据类型, 是引用数据类型(对象类型)
+
+                <h3> 2.如何创建一个数组?
+                </h3>                let 变量名称 = new Array(size);
+
+                <h3> 3.如何操作数据
+                </h3>                3.1如何往数组中存储数据
+                变量名称[索引号] = 需要存储的数据;
+                3.2如何从数组中获取存储的数据
+                变量名称[索引号];
+
+                <br>
+                1.和其它编程语言不同, 如果数组对应的索引中没有存储数据, 默认存储的就是undefined
+                其它编程语言中默认保存的是垃圾数据或者0
+
+                2.和其它编程语言不同, JavaScript中访问了数组中不存在的索引不会报错, 会返回undefined
+                其它编程语言一旦超出索引范围就会报错或者返回脏数据
+
+                3.如何操作数据
+                3.1如何往数组中存储数据
+                变量名称[索引号] = 需要存储的数据;
+                3.2如何从数组中获取存储的数据
+                变量名称[索引号];
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">14. JavaScript-数组解构赋值</div>
+        <div class="card_content">
+            <div><code>/*
+                1.什么是数组的解构赋值?
+                解构赋值是ES6中新增的一种赋值方式
+
+                2.数组解构赋值的注意点
+                */
+                /*
+                let arr = [1, 3, 5];
+                // let a = arr[0];
+                // let b = arr[1];
+                // let c = arr[2];
+
+                let [a, b, c] = arr;
+                console.log("a = " + a);
+                console.log("b = " + b);
+                console.log("c = " + c);
+                */
+                // 2.1在数组的解构赋值中, 等号左边的格式必须和等号右边的格式一模一样, 才能完全解构
+                /*
+                // let [a, b, c] = [1, 3, 5];
+                // let [a, b, c] = [1, 3, [2, 4]];
+                let [a, b, [c, d]] = [1, 3, [2, 4]];
+                console.log("a = " + a);
+                console.log("b = " + b);
+                console.log("c = " + c);
+                console.log("d = " + d);
+                */
+
+                // 2.2在数组的解构赋值中, 左边的个数可以和右边的个数不一样
+                /*
+                let [a, b] = [1, 3, 5];
+                console.log("a = " + a);
+                console.log("b = " + b);
+                */
+
+                // 2.3在数组的解构赋值中, 右边的个数可以和左边的个数不一样
+                /*
+                let [a, b, c] = [1];
+                console.log("a = " + a);
+                console.log("b = " + b);
+                console.log("c = " + c);
+                */
+
+                // 2.4在数组的解构赋值中,如果右边的个数和左边的个数不一样, 那么我们可以给左边指定默认值
+                /*
+                let [a, b = 666, c = 888] = [1];
+                console.log("a = " + a);
+                console.log("b = " + b);
+                console.log("c = " + c);
+                */
+
+                // 2.5在数组的解构赋值中, 如果左边的个数和右边的个数不一样, 那么如果设置默认值会被覆盖
+                /*
+                let [a, b = 666] = [1, 3, 5];
+                console.log("a = " + a);
+                console.log("b = " + b);
+                */
+
+                // 2.6在数组的解构赋值中, 还可以使用ES6中新增的扩展运算符来打包剩余的数据
+                // 2.7在数组的解构赋值中, 如果使用了扩展运算符, 那么扩展运算符只能写在最后
+                // ES6中新增的扩展运算符: ...
+                // let [a, b] = [1, 3, 5];
+                // let [a, ...b] = [1, 3, 5];
+                let [a, ...b] = [1, 3, 5];
+                console.log("a = " + a);
+                console.log(b);</code>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">15. JavaScript-数组增删改查</div>
+        <div class="card_content">
+            <div><code>let arr = ["a", "b", "c"];
+                需求: 获取数组中索引为1的那个数据 (查)
+                console.log(arr[1]);
+
+                需求: 将索引为1的数据修改为m (改)
+                arr[1] = "m";
+                console.log(arr);
+
+                需求: 将索引为1的数据修改为d, 索引为2的修改为e (改)
+                arr[1] = "d";
+                arr[2] = "e";
+                console.log(arr);
+
+                参数1: 从什么位置开始
+                参数2: 需要替换多少个元素
+                参数3开始: 新的内容
+                arr.splice(1, 2, "d", "e");
+                console.log(arr);
+
+                需求: 要求在数组最后添加一条数据 (增)
+                arr[3] = "d";
+                console.log(arr);
+                push方法可以在数组的最后新增一条数据, 并且会将新增内容之后数组当前的长度返回给我们
+                let res = arr.push("d");
+                console.log(res);
+                console.log(arr);
+
+                需求: 要求在数组最后添加两条数据 (增)
+                arr.push("d");
+                arr.push("e");
+                数组的push方法可以接收1个或多个参数
+                arr.push("d", "e");
+                console.log(arr);
+
+                需求: 要求在数组最前面添加一条数据 (增)
+                arr[-1] = "m";
+                unshift方法和push方法一样, 会将新增内容之后当前数组的长度返回给我们
+                let res = arr.unshift("m");
+                console.log(res);
+                console.log(arr);
+
+                需求: 要求在数组最前面添加两条数据 (增)
+                arr.unshift("m");
+                arr.unshift("w");
+                unshift方法和push方法一样, 可以接收1个或多个参数
+                arr.unshift("m", "w");
+                console.log(arr);
+
+                需求: 要求删除数组最后一条数据 (删)
+                数组的pop方法可以删除数组中的最后一条数据,  并且将删除的数据返回给我们
+                let res = arr.pop();
+                console.log(res);
+                console.log(arr);
+
+                需求: 要求删除数组最前面一条数据 (删)
+                数组的shift方法可以删除数组中的最前面一条数据,  并且将删除的数据返回给我们
+                let res = arr.shift();
+                console.log(res);
+                console.log(arr);
+
+                需求: 要求删除数组中索引为1的数据 (删)
+                以下代码的含义: 从索引为1的元素开始删除1条数据
+                参数1: 从什么位置开始
+                参数2: 需要删除多少个元素
+                arr.splice(1, 1);
+                console.log(arr);
+
+                需求: 要求删除数组中除了第0条以外的所有数据 (删)
+                arr.splice(1, 2);
+                console.log(arr);
+
+                let a;
+                a = [1 ,3 , 5];</code>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">16. JavaScript-数组常用方法</div>
+        <div class="card_content">
+            <div>
+                <code>let arr = [1, 2, 3, 4, 5];
+                    1.如何清空数组
+                    arr = [];
+                    arr.length = 0;
+                    arr.splice(0, arr.length)
+                    console.log(arr);
+
+                    2.如何将数组转换为字符串
+                    let str = arr.toString();
+                    console.log(str);
+                    console.log(typeof str);
+
+                    3.如何将数组转换成指定格式字符串
+                    join方法默认情况下如果没有传递参数, 就是调用toString();
+                    join方法如果传递了参数, 就会将传递的参数作为元素和元素的连接符号
+                    let str =  arr.join("+");
+                    console.log(str);
+                    console.log(typeof str);
+
+                    4.如何将两个数组拼接为一个数组
+                    let arr1 = [1, 3, 5];
+                    let arr2 = [2, 4, 6];
+                    注意点: 数组不能够使用加号进行拼接, 如果使用加号进行拼接会先转换成字符串再拼接
+                    let res = arr1 + arr2;
+                    let res = arr1.concat(arr2);
+                    注意点: 扩展运算符在解构赋值中(等号的左边)表示将剩余的数据打包成一个新的数组
+                    扩展运算符在等号右边, 那么表示将数组中所有的数据解开, 放到所在的位置
+                    let res = [...arr1, ...arr2]; // let res = [1, 3, 5, 2, 4, 6];
+                    console.log(res);
+                    console.log(typeof res);
+                    注意点: 不会修改原有的数组, 会生成一个新的数组返回给我们
+                    console.log(arr1);
+                    console.log(arr2);
+
+                    5.如何对数组中的内容进行反转
+                    [1, 2, 3, 4, 5] [5, 4, 3, 2, 1]
+                    let res = arr.reverse();
+                    console.log(res);
+                    注意点: 会修改原有的数组
+                    console.log(arr);
+
+                    6.如何截取数组中指定范围内容
+                    0  1  2  3
+                    [1, 2, 3, 4, 5]
+                    slice方法是包头不包尾(包含起始位置, 不包含结束的位置)
+                    let res = arr.slice(1, 3)
+                    console.log(res);
+                    console.log(arr);
+
+                    7.如何查找元素在数组中的位置
+                    0  1  2  3  4
+                    [1, 2, 3, 4, 5]
+                    0  1  2  3  4  5
+                    let arr = [1, 2, 3, 4, 5, 3];
+                    indexOf方法如果找到了指定的元素, 就会返回元素对应的位置
+                    indexOf方法如果没有找到指定的元素, 就会返回-1
+                    注意点: indexOf方法默认是从左至右的查找, 一旦找到就会立即停止查找
+                    let res = arr.indexOf(3);
+                    let res = arr.indexOf(6);
+                    参数1: 需要查找的元素
+                    参数2: 从什么位置开始查找
+                    let res = arr.indexOf(3, 4);
+                    注意点: lastIndexOf方法默认是从右至左的查找, 一旦找到就会立即停止查找
+                    let res = arr.lastIndexOf(3);
+                    let res = arr.lastIndexOf(3, 4);
+                    console.log(res);
+
+                    8.如何判断数组中是否包含某个元素
+                    let arr = [1, 2, 3, 4, 5];
+                    我们可以通过indexOf和lastIndexOf的结果, 判断是否是-1即可
+                    let res = arr.indexOf(8);
+                    let res = arr.lastIndexOf(8);
+
+                    let res = arr.includes(8);
+                    let res = arr.includes(4);
+                    console.log(res);</code>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">17. JavaScript-二维数组</div>
+        <div class="card_content">
+            <div><code>
+                /*
+                1.什么是二维数组?
+                二维数组就是数组的每一个元素又是一个数组, 我们就称之为二维数组
+
+                2.如何操作二维数组?
+                2.1如何从二维数组中获取数据
+                数组名称[二维数组索引]; 得到一个一维数组
+                数组名称[二维数组索引][一维数组索引]; 得到一维数组中的元素
+
+                2.2如何往二维数组中存储数据
+                数组名称[二维数组索引] = 一维数组;
+                数组名称[二维数组索引][一维数组索引] = 值;
+                */
+                // let arr = [1, 3, 5]; // 一维数组
+                // let arr = [[1, 3], [2, 4]]; // 二维数组
+
+                /*
+                let arr = [[1, 3], [2, 4]];
+                // let arr1 = arr[0];
+                // console.log(arr1);
+                let ele = arr[0][1];
+                console.log(ele);
+                */
+                /*
+                // 注意点: 在定义二维数组的时候, 将来需要存储多少个一维数组, 就写上多少个[]即可
+                let arr = [[],[]];
+                // arr[0] = [1, 3];
+                arr[1][0] = 2;
+                console.log(arr);
+                */
+            </code>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">18. JavaScript-函数</div>
+        <div class="card_content">
+            <div>/*
+                1.什么是函数?
+                函数是专门用于封装代码的, 函数是一段可以随时被反复执行的代码块
+
+                2.函数格式
+                function 函数名称(形参列表){
+                被封装的代码;
+                }
+
+                3.不使用函数的弊端
+                3.1冗余代码太多
+                3.2需求变更, 需要修改很多的代码
+
+                4.使用函数的好处
+                4.1冗余代码变少了
+                4.2需求变更, 需要修改的代码变少了
+                */
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">19. JavaScript-函数arguments</div>
+        <div class="card_content">
+            <div>/*
+                1.因为console.log();也是通过()来调用的, 所以log也是一个函数
+                2.log函数的特点
+                可以接收1个或多个参数
+                3.为什么log函数可以接收1个或多个参数
+                内部的实现原理就用到了arguments
+                4.arguments的作用
+                保存所有传递给函数的实参
+                */
+                /*
+                // console.log();
+                function say() {
+                console.log("hello world");
+                }
+                window.say();
+                */
+                /*
+                console.log(1);
+                console.log(1, 2);
+                console.log(1, 2, 3);
+                */
+
+                注意点: 每个函数中都有一个叫做arguments的东东
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card_title">20. JavaScript-函数扩展运算符</div>
+        <div class="card_content">
+            <div>1.扩展运算符在等号左边, 将剩余的数据打包到一个新的数组中
+                注意点: 只能写在最后
+                let [a, ...b] = [1, 3, 5]; a = 1; b = [3, 5];
+
+                2.扩展运算符在等号右边, 将数组中的数据解开
+                let arr1 = [1, 3, 5];
+                let arr2 = [2, 4, 6];
+                let arr = [...arr1, ...arr2]; let arr = [1, 3, 5, 2, 4, 6];
+
+                3.扩展运算符在函数的形参列表中的作用
+                将传递给函数的所有实参打包到一个数组中
+                注意点: 和在等号左边一样, 也只能写在形参列表的最后
+                */
+                <code>/*
+                    function getSum(...values) {
+                    // console.log(values);
+                    let sum = 0;
+                    for (let i = 0; i < values.length; i++){
+                    let num = values[i];
+                    sum += num;
+                    }
+                    return sum;
+                    }
+                    let res = getSum(10, 20, 30, 40);
+                    console.log(res);</code>
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">21. JavaScript-函数形参默认值</div>
+        <div class="card_content">
+            <div>
+                注意点: ES6开始的默认值还可以从其它的函数中获取
+                function getSum(a = "指趣学院", b = "知播渔教育"){}
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">22. JavaScript-函数作为参数和返回值</div>
+        <div class="card_content">
+            <div><code>/*
+                let say = function () {
+                console.log("hello world");
+                }
+                // say();
+                // let fn = say;
+                // fn();
+                // 将函数作为其他函数的参数
+                function test(fn) { // let fn = say;
+                fn();
+                }
+                test(say);
+                */
+                // 将函数作为其他函数的返回值
+                function test() {
+                // 注意点: 在其它编程语言中函数是不可以嵌套定义的,
+                // 但是在JavaScript中函数是可以嵌套定义的
+                let say = function () {
+                console.log("hello world");
+                }
+                return say;
+                }
+                let fn = test(); // let fn = say;
+                fn();</code>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">23. JavaScript-箭头函数</div>
+        <div class="card_content">
+            <div><code>
+                1.什么是箭头函数?
+                箭头函数是ES6中新增的一种定义函数的格式
+                目的: 就是为了简化定义函数的代码
+                let arr = new Array();
+                let arr = [];
+
+                2.在ES6之前如何定义函数
+                function 函数名称(形参列表){
+                需要封装的代码;
+                }
+                let 函数名称 = function(形参列表){
+                需要封装的代码;
+                }
+
+                3.从ES6开始如何定义函数
+                let 函数名称 = (形参列表) =>{
+                需要封装的代码;
+                }
+
+                4.箭头函数的注意点
+                4.1在箭头函数中如果只有一个形参, 那么()可以省略
+                4.2在箭头函数中如果{}中只有一句代码, 那么{}也可以省略
+                */
+                /*
+                // function say() {
+                //     console.log("hello lnj");
+                // }
+                let say = () => {
+                console.log("hello lnj");
+                }
+                say();
+                */
+
+                // function say(name) {
+                //     console.log("hello  " + name);
+                // }
+                // let say = (name) => {
+                //     console.log("hello  " + name);
+                // }
+                // let say = name => {
+                //     console.log("hello  " + name);
+                // }
+                let say = name => console.log("hello  " + name);
+                say("it666");
+            </code>
+
+            </div>
+
+        </div>
+    </div>    <div class="card">
+    <div class="card_title">24. 类</div>
+    <div class="card_content">
+        <div><code>
+            class Person{
+            // 当我们通过new创建对象的时候, 系统会自动调用constructor
+            // constructor我们称之为构造函数
+            constructor(myName, myAge){
+            this.name = myName;
+            this.age = myAge;
+            }
+
+            // 实例方法
+            say(){
+            console.log(this.name, this.age);
+            }
+            // 静态属性
+            static num = 666;
+            // 静态方法
+            static run() {
+            console.log("run");
+            }
+            }
+            // let p = new Person();
+            let p = new Person("zs", 18);
+            p.say();
+            console.log(Person.num);
+            Person.run();
+        </code>
+
+        </div>
+
+    </div>
+</div>
+    <div class="card">
+        <div class="card_title">25. 继承</div>
+        <div class="card_content">
+            <div><code>
+                /*
+                1.在ES6中如何继承
+                1.1在子类后面添加extends并指定父类的名称
+                1.2在子类的constructor构造函数中通过super方法借助父类的构造函数
+                */
+                // 以下代码的含义: 告诉浏览器将来Student这个类需要继承于Person这个类
+                class Student extends Person{
+                constructor(myName, myAge, myScore){
+                // 1.在子类中通过call/apply方法借助父类的构造函数
+                // Person.call(this, myName, myAge);
+                super(myName, myAge);
+                this.score = myScore;
+                }
+                study(){
+                console.log("day day up");
+                }
+                }
+                let stu = new Student("zs", 18, 98);
+                stu.say();
+            </code>
+
+            </div>
+
+        </div>
+    </div>    <div class="card">
+    <div class="card_title">26. JavaScript-bind-call-apply</div>
+    <div class="card_content">
+        <div><code>
+            /*
+            1.this是什么?
+            谁调用当前函数或者方法, this就是谁
+            */
+
+            /*
+            2.这三个方法的作用是什么?
+            这三个方法都是用于修改函数或者方法中的this的
+            2.1.bind方法作用
+            修改函数或者方法中的this为指定的对象, 并且会返回一个修改之后的新函数给我们
+            注意点: bind方法除了可以修改this以外, 还可以传递参数, 只不过参数必须写在this对象的后面
+            2.2.call方法作用
+            修改函数或者方法中的this为指定的对象, 并且会立即调用修改之后的函数
+            注意点: call方法除了可以修改this以外, 还可以传递参数, 只不过参数必须写在this对象的后面
+            2.3.apply方法作用
+            修改函数或者方法中的this为指定的对象, 并且会立即调用修改之后的函数
+            注意点: apply方法除了可以修改this以外, 还可以传递参数, 只不过参数必须通过数组的方式传递
+            */
+            let obj = {
+            name: "zs"
+            }
+            /*
+            // function test(a, b) {
+            //     console.log(a, b);
+            //     console.log(this);
+            // }
+            // test(10, 20);
+            // window.test();
+            // let fn = test.bind(obj, 10, 20);
+            // fn();
+
+            // test.call(obj, 10, 20);
+
+            // test.apply(obj, [10, 20]);
+            */
+
+            function Person() {
+            this.name = "lnj";
+            this.say = function () {
+            console.log(this);
+            }
+            }
+            let p = new Person();
+            // p.say();
+            // let fn = p.say.bind(obj);
+            // fn();
+            // p.say.call(obj);
+            p.say.apply(obj);
+        </code>
+
+        </div>
+
+    </div>
+</div>
+    <div class="card">
+        <div class="card_title">27. JavaScript-获取对象类型</div>
+        <div class="card_content">
+            <div><code>/*
+                let obj = new Object();  --> object
+                let arr = new Array(); --> Array
+                let p = new Person(); --> Person
+                */
+                let obj = new Object();
+                console.log(typeof obj); // object
+
+                let arr = new Array();
+                // console.log(typeof arr); // object
+                console.log(arr.constructor.name); // Array
+
+
+                function Person() {
+                // let obj = new Object();
+                // let this = obj;
+                this.name = "lnj";
+                this.age = 34;
+                this.say = function () {
+                console.log(this.name, this.age);
+                }
+                // return this;
+                }
+                let p = new Person();
+                // console.log(typeof p); // object
+                console.log(p.constructor.name); // Person</code>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">28. 判断对象属性</div>
+        <div class="card_content">
+            <div><code>// 需求: 判断某一个对象是否拥有某一个属性
+                class Person{
+                name = null;
+                age = 0;
+                }
+                Person.prototype.height = 0;
+                /*
+                let p = new Person();
+                // in的特点: 只要类中或者原型对象中有, 就会返回true
+                console.log("name" in p); // true
+                console.log("width" in p); // false
+                console.log("height" in p); // true
+                */
+
+                // 需求: 判断某一个对象自身是否拥有某一个属性
+                let p = new Person();
+                // 特点: 只会去类中查找有没有, 不会去原型对象中查找
+                console.log(p.hasOwnProperty("name")); // true
+                console.log(p.hasOwnProperty("height")); // false</code>
+
+            </div>
+
+        </div>
+    </div>    <div class="card">
+    <div class="card_title">29. JavaScript-对象增删改查</div>
+    <div class="card_content">
+        <div><code> class Person{}
+            let p = new Person();
+            // 增加(C)
+            // p.name = "lnj";
+            p["name"] = "zs";
+            // p.say = function(){
+            //     console.log("hello world");
+            // }
+            p["say"] = function(){
+            console.log("hello world");
+            }
+            // console.log(p);
+
+            // 删除(R)
+            // delete p.name;
+            // delete p["name"];
+            // delete p.say;
+            // delete p["say"];
+            // console.log(p);
+
+            // 修改(U)
+            // p.name = "lnj";
+            // p["name"] = "ww";
+            // console.log(p.name);
+            // p.say = function(){
+            //     console.log("hi");
+            // }
+            // p["say"] = function(){
+            //     console.log("hi");
+            // }
+            // p.say();
+
+            // 查询(D)
+            // console.log(p.name);
+            // console.log(p["name"]);
+            p.say();</code>
+
+        </div>
+
+    </div>
+</div>
+    <div class="card">
+        <div class="card_title">30. JavaScript-对象遍历</div>
+        <div class="card_content">
+            <div><code>/*
+                1.在JavaScript中对象和数组一样是可以遍历的
+
+                2.什么是对象的遍历?
+                对象的遍历就是依次取出对象中所有的属性和方法
+
+                3.如何遍历一个对象?
+                在JS中可以通过高级for循环来遍历对象
+                以下代码的含义: 将指定对象中所有的属性和方法的名称取出来了依次的赋值给key这个变量
+                for(let key in obj){}
+                */
+                /*
+                class Person{
+                constructor(myName, myAge){
+                this.name = myName;
+                this.age = myAge;
+                }
+                // 注意点: ES6定义类的格式, 会将方法默认放到原型对象中
+                say(){
+                console.log(this.name, this.age);
+                }
+                }
+                */
+
+                function Person(myName, myAge){
+                this.name = myName;
+                this.age = myAge;
+                this.say = function(){
+                console.log(this.name, this.age);
+                }
+                }
+                let p = new Person("LNJ", 34);
+                console.log(p);
+                for(let key in p){
+                if(p[key] instanceof Function){
+                continue;
+                }
+                // console.log(key); // name / age / say
+                // 注意点: 以下代码的含义取出p对象中名称叫做当前遍历到的名称的属性或者方法的取值
+                console.log(p[key]); // p["name"] / p["age"] / p["say"]
+                // 注意点: 以下代码的含义取出p对象中名称叫做key的属性的取值
+                // console.log(p.key); // undefined
+                }</code>
+
+            </div>
+
+        </div>
+    </div>    <div class="card">
+    <div class="card_title">31. 数组高级API</div>
+    <div class="card_content">
+        <div><code>let arr = [1, 3, 5, 7, 9];
+            // 需求: 要求遍历数组
+            // 1.利用传统循环来遍历数组
+            // for(let i = 0; i < arr.length; i++){
+            //     console.log(arr[i]);
+            // }
+
+            // 2.利用forin循环来遍历数组
+            /*
+            // 注意点: 在企业开发中不推荐使用forin循环来遍历数组
+            // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/for...in
+            // for(let key in arr){
+            //     // console.log(key);
+            //     console.log(arr[key]);
+            // }
+
+            function Person() {
+            this.name = "lnj";
+            this.age = 34;
+            this.score = 99;
+            }
+            // 注意点: 对象中的属性是无序的
+            // forin循环是专门用于遍历对象的, 但是对象的属性是无序的, 所以forin循环就是专门用于遍历无序的东西的, 所以不推荐使用forin循环来遍历数组
+            let p = new Person();
+            console.log(p);
+            */
+
+            // 3.利用ES6中推出的for of循环来遍历数组
+            // for(let value of arr){
+            //     console.log(value);
+            // }
+
+            // 4.还可以利用Array对象的forEach方法来遍历数组
+            /*
+            // forEach方法会自动调用传入的函数
+            // 每次调用都会将当前遍历到的元素和当前遍历到的索引和当前被遍历的数组传递给这个函数
+            arr.forEach(function (currentValue, currentIndex, currentArray) {
+            // console.log(currentValue, currentIndex, currentArray);
+            console.log(currentValue);
+            });
+            */
+            Array.prototype.myForEach = function (fn) {
+            // this === [1, 3, 5, 7, 9]
+            for(let i = 0; i < this.length; i++){
+            fn(this[i], i, this);
+            }
+            };
+            arr.myForEach(function (currentValue, currentIndex, currentArray) {
+            console.log(currentValue, currentIndex, currentArray);
+            });</code>
+            <br><code>//         0  1  2  3  4
+                let arr = [3, 2, 6, 7, 6];
+                /*
+                indexOf
+                // 从左往右查找, 找到返回索引, 找不到返回-1
+                let index1 = arr.indexOf(6);
+                console.log(index1); // 2
+                // 从右至左查找, 找到返回索引, 找不到返回-1
+                let index2 = arr.lastIndexOf(6);
+                console.log(index2); // 4
+                // 从左往右查找, 找到返回true, 找不到返回false
+                let result = arr.includes(6);
+                console.log(result); // true
+                */
+                // 1.数组的findIndex方法
+                // findIndex方法: 定制版的indexOf, 找到返回索引, 找不到返回-1
+                /*
+                let index = arr.findIndex(function (currentValue, currentIndex, currentArray) {
+                // console.log(currentValue, currentIndex, currentArray);
+                // if(currentValue === 6){
+                if(currentValue === 10){
+                return true;
+                }
+                });
+                console.log(index);
+                */
+                // 2.数组的find方法
+                // indexOf方法返回索引, find方法返回找到的元素
+                // find方法如果找到了就返回找到的元素, 如果找不到就返回undefined
+                let value = arr.find(function (currentValue, currentIndex, currentArray) {
+                // console.log(currentValue, currentIndex, currentArray);
+                // if(currentValue === 6){
+                if(currentValue === 10){
+                return true;
+                }
+                });
+                console.log(value);
+
+                // findIndex实现
+                Array.prototype.myFindIndex = function (fn) {
+                for(let i = 0; i < this.length; i++){
+                let result = fn(this[i], i, this);
+                if(result){
+                return i;
+                }
+                }
+                return -1;
+                }
+
+                // findIndex实现
+                Array.prototype.myFind = function (fn) {
+                for(let i = 0; i < this.length; i++){
+                let result = fn(this[i], i, this);
+                if(result !== undefined){
+                return result;
+                }
+                }
+                return undefined;
+                }</code><br>
+            <code>//         0  1  2  3  4
+                let arr = [1, 2, 3, 4, 5];
+                // 1.数组的filter方法:
+                // 将满足条件的元素添加到一个新的数组中
+                /*
+                let newArray = arr.filter(function (currentValue, currentIndex, currentArray) {
+                // console.log(currentValue, currentIndex, currentArray);
+                if(currentValue % 2 === 0){
+                return true;
+                }
+                });
+                console.log(newArray); // [2, 4]
+                */
+
+                // 2.数组的map方法:
+                // 将满足条件的元素映射到一个新的数组中
+                /*
+                let newArray = arr.map(function (currentValue, currentIndex, currentArray) {
+                // console.log(currentValue, currentIndex, currentArray);
+                if(currentValue % 2 === 0){
+                return currentValue;
+                }
+                });
+                console.log(newArray); // [undefined, 2, undefined, 4, undefined]
+                */
+
+                // filter实现
+                Array.prototype.myFilter = function (fn) {
+                let newArray = [];
+                for(let i = 0; i < this.length; i++){
+                let result = fn(this[i], i, this);
+                if(result){
+                newArray.push(this[i]);
+                }
+                }
+                return newArray;
+                }
+
+                // map实现
+                Array.prototype.myMap = function (fn) {
+                let newArray = new Array(this.length);
+                newArray.fill(undefined);
+                for(let i = 0; i < this.length; i++){
+                let result = fn(this[i], i, this);
+                if(result !== undefined){
+                newArray[i] = result;
+                }
+                }
+                return newArray;
+                }</code>
+
+        </div>
+
+    </div>
+</div>    <div class="card">
+    <div class="card_title">32. 删除数组元素注意点</div>
+    <div class="card_content">
+        <div> let arr = [1, 2, 3, 4, 5];
+            // 需求: 遍历的同时删除数组中所有元素
+            // arr.splice(2, 1);
+            // delete arr[2];
+            console.log(arr);
+            /*
+            //       0     0 < 5
+            //       1     1 < 4
+            //       2     2 < 3
+            //       3     3 < 2
+            // for(let i = 0; i < arr.length; i++){
+            let len = arr.length;
+            // for(let i = 0; i < len; i++){
+            for(let i = len - 1; i >= 0; i--){
+            // console.log(arr.length); // 5, 4, 3
+            // console.log(len);
+            arr.splice(i, 1);
+            }
+            */
+            for(let i = 0; i < arr.length; i++){
+            console.log(arr.length);
+            // 注意点: 通过delete来删除数组中的元素, 数组的length属性不会发生变化
+            delete arr[i];
+            }
+            console.log(arr);
+
+        </div>
+
+    </div>
+</div>    <div class="card">
+    <div class="card_title">33. JavaScript-数组排序方法</div>
+    <div class="card_content">
+        <div><code>// let arr = ["c", "a", "b"];
+            // arr.sort();
+            /*
+            如果 compareFunction(a, b) 小于 0 ，那么 a 会被排列到 b 之前；
+            如果 compareFunction(a, b) 等于 0 ， a 和 b 的相对位置不变。
+            如果 compareFunction(a, b) 大于 0 ， b 会被排列到 a 之前
+            注意点: 如果元素是字符串类型, 那么比较的是字符串的Unicode编码
+            */
+            /*
+            arr.sort(function (a, b) {
+            if(a > b){
+            return -1;
+            }else if(a < b){
+            return 1;
+            }else{
+            return 0;
+            }
+            });
+            console.log(arr);
+            */
+
+            /*
+            let arr = [3, 4, 2, 5, 1];
+            // arr.sort();
+            arr.sort(function (a, b) {
+            // if(a > b){
+            //     return -1;
+            // }else if(a < b){
+            //     return 1;
+            // }else{
+            //     return 0;
+            // }
+            // 规律: 如果数组中的元素是数值类型
+            //       如果需要升序排序, 那么就返回a - b;
+            //       如果需要降序排序, 那么就返回b - a;
+            // return a - b;
+            return b - a;
+            });
+            console.log(arr);
+            */
+
+            /*
+            let arr = ["1234", "21", "54321", "123", "6"];
+            arr.sort(function (str1, str2) {
+            // return str1.length - str2.length;
+            return str2.length - str1.length;
+            });
+            console.log(arr);
+            */
+
+            let students = [
+            {name: "zs", age: 34},
+            {name: "ls", age: 18},
+            {name: "ww", age: 22},
+            {name: "mm", age: 28},
+            ];
+            students.sort(function (o1, o2) {
+            // return o1.age - o2.age;
+            return o2.age - o1.age;
+            });
+            console.log(students);</code>
+
+        </div>
+
+    </div>
+</div>    <div class="card">
+    <div class="card_title">33. JavaScript-字符串常用方法</div>
+    <div class="card_content">
+        <div><code>/*
+            在js中字符串可以看做一个特殊的数组, 所以大部分数组的属性/方法字符串都可以使用
+            */
+            // 1.获取字符串长度  .length
+            // let str = "abcd";
+            // console.log(str.length);
+
+            // 2.获取某个字符 [索引] / charAt
+            // let str = "abcd";
+            // let ch = str[1];
+            // let ch = str.charAt(1);
+            // console.log(ch);
+
+            // 3.字符串查找 indexOf / lastIndexOf / includes
+            // let str = "vavcd";
+            // let index = str.indexOf("v");
+            // let index = str.lastIndexOf("v");
+            // console.log(index);
+            // let result = str.includes("p");
+            // console.log(result);
+
+            // 4.拼接字符串 concat / +
+            // let str1 = "www";
+            // let str2 = "it666";
+            // let str = str1 + str2; // 推荐
+            // let str = str1.concat(str2);
+            // console.log(str);
+
+            // 5.截取子串 slice / substring / substr
+            let str = "abcdef";
+            // let subStr = str.slice(1, 3);
+            // let subStr = str.substring(1, 3);
+            let subStr = str.substr(1, 3);
+            console.log(subStr);
+        </code><br><code> // 1.字符串切割
+            // let arr = [1, 3, 5];
+            // let str = arr.join("-");
+            //  console.log(str);
+            //  let str = "1-3-5";
+            //  let arr = str.split("-");
+            //  console.log(arr);
+
+            // 2.判断是否以指定字符串开头 ES6
+            // let str = "http://www.it666.com";
+            // let result = str.startsWith("www");
+            // console.log(result);
+
+
+            // 3.判断是否以指定字符串结尾 ES6
+            // let str = "lnj.jpg";
+            // let result = str.endsWith("png");
+            // console.log(result);
+
+
+            // 4.字符串模板 ES6
+            // let str = "";
+            // let str = '';
+            // let str = `www.it666.com`;
+            // console.log(str);
+            // console.log(typeof str);
+
+            // let str =   "<ul>\n" +
+                //             "    <li>我是第1个li</li>\n" +
+                //             "    <li>我是第2个li</li>\n" +
+                //             "    <li>我是第3个li</li>\n" +
+                //             "</ul>";
+
+            // let str = `<ul>
+                //                 <li>我是第1个li</li>
+                //                 <li>我是第2个li</li>
+                //                 <li>我是第3个li</li>
+                //             </ul>`;
+
+            let name = "lnj";
+            let age = 34;
+            // let str = "我的名字是" + name + ",我的年龄是" + age;
+            let str = `我的名字是${name},我的年龄是${age}`;
+            console.log(str);</code>
+
+        </div>
+
+    </div>
+</div>
+    <div class="card">
+        <div class="card_title">34. JavaScript-三大对象</div>
+        <div class="card_content">
+            <div><code>/*
+                JavaScript中提供三种自带的对象, 分别是"本地对象"/"内置对象"/"宿主对象"
+
+                什么是宿主?
+                宿主就是指JavaScript运行环境, js可以在浏览器中运行, 也可以在服务器上运行(nodejs)
+                */
+                /*
+                1.本地对象
+                与宿主无关，无论在浏览器还是服务器中都有的对象
+                就是ECMAScript标准中定义的类(构造函数)。
+                在使用过程中需要我们手动new创建
+                例如：Boolean、Number、String、Array、Function、Object、Date、RegExp等。
+
+                2.内置对象
+                与宿主无关，无论在浏览器还是服务器中都有的对象
+                ECMAScript已经帮我们创建好的对象。
+                在使用过程中无需我们手动new创建
+                例如：Global、Math、JSON
+
+                3.宿主对象
+                对于嵌入到网页中的JS来说，其宿主对象就是浏览器, 所以宿主对象就是浏览器提供的对象
+                包含: Window和Document等。
+                所有的DOM和BOM对象都属于宿主对象。
+
+                ----------------------------------------------------------------------------------------
+                4.自定义对象
+                我们自己编写的类创建的对象
+                */</code>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">35. JavaScript-Math内置对象</div>
+        <div class="card_content">
+            <div><code>Math.floor()    向下取整
+                Math.ceil()     向上取整
+                Math.round()    四舍五入
+                Math.abs()      绝对值
+                Math.random()   生成随机数
+                */
+                /*
+                // Math.floor()    向下取整
+                // 直接砍掉所有的小数位就是向下取整
+                // let num = 3.9;
+                // let value = Math.floor(num);
+                // console.log(value);
+                // Math.ceil()     向上取整
+                // 只要有小数位就会给整数位+1, 然后砍掉所有小数位
+                // let num = 3.9;
+                // let value = Math.ceil(num);
+                // console.log(value);
+                // Math.round()    四舍五入
+                // 和小学数学一样, 如果小数位满5就会进1
+                // let num = 3.5;
+                // let value = Math.round(num);
+                // console.log(value);
+                // Math.abs()      绝对值
+                // 和小学数学一样, 统一变为正数
+                // let num = -3;
+                // let value = Math.abs(num);
+                // console.log(value);
+                */
+
+                // 会生成一个0~1的随机数, 但是不包括1
+                // let value = Math.random();
+                // console.log(value);
+
+                // 需求: 要求生成一个1~10的随机数
+                function getRandomIntInclusive(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min + 1)) + min; //含最大值，含最小值
+                }
+                let value = getRandomIntInclusive(1, 10);
+                console.log(value);</code>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="intro">
+        <div><span>Document Object Model</span></div>
+    </div>
+
+    <div class="card">
+        <div class="card_title">1. JavaScript-DOM开篇</div>
+        <div class="card_content">
+            <div>1.什么是window?
+                window：是一个全局对象, 代表浏览器中一个打开的窗口, 每个窗口都是一个window对象
+
+                2.什么是document?
+                document是window的一个属性, 这个属性是一个对象
+                document: 代表当前窗口中的整个网页,
+                document对象保存了网页上所有的内容, 通过document对象就可以操作网页上的内容
+                */
+
+                /*
+                3.什么是DOM?
+                DOM 定义了访问和操作 HTML文档(网页)的标准方法
+                DOM全称: Document Object Model, 即文档模型对象
+                所以学习DOM就是学习如何通过document对象操作网页上的内容
+
+            </div>
+
+        </div>
+    </div><div class="card">
+    <div class="card_title">2. JavaScript-获取DOM元素</div>
+    <div class="card_content">
+        <div>1.在JavaScript中HTML标签也称之为DOM元素
+            2.使用document的时候前面不用加window
+
+            1.通过id获取指定元素
+            由于id不可以重复, 所以找到了就会将找到的标签包装成一个对象返回给我们, 找不到就返回Null
+            注意点: DOM操作返回的是一个对象, 这个对象是宿主类型对象(浏览器提供的对象)
+            */
+            /*
+            let oDiv = document.getElementById("box");
+            console.log(oDiv);
+            console.log(typeof oDiv);
+            */
+
+            /*
+            2.通过class名称获取
+            由于class可以重复, 所以找到了就返回一个存储了标签对象的数组, 找不到就返回一个空数组
+            */
+            /*
+            let oDivs = document.getElementsByClassName("father");
+            console.log(oDivs);
+            */
+
+            /*
+            3.通过name名称获取
+            由于name可以重复, 所以找到了就返回一个存储了标签对象的数组, 找不到就返回一个空数组
+            注意点:
+            getElementsByName  在不同的浏览器其中工作方式不同。在IE和Opera中， getElementsByName()  方法还会返回那些 id 为指定值的元素。
+            */
+            /*
+            let oDivs = document.getElementsByName("test");
+            console.log(oDivs);
+            */
+
+            /*
+            4.通过标签名称获取
+            由于标签名称可以重复, 所以找到了就返回一个存储了标签对象的数组, 找不到就返回一个空数组
+            */
+            /*
+            let oDivs =  document.getElementsByTagName("div");
+            console.log(oDivs);
+            */
+
+            /*
+            5.通过选择器获取
+            querySelector只会返回根据指定选择器找到的第一个元素
+            */
+            /*
+            // let oDiv = document.querySelector("#box");
+            // let oDiv = document.querySelector(".father");
+            let oDiv = document.querySelector("div>form");
+            console.log(oDiv);
+            */
+
+            /*
+            6.通过选择器获取
+            querySelectorAll会返回指定选择器找到的所有元素
+            */
+            <code>let oDivs = document.querySelectorAll(".father");
+                console.log(oDivs);</code>
+            <br>
+            <hr>// 1.获取指定元素所有的子元素
+            /*
+            let oDiv = document.querySelector("div");
+            // children属性获取到的是指定元素中所有的子元素
+            // console.log(oDiv.children);
+            // childNodes属性获取到的是指定元素中所有的节点
+            // console.log(oDiv.childNodes);
+            for(let node of oDiv.childNodes){
+            // console.log(node.nodeType);
+            // if(node.nodeType === 1){
+            if(node.nodeType === Node.ELEMENT_NODE){
+            console.log(node);
+            }
+            }
+            */
+
+            /*
+            2.什么是节点?
+            DOM对象(document), 这个对象以树的形式保存了界面上所有的内容
+            HTML页面每一部分都是由节点(标签(元素),文本,属性)
+            */
+
+            /*
+            // 3.获取指定节点中的第一个子节点
+            // let oDiv = document.querySelector("div");
+            // console.log(oDiv.firstChild);
+            //   获取指定元素中的第一个子元素
+            // console.log(oDiv.firstElementChild);
+
+            // 4.获取指定节点中最后一个子节点
+            // console.log(oDiv.lastChild);
+            // 4.获取指定元素中最后一个子元素
+            // console.log(oDiv.lastElementChild);
+            */
+
+            // 5.通过子元素获取父元素/父节点
+            let item = document.querySelector(".item");
+            // console.log(item.parentElement);
+            // console.log(item.parentNode);
+            // let parentEle = item.parentElement || item.parentNode;
+            // console.log(parentEle);
+
+            // 6.获取相邻上一个节点
+            // console.log(item.previousSibling);
+            //   获取相邻上一个元素
+            // console.log(item.previousElementSibling);
+
+            // 7.获取相邻下一个节点
+            console.log(item.nextSibling);
+            //   获取相邻下一个元素
+            console.log(item.nextElementSibling);
+        </div>
+
+    </div>
+</div>
+    <div class="card">
+        <div class="card_title">3. JavaScript-元素增删改查</div>
+        <div class="card_content">
+            <div> // 1.创建节点
+                // let oSpan = document.createElement("span");
+                // console.log(oSpan);
+                // console.log(typeof oSpan);
+
+                // 2.添加节点
+                // 注意点: appendChild方法会将指定的元素添加到最后
+                // let oDiv = document.querySelector("div");
+                // oDiv.appendChild(oSpan)
+                // let oA = document.createElement("a");
+                // oDiv.appendChild(oA);
+
+                // 3.插入节点
+                // let oSpan = document.createElement("span");
+                // let oDiv = document.querySelector("div");
+                // let oH1 = document.querySelector("h1");
+                // let oP = document.querySelector("p");
+                // // oDiv.insertBefore(oSpan, oH1);
+                // oDiv.insertBefore(oSpan, oP);
+
+                // 5.删除节点
+                // 注意点: 在js中如果想要删除某一个元素, 只能通过对应的父元素来删除
+                //         元素是不能够自杀的
+                // console.log(oSpan.parentNode);
+                // oSpan.parentNode.removeChild(oSpan);
+                // oDiv.parentNode.removeChild(oDiv);
+
+                // 5.克隆节点
+                // 注意点: cloneNode方法默认不会克隆子元素, 如果想克隆子元素需要传递一个true
+                let oDiv = document.querySelector("div");
+                // let newDiv =  oDiv.cloneNode();
+                let newDiv =  oDiv.cloneNode(true);
+                console.log(newDiv);
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">4. JavaScript-元素属性操作</div>
+        <div class="card_content">
+            <div> /*
+                无论是通过document创建还是查询出来的标签,系统都会将元素包装成一个对象返回给我们,
+                系统在包装这个对象的时候会自动将元素的属性都包装到这个对象中,
+                所以只要拿到这个对象就可以拿到标签属性,操作标签属性
+                */
+                /*
+                1.如何获取元素属性
+                2.如何修改元素属性
+                3.如何新增元素属性
+                4.如何删除元素属性
+                */
+                /*
+                // let oImg = document.querySelector("img");
+                // let oImg = document.createElement("img");
+                console.dir(oImg);
+                */
+
+                // 1.如何获取元素属性
+                /*
+                let oImg = document.querySelector("img");
+                // console.log(oImg.alt);
+                // console.log(oImg.getAttribute("alt"));
+                // 注意点: 通过对象.属性名称的方式无法获取到自定义属性的取值
+                //         通过getAttribute方法可以获取到自定义属性的取值
+                console.log(oImg.nj);
+                console.log(oImg.getAttribute("nj"));
+                */
+
+                // 2.如何修改元素属性
+                /*
+                let oImg = document.querySelector("img");
+                // oImg.title = "新的title";
+                // oImg.setAttribute("title", "新的title222");
+                // 注意点和获取元素属性一样
+                // oImg.nj = "123";
+                oImg.setAttribute("nj", "123");
+                */
+
+                // 3.如何新增元素属性
+                /*
+                let oImg = document.querySelector("img");
+                // 注意点: setAttribute方法如果属性不存在就是新增, 如果属性存在就是修改
+                oImg.setAttribute("it666", "itzb");
+                */
+
+                // 4.如何删除元素属性
+                let oImg = document.querySelector("img");
+                // oImg.alt = "";
+                // oImg.removeAttribute("alt");
+                // 注意点和获取元素属性一样
+                // oImg.nj = "";
+                oImg.removeAttribute("nj");
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">5. JavaScript-元素内容操作</div>
+        <div class="card_content">
+            <div>// 1.获取元素内容
+                /*
+                1.innerHTML获取的内容包含标签, innerText/textContent获取的内容不包含标签
+                2.innerHTML/textContent获取的内容不会去除两端的空格, innerText获取的内容会去除两端的空格
+                */
+                /*
+                let oDiv = document.querySelector("div");
+                console.log(oDiv.innerHTML);
+                console.log(oDiv.innerText);
+                console.log(oDiv.textContent);
+                */
+
+                // 2.设置元素内容
+                /*
+                特点:
+                无论通过innerHTML/innerText/textContent设置内容, 新的内容都会覆盖原有的内容
+                区别:
+                如果通过innerHTML设置数据, 数据中包含标签, 会转换成标签之后再添加
+                如果通过innerText/textContent设置数据, 数据中包含标签, 不会转换成标签, 会当做一个字符串直接设置
+                */
+                let oDiv = document.querySelector("div");
+                // oDiv.innerHTML = "123";
+                // oDiv.innerText = "456";
+                // oDiv.textContent = "789";
+                //  oDiv.innerHTML = "<span>我是span</span>";
+                //  oDiv.innerText = "<span>我是span</span>";
+                //  oDiv.textContent = "<span>我是span</span>";
+
+                setText(oDiv, "www.it666.com");
+                function setText(obj, text) {
+                if("textContent" in obj){
+                obj.textContent = text;
+                }else{
+                obj.innerText = text;
+                }
+                }
+
+            </div>
+
+        </div>
+    </div><div class="card">
+    <div class="card_title">6. JavaScript-操作元素样式</div>
+    <div class="card_content">
+        <div>// 1.设置元素样式
+            /*
+            let oDiv = document.querySelector("div");
+            // 第一种方式
+            // 注意点: 由于class在JS中是一个关键字, 所以叫做className
+            // oDiv.className = "box";
+            // 第二种方式
+            // 注意点: 过去CSS中通过-连接的样式, 在JS中都是驼峰命名
+            // 注意点: 通过JS添加的样式都是行内样式, 会覆盖掉同名的CSS样式
+            oDiv.style.width = "300px";
+            oDiv.style.height = "300px";
+            oDiv.style.backgroundColor = "blue";
+            */
+
+            // 2.获取元素样式
+            let oDiv = document.querySelector("div");
+            // oDiv.style.width = "300px";
+            // 注意点: 通过style属性只能过去到行内样式的属性值, 获取不到CSS设置的属性值
+            // console.log(oDiv.style.width);
+            // 注意点: 如果想获取到CSS设置的属性值, 必须通过getComputedStyle方法来获取
+            // getComputedStyle方法接收一个参数, 这个参数就是要获取的元素对象
+            // getComputedStyle方法返回一个对象, 这个对象中就保存了CSS设置的样式和属性值
+            let style = window.getComputedStyle(oDiv);
+            console.log(style.width);
+
+        </div>
+
+    </div>
+</div>
+    <div class="card">
+        <div class="card_title">7. JavaScript-DOM事件</div>
+        <div class="card_content">
+            <div>/*
+                1.什么是事件?
+                用户和浏览器之间的交互行为我们就称之为事件,	比如：点击，移入/移出
+
+                2.如何给元素绑定事件?
+                在JavaScript中所有的HTML标签都可以添加事件
+                元素.事件名称 = function(){};
+                当对应事件被触发时候就会自动执行function中的代码
+                */
+                let oBtn = document.querySelector("button");
+                oBtn.onclick = function () {
+                alert("按钮被点击了");
+                }
+                // 注意点: 如果给元素添加了和系统同名的事件, 我们添加的事件不会覆盖系统添加的事件
+                let oA = document.querySelector("a");
+                oA.onclick = function () {
+                alert("a标签被点击了");
+                // 以下代码的含义: 用我们添加的事件覆盖掉系统同名的事件
+                return false;
+                }
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">8. JavaScript-定时器</div>
+        <div class="card_content">
+            <div>/*
+                在JavaScript中有两种定时器, 一种是重复执行的定时器, 一种是只执行一次的定时器
+                */
+                // 1.重复执行的定时器
+                /*
+                每过1s执行一次
+                // setInterval(function () {
+                //     console.log("随便写点");
+                // }, 1000);
+                let startBtn = document.querySelector("#start");
+                let id = null;
+                startBtn.onclick = function () {
+                id = setInterval(function () {
+                console.log("随便写点");
+                }, 1000);
+                }
+                let closeBtn = document.querySelector("#close");
+                closeBtn.onclick = function () {
+                clearInterval(id);
+                }
+                */
+
+                // 2.只执行一次的定时器
+                过5s后执行一次
+                // window.setTimeout(function () {
+                //     console.log("随便写点");
+                // }, 5000);
+                let startBtn = document.querySelector("#start");
+                let closeBtn = document.querySelector("#close");
+                let id = null;
+                startBtn.onclick = function () {
+                id = window.setTimeout(function () {
+                console.log("随便写点");
+                }, 5000);
+                }
+                closeBtn.onclick = function () {
+                clearTimeout(id);
+                }
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">9. JavaScript-闭包</div>
+        <div class="card_content">
+            <div>/*
+                1.什么是闭包(closure)?
+                闭包是一种特殊的函数。
+
+                2.如何生成一个闭包?
+                当一个内部函数引用了外部函数的数据(变量/函数)时, 那么内部的函数就是闭包
+                所以只要满足"是函数嵌套"、"内部函数引用外部函数数据"
+
+                3.闭包特点:
+                只要闭包还在使用外部函数的数据, 那么外部的数据就一直不会被释放
+                也就是说可以延长外部函数数据的生命周期
+
+                4.闭包注意点:
+                当后续不需要使用闭包时候, 一定要手动将闭包设置为null, 否则会出现内存泄漏
+                */
+                /*
+                <code>function test() {
+                    var i = 666; // 局部变量
+                    } // 只要代码执行到了大括号结束, i这个变量就会自动释放
+                    console.log(i); // i is not defined
+                    */
+                    function test() {
+                    var i = 666;
+                    // 由于demo函数满足闭包的两个条件, 所以demo函数就是闭包
+                    return function demo() {
+                    console.log(i);
+                    }
+                    }
+                    let fn = test();
+                    fn(); // 666</code>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card_title">10.     JavaScript-Date对象</div>
+        <div class="card_content">
+            <div>// 1.获取当前时间
+                // let date = new Date();
+                // console.log(date);
+                // 2.获取当前时间距离1970年1月1日（世界标准时间）起的毫秒
+                // console.log(Date.now());
+                // let date = new Date();
+                // console.log(date.valueOf());
+
+                // 3.创建指定时间
+                // let date1 = new Date("2019-11-11 09:08:07");
+                // console.log(date1);
+                // 注意点: 在创建指定时间的时候, 如果月份是单独传入的, 那么会多一个月
+                // let date2 = new Date(2019, 10, 11, 9, 8, 7);
+                // console.log(date2);
+
+                // 4.获取指定时间年月日时分秒
+                // let date = new Date();
+                // console.log(date);
+                // console.log(date.getFullYear());
+                // 注意点; 通过getMonth方法获取到的月份会少一个月
+                // console.log(date.getMonth() + 1);
+                // console.log(date.getDate());
+                // console.log(date.getHours());
+                // console.log(date.getMinutes());
+                // console.log(date.getSeconds());
+
+                // 5.时间格式化
+                <code>let date = new Date();
+                    let res = formartDate(date);
+                    console.log(res);
+                    // console.log(date);
+                    // 2019-4-19 18:17:06
+                    function formartDate(date) {
+                    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}
+                    ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+                    }</code>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">11. JavaScript-DOM事件</div>
+        <div class="card_content">
+            <div> /*
+                1.什么是事件?
+                用户和浏览器之间的交互行为我们就称之为事件,	比如：点击，移入/移出
+
+                2.如何给元素绑定事件?
+                在JavaScript中所有的HTML标签都可以添加事件
+                元素.事件名称 = function(){};
+                当对应事件被触发时候就会自动执行function中的代码
+                */
+                <code>let oBtn = document.querySelector("button");
+                    oBtn.onclick = function () {
+                    alert("按钮被点击了");
+                    }
+                    // 注意点: 如果给元素添加了和系统同名的事件, 我们添加的事件不会覆盖系统添加的事件
+                    let oA = document.querySelector("a");
+                    oA.onclick = function () {
+                    alert("a标签被点击了");
+                    // 以下代码的含义: 用我们添加的事件覆盖掉系统同名的事件
+                    return false;
+                    }</code>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">12. JavaScript-添加事件三种方式</div>
+        <div class="card_content">
+            <div><code>var oBtn = document.getElementById("btn");</code>
+                /*
+                方式一:
+                1.通过onxxx的方式来添加
+                注意点: 由于是给属性赋值, 所以后赋值的会覆盖先赋值
+                <code>*/
+                    /*
+                    oBtn.onclick = function () {
+                    alert("666");
+                    }
+                    oBtn.onclick = function () {
+                    alert("777");
+                    }
+                    let obj = {};
+                    obj.say = function () {
+                    console.log("123");
+                    }
+                    obj.say = function () {
+                    console.log("456");
+                    }
+                    obj.say();
+                    */</code>
+
+                /*
+                方式二:
+                2.通过addEventListener方法添加
+                注意点:
+                1.事件名称不需要添加on
+                2.后添加的不会覆盖先添加的
+                3.只支持最新的浏览器IE9
+                */
+                <code>/*
+                    oBtn.addEventListener("click", function () {
+                    alert("666");
+                    });
+                    oBtn.addEventListener("click", function () {
+                    alert("777");
+                    });
+                    */</code>
+
+                /*
+                方式三
+                3.通过attachEvent方法添加
+                注意点:
+                1.事件名称必须加上on
+                2.后添加的不会覆盖先添加的
+                3.只支持低版本的浏览器
+                <code>*/
+                    /*
+                    oBtn.attachEvent("onclick", function () {
+                    alert("666");
+                    });
+                    oBtn.attachEvent("onclick", function () {
+                    alert("777");
+                    });
+                    */
+
+                    addEvent(oBtn, "click", function () {
+                    alert("666");
+                    })
+                    addEvent(oBtn, "click", function () {
+                    alert("777");
+                    })
+                    function addEvent(ele, name, fn) {
+                    if(ele.attachEvent){
+                    ele.attachEvent("on"+name, fn);
+                    }else{
+                    ele.addEventListener(name, fn);
+                    }
+                    }</code>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">13. JavaScript-事件对象</div>
+        <div class="card_content">
+            <div> /*
+                1.什么是事件对象?
+                事件对象就是一个系统自动创建的一个对象
+                当注册的事件被触发的时候, 系统就会自动创建事件对象
+                */
+                /*
+                2.事件对象的注意点:
+                在高级版本的浏览器中, 会自动将事件对象传递给回到函数
+                在低级版本的浏览器中, 不会自动将事件对象传递给回调函数
+                在低级版本的浏览器中, 需要通过window.event来获取事件对象
+                */
+                /*
+                <code>var oBtn = document.getElementById("btn");
+                    oBtn.onclick = function (event) {
+                    // 兼容性的写法
+                    event = event || window.event;
+                    // alert("666");
+                    console.log(event);
+                    console.log(typeof event);
+                    }
+                    */
+                    let oA = document.querySelector("a");
+                    oA.onclick = function (event) {
+                    // 兼容性的写法
+                    event = event || window.event;
+
+                    alert("666");
+                    // 阻止默认行为
+                    return false; // 企业开发推荐
+
+                    // 注意点: preventDefault方法只支持高级版本的浏览器
+                    // event.preventDefault();
+                    // event.returnValue = false; // IE9以下的浏览器
+                    }</code>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">14. JavaScript-事件执行的三个阶段</div>
+        <div class="card_content">
+            <div>/*
+                1.事件的三个阶段
+                1.1.捕获阶段(从外向内的传递事件)
+                1.2.当前目标阶段
+                1.3.冒泡的阶段(从内向外的传递事件)
+
+                2.注意点:
+                三个阶段只有两个会被同时执行
+                要么捕获和当前, 要么当前和冒泡
+
+                3.为什么要么只能是捕获和当前, 要么只能是当前和冒泡?
+                这是JS处理事件的历史问题
+                早期各大浏览器厂商为占领市场, 以及对事件的理解不同
+                后续W3C为了兼容, 将两种方式都纳入标准
+                */
+                /*
+                1.如何设置事件到底是捕获还是冒泡?
+                通过addEventListener方法, 这个方法接收三个参数
+                第一个参数: 事件的名称
+                第二个参数: 回调函数
+                第三个参数: false冒泡  / true 捕获
+
+                注意点:
+                onXxx的属性, 不接收任何参数, 所以默认就是冒泡
+                attachEvent方法, 只能接收两个参数, 所以默认就是冒泡
+                */
+                let oFDiv = document.querySelector(".father");
+                let oSDiv = document.querySelector(".son");
+                /*
+                oFDiv.addEventListener("click", function () {
+                console.log("father");
+                }, false);
+                oSDiv.addEventListener("click", function () {
+                console.log("son");
+                }, false);
+                */
+                oFDiv.onclick = function () {
+                console.log("father");
+                }
+                oSDiv.onclick = function () {
+                console.log("son");
+                }
+                /*
+                IE 6.0:
+                div -> body -> html -> document
+                其他浏览器:
+                div -> body -> html -> document -> window
+                注意：
+                不是所有的事件都能冒泡，以下事件不冒泡：blur、focus、load、unload
+                */
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">15. JavaScript-移入移出事件区别</div>
+        <div class="card_content">
+            <div>/*
+                1.onmouseover和onmouseenter的区别
+                onmouseover移入到子元素,父元素的移入事件也会被触发
+                onmouseenter移入到子元素,父元素的移入事件不会被触发
+                */
+                /*
+                2.onmouseout和onmouseleave的区别
+                onmouseout移出到子元素,父元素的移入事件也会被触发
+                onmouseleave移出到子元素,父元素的移入事件不会被触发
+                <code>*/
+                    let oFDiv = document.querySelector(".father");
+                    let oSDiv = document.querySelector(".son");
+                    /*
+                    oFDiv.onmouseover = function () {
+                    console.log("father");
+                    }
+                    oSDiv.onmouseover = function () {
+                    console.log("son");
+                    }
+                    */
+                    /*
+                    oFDiv.onmouseenter = function () {
+                    console.log("father");
+                    }
+                    oSDiv.onmouseenter = function () {
+                    console.log("son");
+                    }
+                    */
+                    oFDiv.onmouseleave = function () {
+                    console.log("father");
+                    }
+                    oSDiv.onmouseleave = function () {
+                    console.log("son");
+                    }</code>
+
+            </div>
+
+        </div>
+    </div><div class="card">
+    <div class="card_title">16. JavaScript-位置获取</div>
+    <div class="card_content">
+        <div>/*
+            offsetX/offsetY: 事件触发相对于当前元素自身的位置
+            clientX/clientY: 事件触发相对于浏览器可视区域的位置
+            注意点: 可视区域是不包括滚动出去的范围的
+            pageX/pageY:     事件触发相对于整个网页的位置
+            主要点: 整个网页包括滚动出去的范围的
+            screenX/screenY: 事件触发相对于屏幕的位置
+            <code>*/
+                var oDiv = document.getElementById("box");
+                oDiv.onclick = function (event) {
+                event = event || window.event;
+                // console.log("offsetX", event.offsetX);
+                // console.log("offsetY", event.offsetY);
+                /*
+                console.log("clientX", event.clientX);
+                console.log("clientY", event.clientY);
+                console.log("----------------------");
+                console.log("pageX", event.pageX);
+                console.log("pageY", event.pageY);
+                */
+                console.log(event.screenX);
+                console.log(event.screenY);
+                }</code>
+
+        </div>
+
+    </div>
+</div>
+    <div class="card">
+        <div class="card_title">17. JavaScript-正则表达式</div>
+        <div class="card_content">
+            <div>/*
+                1.什么是正则表达式?
+                正则表达式就是对字符串操作的一种逻辑公式
+
+                2.正则表达式的作用?
+                1.在字符串"查找"是否包含指定子串
+                2.从字符串中"提取"指定子串
+                3.对字符串中指定的内容进行"替换"
+                */
+                // 1.字符串查找
+                /*
+                let str = "123abc456";
+                let index = str.indexOf("abc");
+                let index = str.lastIndexOf("abc");
+                let flag = str.includes("abc");
+                */
+                // 2.字符串提取
+                /*
+                let str = "123abc456";
+                let startIndex = str.indexOf("a");
+                console.log(str.substr(startIndex, "abc".length));
+                */
+                // 3.字符串替换
+                /*
+                let str = "123abc456";
+                str.replace("abc", "it666");
+                */
+
+                // 1.利用正则表达式匹配(查找)
+                /*
+                let str = "123abc456";
+                // 1.创建一个正则表达式对象
+                // 2.指定匹配的规则
+                // 注意点: 默认情况下在正则表达式中是区分大小写的
+                let reg = new RegExp("A", "i");
+                let res = reg.test(str);
+                console.log(res);
+                */
+                /*
+                let str = "abc2020-1-11def";
+                // 通过构造函数创建正则表达式对象
+                // let reg = new RegExp("\\d{4}-\\d{1,2}-\\d{1,2}");
+                // 通过字面量来创建正则表达式对象
+                let reg = /\d{4}-\d{1,2}-\d{1,2}/;
+                let res = reg.test(str);
+                console.log(res);
+                */
+
+                // 2.通过正则表达式提取符合规则的字符串
+                /*
+                let str = "abc2020-1-11def2019-11-11fdjsklf";
+                // 注意点: 默认情况下在正则表达式中一旦匹配就会停止查找
+                let reg = /\d{4}-\d{1,2}-\d{1,2}/g;
+                let res = str.match(reg);
+                console.log(res);
+                console.log(res[0]);
+                console.log(res[1]);
+                */
+
+                // 3.通过正则表达式替换符合规则的字符串
+                let str = "abc2020-1-11def2019-11-11fdjsklf";
+                let reg = /\d{4}-\d{1,2}-\d{1,2}/g;
+                let newStr = str.replace(reg, "it666");
+                console.log(str);
+                console.log(newStr);
+
+                <code>常用正则表达式合集:
+                    验证数字：^[0-9]*$
+                    验证n位的数字：^\d{n}$
+                    验证至少n位数字：^\d{n,}$
+                    验证m-n位的数字：^\d{m,n}$
+                    验证零和非零开头的数字：^(0|[1-9][0-9]*)$
+                    验证有两位小数的正实数：^[0-9]+(.[0-9]{2})?$
+                    验证有1-3位小数的正实数：^[0-9]+(.[0-9]{1,3})?$
+                    验证非零的正整数：^\+?[1-9][0-9]*$
+                    验证非零的负整数：^\-[1-9][0-9]*$
+                    验证非负整数（正整数 + 0）  ^\d+$
+                    验证非正整数（负整数 + 0）  ^((-\d+)|(0+))$
+                    验证长度为3的字符：^.{3}$
+                    验证由26个英文字母组成的字符串：^[A-Za-z]+$
+                    验证由26个大写英文字母组成的字符串：^[A-Z]+$
+                    验证由26个小写英文字母组成的字符串：^[a-z]+$
+                    验证由数字和26个英文字母组成的字符串：^[A-Za-z0-9]+$
+                    验证由数字、26个英文字母或者下划线组成的字符串：^\w+$
+
+                    验证用户密码:^[a-zA-Z]\w{5,17}$ 正确格式为：以字母开头，长度在6-18之间，只能包含字符、数字和下划线。
+                    验证是否含有 ^%&',;=?$\" 等字符：[^%&',;=?$\x22]+
+                    验证汉字：^[\u4e00-\u9fa5],{0,}$
+                    验证Email地址：^\w+[-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$
+                    验证InternetURL：^http://([\w-]+\.)+[\w-]+(/[\w-./?%&=]*)?$ ；^[a-zA-z]+://(w+(-w+)*)(.(w+(-w+)*))*(?S*)?$
+                    验证电话号码：^(\d3,4|\d{3,4}-)?\d{7,8}$：--正确格式为：XXXX-XXXXXXX，XXXX-XXXXXXXX，XXX-XXXXXXX，XXX-XXXXXXXX，XXXXXXX，XXXXXXXX。
+                    验证身份证号（15位或18位数字）：^\d{15}|\d{}18$
+                    验证一年的12个月：^(0?[1-9]|1[0-2])$ 正确格式为：“01”-“09”和“1”“12”
+                    验证一个月的31天：^((0?[1-9])|((1|2)[0-9])|30|31)$    正确格式为：01、09和1、31。
+                    整数：^-?\d+$
+                    非负浮点数（正浮点数 + 0）：^\d+(\.\d+)?$
+                    正浮点数   ^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$
+                    非正浮点数（负浮点数 + 0） ^((-\d+(\.\d+)?)|(0+(\.0+)?))$
+                    负浮点数  ^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$
+                    浮点数  ^(-?\d+)(\.\d+)?$</code>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="intro">
+        <div><span>Browser Object Model</span></div>
+    </div>
+    <div class="card">
+        <div class="card_title">1. JavaScript-BOM开篇</div>
+        <div class="card_content">
+            <div>/*
+                1.什么是BOM?
+                DOM就是一套操作HTML标签的API(接口/方法/属性)
+                BOM就是一套操作浏览器的API(接口/方法/属性)
+
+                2.BOM中常见的对象
+                window: 代表整个浏览器窗口
+                注意: window是BOM中的一个对象, 并且是一个顶级的对象(全局)
+                Navigator: 代表当前浏览器的信息, 通过Navigator我们就能判断用户当前是什么浏览器
+                Location:  代表浏览器地址栏的信息, 通过Location我们就能设置或者获取当前地址信息
+                History:   代表浏览器的历史信息, 通过History来实现刷新/上一步/下一步
+                注意点: 出于隐私考虑, 我们并不能拿到用户所有的历史记录, 只能拿到当前的历史记录
+                Screen:   代表用户的屏幕信息
+                */
+                console.log(window.screen);
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card_title">2. JavaScript-Navigator</div>
+        <div class="card_content">
+            <div>Navigator: 代表当前浏览器的信息, 通过Navigator我们就能判断用户当前是什么浏览器
+                console.log(window.navigator);
+                var agent = window.navigator.userAgent;
+                if(/chrome/i.test(agent)){
+                alert("当前是谷歌浏览器");
+                }else if(/firefox/i.test(agent)){
+                alert("当前是火狐浏览器");
+                }else if(/msie/i.test(agent)){
+                alert("当前是低级IE浏览器");
+                }else if("ActiveXObject" in window){
+                alert("当前是高级IE浏览器");
+                }
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">3. JavaScript-Location</div>
+        <div class="card_content">
+            <div><code>// Location:  代表浏览器地址栏的信息, 通过Location我们就能设置或者获取当前地址信息
+                let oBtn1 = document.querySelector("#btn1");
+                let oBtn2 = document.querySelector("#btn2");
+                let oBtn3 = document.querySelector("#btn3");
+                let oBtn4 = document.querySelector("#btn4");
+                // 获取当前地址栏的地址
+                oBtn1.onclick = function(){
+                console.log(window.location.href);
+                }
+                // 设置当前地址栏的地址
+                oBtn2.onclick = function(){
+                window.location.href = "http://www.it666.com";
+                }
+                // 重新加载界面
+                oBtn3.onclick = function(){
+                window.location.reload();
+                }
+                //强制刷新：更新缓存
+                oBtn4.onclick = function(){
+                window.location.reload(true);
+                }</code>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">3. JavaScript-History</div>
+        <div class="card_content">
+            <div><code>// History:   代表浏览器的历史信息, 通过History来实现刷新/前进/后退
+                // 注意点: 出于隐私考虑, 我们并不能拿到用户所有的历史记录, 只能拿到当前的历史记录
+                let oBtn1 = document.querySelector("#btn1");
+                let oBtn2 = document.querySelector("#btn2");
+                // 前进
+                /*
+                注意点:
+                只有当前访问过其它的界面, 才能通过forward/go方法前进
+                如果给go方法传递1, 就代表前进1个界面, 传递2就代表进行2个界面
+                */
+                oBtn1.onclick = function () {
+                // window.history.forward();
+                window.history.go(1);
+                }
+                // 刷新
+                // 如果给go方法传递0, 就代表刷新
+                oBtn2.onclick = function () {
+                window.history.go(0);
+                }
+            </code>
+
+                <code>// History:   代表浏览器的历史信息, 通过History来实现刷新/上一步/下一步
+                    let oBtn1 = document.querySelector("#btn1");
+
+                    // 后退
+                    /*
+                    注意点:
+                    只有当前访问过其它的界面, back/go方法后退
+                    如果给go方法传递-1, 就代表后退1个界面, 传递-2就代表后退2个界面
+                    */
+                    oBtn1.onclick = function () {
+                    // window.history.back();
+                    window.history.go(-1);
+                    }</code>
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">4. JavaScript-获取元素宽高其它方式</div>
+        <div class="card_content">
+            <div>/*
+                1.通过getComputedStyle获取宽高
+                1.1获取的宽高不包括 边框和内边距
+                1.2即可以获取行内设置的宽高也可以获取CSS设置的宽高
+                1.3只支持获取, 不支持设置
+                1.4只支持IE9及以上浏览器
+                */
+                /*
+                var oDiv = document.getElementById("box");
+                // oDiv.style.width = "166px";
+                // oDiv.style.height = "166px";
+                var style = getComputedStyle(oDiv);
+                // style.width = "166px";
+                // style.height = "166px";
+                console.log(style.width);
+                console.log(style.height);
+                */
+
+                /*
+                2.通过currentStyle属性获取宽高
+                2.1获取的宽高不包括 边框和内边距
+                2.2即可以获取行内设置的宽高也可以获取CSS设置的宽高
+                2.3只支持获取, 不支持设置
+                2.4只支持IE9以下浏览器
+                */
+                /*
+                var oDiv = document.getElementById("box");
+                // oDiv.style.width = "166px";
+                // oDiv.style.height = "166px";
+                var style = oDiv.currentStyle;
+                style.width = "166px";
+                style.height = "166px";
+                // console.log(style);
+                console.log(style.width);
+                console.log(style.height);
+                */
+
+                /*
+                3.通过style属性获取宽高
+                3.1获取的宽高不包括 边框和内边距
+                3.2只能获取内设置的宽高, 不能获取CSS设置的宽高
+                3.3可以获取也可以设置
+                3.4高级低级浏览器都支持
+                */
+                /*
+                var oDiv = document.getElementById("box");
+                oDiv.style.width = "166px";
+                oDiv.style.height = "166px";
+                console.log(oDiv.style.width);
+                console.log(oDiv.style.height);
+                */
+
+                /*
+                4.offsetWidth和offsetHeight
+                4.1获取的宽高包含 边框 + 内边距 + 元素宽高
+                4.2即可以获取行内设置的宽高也可以获取CSS设置的宽高
+                4.3只支持获取, 不支持设置
+                4.4高级低级浏览器都支持
+                */
+                /*
+                var oDiv = document.getElementById("box");
+                // oDiv.offsetWidth = "166px";
+                // oDiv.offsetHeight = "166px";
+                oDiv.style.width = "166px";
+                oDiv.style.height = "166px";
+                console.log(oDiv.offsetWidth);
+                console.log(oDiv.offsetHeight);
+                */
+
+                /*
+                1.getComputedStyle/currentStyle/style
+                获取的宽高不包括 边框和内边距
+                2.offsetWidth/offsetHeight
+                获取的宽高包括 边框和内边距
+
+                3.getComputedStyle/currentStyle/offsetXXX
+                只支持获取, 不支持设置
+                4.style
+                可以获取, 也可以设置
+
+                5.getComputedStyle/currentStyle/offsetXXX
+                即可以获取行内,也可以获取外链和内联样式
+                6.style
+                只能获取行内样式
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">5. JavaScript-获取元素位置其它方式</div>
+        <div class="card_content">
+            <div>/*
+                1.offsetLeft和offsetTop作用
+                获取元素到第一个定位祖先元素之间的偏移位
+                如果没有祖先元素是定位的, 那么就是获取到body的偏移位
+                */
+                let oSDiv = document.querySelector(".son");
+                oSDiv.onclick = function () {
+                console.log(oSDiv.offsetLeft);
+                console.log(oSDiv.offsetTop);
+                }
+
+                /*
+                2.课后练习
+                按照offsetWidth和offsetHeight讲解思路, 自己整理offsetLeft/marginLeft/left异同
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">6. JavaScript-offsetParent</div>
+        <div class="card_content">
+            <div>/*
+                1.offsetParent作用
+                获取元素的第一个定位祖先元素
+                如果没有祖先元素是定位的, 那么就是获取到的就是body
+                */
+                <code>let oSDiv = document.querySelector(".son");
+                    oSDiv.onclick = function () {
+                    console.log(oSDiv.offsetParent);
+                    }</code>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">7. JavaScript-client属性</div>
+        <div class="card_content">
+            <div>/*
+                1.offsetWidth = 宽度 + 内边距 + 边框
+                offsetHeight = 高度 + 内边距 + 边框
+                2.clientWidth = 宽度 + 内边距
+                clientHeight = 高度 + 内边距
+                */
+                let oDiv = document.querySelector("div");
+                // console.log(oDiv.clientWidth);
+                // console.log(oDiv.clientHeight);
+
+                /*
+                1.offsetLeft/offsetTop: 距离第一个定位祖先元素偏移位 || body
+                2.clientLeft/clientTop: 左边框 和 顶部边框
+                */
+                console.log(oDiv.clientLeft);
+                console.log(oDiv.clientTop);
+                oDiv.scrollWidth
+
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">8. JavaScript-scroll属性</div>
+        <div class="card_content">
+            <div> /*
+                1.内容没有超出元素范围时
+                scrollWidth: = 元素宽度 + 内边距宽度 == clientWidth
+                scrollHeight: = 元素高度 + 内边距的高度 == clientHeight
+                */
+                let oDiv = document.querySelector("div");
+                // console.log(oDiv.scrollWidth);
+                // console.log(oDiv.scrollHeight);
+                /*
+                2.内容超出元素范围时
+                scrollWidth: = 元素宽度 + 内边距宽度 + 超出的宽度
+                scrollHeight: = 元素高度 + 内边距的高度 + 超出的高度
+                */
+
+                /*
+                3.scrollTop / scrollLeft
+                scrollTop: 超出元素内边距顶部的距离
+                scrollLeft: 超出元素内边距左边的距离
+                */
+                // console.log(oDiv.scrollTop);
+                oDiv.onscroll = function () {
+                console.log(oDiv.scrollTop);
+                }
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">9. JavaScript-获取网页宽高</div>
+        <div class="card_content">
+            <div>
+                // 注意点: innerWidth/innerHeight只能在IE9以及IE9以上的浏览器中才能获取
+                // console.log(window.innerWidth);
+                // console.log(window.innerHeight);
+
+                // 注意点: documentElement.clientWidth/documentElement.clientHeight
+                // 可以用于在IE9以下的浏览器的标准模式中获取
+                // 浏览器在渲染网页的时候有两种模式"标准模式"/"混杂模式/怪异模式"
+                // 默认情况下都是以标准模式来进行渲染的(CSS1Compat)
+                // 如果网页没有书写文档声明, 那么就会按照"混杂模式/怪异模式"来进行渲染的(BackCompat)
+                // documentElement  --> HTML  --> 整个网页
+                // console.log(document.documentElement);
+                // console.log(document.documentElement.clientWidth);
+                // console.log(document.documentElement.clientHeight);
+
+                // 注意点: 在混杂模式中利用如下的方式获取可视区域的宽高
+                // console.log(document.compatMode);// CSS1Compat
+                // console.log(document.body.clientWidth);
+                // console.log(document.body.clientHeight);
+                */
+
+                <code>let {width, height} = getScreen();
+                    console.log(width);
+                    console.log(height);
+
+                    function getScreen() {
+                    let width, height;
+                    if(window.innerWidth){
+                    width = window.innerWidth;
+                    height = window.innerHeight;
+                    }else if(document.compatMode === "BackCompat"){
+                    width = document.body.clientWidth;
+                    height = document.body.clientHeight;
+                    }else{
+                    width = document.documentElement.clientWidth;
+                    height = document.documentElement.clientHeight;
+                    }
+                    return {
+                    width: width,
+                    height: height
+                    }
+                    }</code>
+
+            </div>
+
+        </div>
+    </div>  <div class="card">
+    <div class="card_title">10. JavaScript-函数防抖</div>
+    <div class="card_content">
+        <div>1.什么是函数防抖[debounce]?
+            函数防抖是优化高频率执行js代码的一种手段
+            可以让被调用的函数在一次连续的高频操作过程中只被调用一次
+
+            2.函数防抖作用
+            减少代码执行次数, 提升网页性能
+
+            3.函数防抖应用场景
+            oninput / onmousemove  / onscroll / onresize等事件
+            <code>let oInput = document.querySelector("input");
+                let timerId = null;
+                // abc
+                oInput.oninput = function () {
+                timerId && clearTimeout(timerId);
+                timerId = setTimeout(function () {
+                console.log(oInput.value);
+                }, 1000);
+                // console.log(this.value);
+                // console.log("发送网络请求");
+                }</code>
+
+        </div>
+
+    </div>
+</div>
+    <div class="card">
+        <div class="card_title">11. JavaScript-函数节流</div>
+        <div class="card_content">
+            <div>1.什么是函数节流[throttle]?
+                函数节流也是优化高频率执行js代码的一种手段
+                可以减少高频调用函数的执行次数
+
+                2.函数节流作用
+                减少代码执行次数, 提升网页性能
+
+                3.函数节流应用场景
+                oninput / onmousemove  / onscroll / onresize等事件
+
+                4.函数节流和函数防抖区别
+                函数节流是减少连续的高频操作函数执行次数  (例如连续调用10次, 可能只执行3-4次)
+                函数防抖是让连续的高频操作时函数只执行一次(例如连续调用10次, 但是只会执行1次)
+                */
+
+                let oDiv = document.querySelector("div");
+                function resetSize(){
+                let {width, height} = getScreen();
+                oDiv.style.width = width / 2 + "px";
+                oDiv.style.height = height / 2 + "px";
+                }
+                resetSize();
+                // 监听可视区域尺寸的变化
+                /*
+                window.onresize = debounce(function () {
+                resetSize();
+                console.log("尺寸的变化");
+                }, 1000);
+                */
+                let timerId = null;
+                let flag = true;
+                window.onresize = function () {
+                if(!flag){ // if(false) if(true) if(false)
+                return;
+                }
+                flag = false;
+                timerId && clearTimeout(timerId);
+                timerId = setTimeout(function () {
+                flag = true;
+                resetSize();
+                console.log("尺寸的变化");
+                }, 500);
+                // resetSize();
+                // console.log("尺寸的变化");
+                }
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title">12. js工具</div>
+        <div class="card_content">
+            <div>
+                <a href="../../static/js.zip" download="js-tool.zip">js tool</a>
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title"></div>
+        <div class="card_content">
+            <div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_title"></div>
+        <div class="card_content">
+            <div>
+
+            </div>
+
+        </div>
+    </div>  <div class="card">
+    <div class="card_title"></div>
+    <div class="card_content">
+        <div>
+
+        </div>
+
+    </div>
+</div>  <div class="card">
+    <div class="card_title"></div>
+    <div class="card_content">
+        <div>
+
+        </div>
+
+    </div>
+</div>  <div class="card">
+    <div class="card_title"></div>
+    <div class="card_content">
+        <div>
+
+        </div>
+
+    </div>
+</div>  <div class="card">
+    <div class="card_title"></div>
+    <div class="card_content">
+        <div>
+
+        </div>
+
+    </div>
+</div>  <div class="card">
+    <div class="card_title"></div>
+    <div class="card_content">
+        <div>
+
+        </div>
+
+    </div>
+</div>  <div class="card">
+    <div class="card_title"></div>
+    <div class="card_content">
+        <div>
+
+        </div>
+
+    </div>
+</div>  <div class="card">
+    <div class="card_title"></div>
+    <div class="card_content">
+        <div>
+
+        </div>
+
+    </div>
+</div>  <div class="card">
+    <div class="card_title"></div>
+    <div class="card_content">
+        <div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</body>
+</html>
